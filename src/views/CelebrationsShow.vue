@@ -1,7 +1,16 @@
 <template>
   <div class="celebration-show">
     <div class="container">
-      {{ celebration.name }}
+      <h1>Celebrations</h1>
+      <h2>{{ celebration.name }}</h2>
+      <p>Theme: {{ celebration.theme }}</p>
+      <p>Occasion: {{ celebration.occasion }}</p>
+      <p>Colors: {{ celebration.colors }}</p>
+      <p>Signature Drink: {{ celebration.signature_drink }}</p>
+      <p>Location: {{ celebration.location }}</p>
+      <p>Cabal: {{ celebration.cabal }}</p>
+      Members:
+      <p v-for="user in celebration.users" v-bind:key="user.id">{{ user.first_name }}</p>
     </div>
   </div>
 </template>
@@ -16,13 +25,13 @@ export default {
     };
   },
   mounted: function () {
-    this.showCelebration();
+    this.showCelebrations();
   },
   methods: {
-    showCelebration: function () {
-      axios.get("api/celebrations/" + this.$route.params.id).then((response) => {
+    showCelebrations: function () {
+      axios.get("/api/celebrations/" + this.$route.params.id).then((response) => {
         console.log(response.data);
-        this.user = response.data;
+        this.celebration = response.data;
       });
     },
   },

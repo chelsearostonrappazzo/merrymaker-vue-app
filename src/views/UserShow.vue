@@ -9,29 +9,16 @@
       <h3>Celebrations</h3>
       <div v-for="celebration in user.celebrations" v-bind:key="celebration.id">
         <h4>{{ celebration.name }}</h4>
-        <button v-on:click="showCelebration(celebration)">More Info</button>
-      </div>
-      <dialog id="celebration-details">
-        <form method="dialog">
-          <h1>{{ currentCelebration.name }}</h1>
-          <p>Theme: {{ currentCelebration.theme }}</p>
-          <p>Occasion: {{ currentCelebration.occasion }}</p>
-          <p>Colors: {{ currentCelebration.colors }}</p>
-          <!-- <p>Signature Drink: {{ currentCelebration.signature_drink }}</p> -->
-          <p>Location: {{ currentCelebration.location }}</p>
-          <!-- <p>Cabal: {{ currentCelebration.cabal }}</p>
-          <p>Members: {{ currentCelebration.users }}</p> -->
-          <!-- <router-link v-bind:to="`/celebrations/${currenCelebration.id}`">See Full Information</router-link> -->
-          <button>Close</button>
-        </form>
-      </dialog>
-      <!-- <p>Theme: {{ celebration.theme }}</p>
+        <p>Theme: {{ celebration.theme }}</p>
         <p>Occasion: {{ celebration.occasion }}</p>
-        <p>Colors: {{ celebration.colors }}</p>
-        <p>Signature Drink: {{ celebration.signature_drink }}</p>
-        <p>Location: {{ celebration.location }}</p>
-        <p>Cabal: {{ celebration.cabal }}</p>
-        <p>Members: {{ celebration.users }}</p> -->
+        <router-link v-bind:to="`/celebrations/${celebration.id}`">See All Info</router-link>
+      </div>
+
+      <!-- <p>Colors: {{ celebration.colors }}</p>
+      <p>Signature Drink: {{ celebration.signature_drink }}</p>
+      <p>Location: {{ celebration.location }}</p>
+      <p>Cabal: {{ celebration.cabal }}</p>
+      <p>Members: {{ celebration.users }}</p> -->
     </div>
   </div>
 </template>
@@ -64,11 +51,11 @@ export default {
         this.user = response.data;
       });
     },
-    showCelebration: function (celebration) {
-      console.log(celebration.response);
-      this.currentCelebration = celebration;
-      document.querySelector("#celebration-details").showModal();
-    },
+    // showCelebration: function (celebration) {
+    //   console.log(celebration.response);
+    //   this.currentCelebration = celebration;
+    //   document.querySelector("#celebration-details").showModal();
+    // },
   },
 };
 </script>
