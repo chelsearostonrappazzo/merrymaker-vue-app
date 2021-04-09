@@ -12,6 +12,8 @@
       <router-link to="/logout">Logout</router-link>
       |
       <router-link to="/users/:id">Profile</router-link>
+      |
+      <router-link to="/celebrations">Celebrations</router-link>
     </div>
     <router-view />
   </div>
