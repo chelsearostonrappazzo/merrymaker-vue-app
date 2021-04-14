@@ -12,14 +12,22 @@
         |
         <router-link to="/login">Login</router-link>
       </span>
+      <span v-if="isLoggedIn()">
+        |
+        <router-link to="/logout">Logout</router-link>
+      </span>
+      <span v-if="isLoggedIn()">
+        |
+        <router-link to="/profile">Profile</router-link>
+      </span>
+      <span v-if="isLoggedIn()">
+        |
+        <router-link to="/celebrations">Celebrations</router-link>
+      </span>
       |
-      <span v-if="isLoggedIn()"><router-link to="/logout">Logout</router-link></span>
-      |
-      <router-link to="/profile">Profile</router-link>
-      |
-      <router-link to="/celebrations">Celebrations</router-link>
-      |
-      <router-link to="/celebrations/new">Add New</router-link>
+      <span v-if="isLoggedIn()">
+        <router-link to="/celebrations/new">Add New</router-link>
+      </span>
     </div>
     <router-view />
   </div>

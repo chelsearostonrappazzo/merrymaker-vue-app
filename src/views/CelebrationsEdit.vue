@@ -33,7 +33,7 @@
         <input type="text" class="form-control" v-model="celebration.signature_drink" />
       </div>
       <div class="form-group">
-        <textarea class="form-control" v-model="notes" placeholder="Write additional Notes here" />
+        <textarea class="form-control" v-model="celebration.notes" placeholder="Write additional Notes here" />
       </div>
       <input type="submit" class="btn btn-primary" value="Update" />
     </form>
