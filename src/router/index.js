@@ -7,6 +7,7 @@ import Logout from "../views/Logout.vue";
 import UserShow from "../views/UserShow.vue";
 import CelebrationsShow from "../views/CelebrationsShow.vue";
 import CelebrationsIndex from "../views/CelebrationsIndex.vue";
+import CabalsShow from "../views/CabalsShow.vue";
 
 Vue.use(VueRouter);
 
@@ -40,7 +41,7 @@ const routes = [
     component: Logout,
   },
   {
-    path: "/users/:id",
+    path: "/profile",
     name: "user show",
     component: UserShow,
   },
@@ -53,6 +54,11 @@ const routes = [
     path: "/celebrations",
     name: "celebrations-index",
     component: CelebrationsIndex,
+  },
+  {
+    path: "/cabals/:id",
+    name: "cabals-show",
+    component: CabalsShow,
   },
 ];
 

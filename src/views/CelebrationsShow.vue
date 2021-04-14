@@ -9,8 +9,9 @@
       <p>Signature Drink: {{ celebration.signature_drink }}</p>
       <p>Location: {{ celebration.location }}</p>
       <p>Cabal: {{ celebration.cabal }}</p>
-      Members:
-      <p v-for="user in celebration.users" v-bind:key="user.id">{{ user.first_name }}</p>
+      <p>Members: {{ celebration.users }}</p>
+
+      <!-- <p v-for="user in celebration.users" v-bind:key="user.id">{{ user.first_name }}</p> -->
     </div>
   </div>
 </template>

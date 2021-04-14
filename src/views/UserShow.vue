@@ -5,7 +5,10 @@
       <h1>{{ user.full_name }}</h1>
       <h2>Information</h2>
       <h3>Cabals</h3>
-      <p v-for="cabal in user.cabals" v-bind:key="cabal.id">{{ cabal.name }}</p>
+      <div v-for="cabal in user.cabals" v-bind:key="cabal.id">
+        <p>{{ cabal.name }}</p>
+        <router-link v-bind:to="`/cabals/${cabal.id}`">See Members</router-link>
+      </div>
       <h3>Celebrations</h3>
       <div v-for="celebration in user.celebrations" v-bind:key="celebration.id">
         <h4>{{ celebration.name }}</h4>

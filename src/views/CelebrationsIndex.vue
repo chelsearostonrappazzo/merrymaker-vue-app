@@ -4,7 +4,7 @@
       <router-link v-bind:to="`celebrations/${celebration.id}`">
         <h2>{{ celebration.name }}</h2>
       </router-link>
-      <!-- <p>Celebrant: {{ celebration.user.first_name }}</p> -->
+      <p>Celebrant: {{ celebration.user_id }}</p>
     </div>
   </div>
 </template>
