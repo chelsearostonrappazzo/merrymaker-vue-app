@@ -3,7 +3,7 @@
     <div class="container">
       <h2>{{ cabal.name }}</h2>
       <ol>
-        <li v-for="user in cabal.users" v-bind:key="user.id">{{ user.first_name }}</li>
+        <li v-for="member in cabal.members" v-bind:key="member.id">{{ member.first_name }}</li>
       </ol>
     </div>
   </div>

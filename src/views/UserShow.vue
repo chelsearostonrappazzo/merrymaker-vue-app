@@ -16,12 +16,6 @@
         <p>Occasion: {{ celebration.occasion }}</p>
         <router-link v-bind:to="`/celebrations/${celebration.id}`">See All Info</router-link>
       </div>
-
-      <!-- <p>Colors: {{ celebration.colors }}</p>
-      <p>Signature Drink: {{ celebration.signature_drink }}</p>
-      <p>Location: {{ celebration.location }}</p>
-      <p>Cabal: {{ celebration.cabal }}</p>
-      <p>Members: {{ celebration.users }}</p> -->
     </div>
   </div>
 </template>

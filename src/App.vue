@@ -4,16 +4,22 @@
       <span><router-link to="/">Home</router-link></span>
       |
       <span><router-link to="/about">About</router-link></span>
+      <span v-if="!isLoggedIn()">
+        |
+        <router-link to="/signup">Signup</router-link>
+      </span>
+      <span v-if="!isLoggedIn()">
+        |
+        <router-link to="/login">Login</router-link>
+      </span>
       |
-      <span v-if="!isLoggedIn()"><router-link to="/signup">Signup</router-link></span>
-      |
-      <span v-if="!isLoggedIn()"><router-link to="/login">Login</router-link></span>
-      |
-      <router-link to="/logout">Logout</router-link>
+      <span v-if="isLoggedIn()"><router-link to="/logout">Logout</router-link></span>
       |
       <router-link to="/profile">Profile</router-link>
       |
       <router-link to="/celebrations">Celebrations</router-link>
+      |
+      <router-link to="/celebrations/new">Add New</router-link>
     </div>
     <router-view />
   </div>

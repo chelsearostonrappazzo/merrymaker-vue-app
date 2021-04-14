@@ -5,8 +5,10 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import UserShow from "../views/UserShow.vue";
-import CelebrationsShow from "../views/CelebrationsShow.vue";
 import CelebrationsIndex from "../views/CelebrationsIndex.vue";
+import CelebrationsNew from "../views/CelebrationsNew.vue";
+import CelebrationsShow from "../views/CelebrationsShow.vue";
+import CelebrationsEdit from "../views/CelebrationsEdit.vue";
 import CabalsShow from "../views/CabalsShow.vue";
 
 Vue.use(VueRouter);
@@ -46,19 +48,29 @@ const routes = [
     component: UserShow,
   },
   {
-    path: "/celebrations/:id",
-    name: "celebrations-show",
-    component: CelebrationsShow,
-  },
-  {
     path: "/celebrations",
     name: "celebrations-index",
     component: CelebrationsIndex,
   },
   {
+    path: "/celebrations/new",
+    name: "celebrations-new",
+    component: CelebrationsNew,
+  },
+  {
+    path: "/celebrations/:id",
+    name: "celebrations-show",
+    component: CelebrationsShow,
+  },
+  {
     path: "/cabals/:id",
     name: "cabals-show",
     component: CabalsShow,
+  },
+  {
+    path: "/celebrations/:id/edit",
+    name: "celebrations-edit",
+    component: CelebrationsEdit,
   },
 ];
 
