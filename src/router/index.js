@@ -5,6 +5,7 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import UserShow from "../views/UserShow.vue";
+import UsersEdit from "../views/UsersEdit.vue";
 import CelebrationsIndex from "../views/CelebrationsIndex.vue";
 import CelebrationsNew from "../views/CelebrationsNew.vue";
 import CelebrationsShow from "../views/CelebrationsShow.vue";
@@ -72,6 +73,11 @@ const routes = [
     name: "celebrations-edit",
     component: CelebrationsEdit,
   },
+  {
+    path: "/profile/edit",
+    name: "users-edit",
+    component: UsersEdit,
+  }
 ];
 
 const router = new VueRouter({

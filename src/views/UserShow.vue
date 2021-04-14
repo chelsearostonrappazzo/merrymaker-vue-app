@@ -3,6 +3,7 @@
     <div class="container">
       <img v-bind:src="user.image" alt="user.full_name" />
       <h1>{{ user.full_name }}</h1>
+      <router-link v-bind:to="`/profile/edit`">Edit Profile</router-link>
       <h2>Information</h2>
       <h3>Cabals</h3>
       <div v-for="cabal in user.cabals" v-bind:key="cabal.id">

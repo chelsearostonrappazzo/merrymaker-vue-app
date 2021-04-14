@@ -1,5 +1,28 @@
 <template>
-  <div class="users-edit">User Info</div>
+  <div class="users-edit">
+    <form v-on:submit.prevent="updateUser(user)">
+      <ul>
+        <li class="text-danger" v-for="error in errors" v-bind:key="error">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" class="form-control" v-model="user.first_name" />
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control" v-model="user.last_name" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" v-model="user.email" />
+      </div>
+      <div class="form-group">
+        <label>Profile Picture</label>
+        <input type="text" class="form-control" v-model="user.image" />
+      </div>
+      <input type="submit" class="btn btn-primary" value="Update" />
+    </form>
+  </div>
 </template>
 
 <script>
@@ -7,11 +30,32 @@ import axios from "axios";
 
 export default {
   data: function () {
-    return {}
+    return {
+      errors: [],
+      user: {},
+    };
+  },
+  created: function () {
+    axios.get("api/users/" + this.$route.params.id).then((response) => {
+      console.log(response.data);
+      this.user = response.data;
+    });
   },
   methods: {
-    updateUser: function () {
-      axios.patch("/api/users/" + this.$route.params.id, params)
-    }
-  }
-}
+    updateUser: function (user) {
+      let params = {
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email,
+        image: user.image,
+      };
+      axios
+        .patch("/api/users/" + this.$route.params.id, params)
+        .then(() => {
+          this.$router.push("/profile");
+        })
+        .catch((error) => console.log(error.response));
+    },
+  },
+};
+</script>
