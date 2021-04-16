@@ -4,6 +4,7 @@
       <h1>Celebrations</h1>
       <h2>{{ celebration.name }}</h2>
       <h3>Celebrant: {{ celebration.celebrant }}</h3>
+      <p><strong>Status: {{celebration.status}}</strong></p>
       <p>Theme: {{ celebration.theme }}</p>
       <p>Occasion: {{ celebration.occasion }}</p>
       <p>Location: {{ celebration.location }}</p>
@@ -13,7 +14,9 @@
       <p>Members: <ol><li v-for="member in celebration.members" v-bind:key="member.id"> {{ member.first_name }}</li></ol></p>
       <p>Notes: {{ celebration.notes }}</p>
       <div class="celebrant-buttons" >
-        <router-link v-if="isCelebrant()" v-bind:to="`/celebrations/${celebration.id}/edit`">Edit</router-link>
+        <router-link v-if="isCelebrant()" v-bind:to="`/celebrations/${celebration.id}/edit`"><button>Edit</button></router-link>
+        |
+        <button v-if="isCelebrant()" v-on:click="destroyCelebration(destroy)">Completed?</button>
       </div>
     </div>
   </div>
@@ -43,6 +46,12 @@ export default {
       console.log(userId);
       console.log(this.celebration.user_id);
       return userId == this.celebration.user_id;
+    },
+    destroyCelebration: function (celebration) {
+      axios.delete("/api/celebrations/" + celebration.id).then(()=> {
+      console.log("Event is completed!");
+      this.$router.push("/celebrations");
+      });
     },
   },
 };

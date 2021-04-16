@@ -1,5 +1,10 @@
 <template>
   <div class="celebrations-new">
+    <ul>
+      <li class="text-danger" v-for="error in errors" v-bind:key="error">
+        {{ error }}
+      </li>
+    </ul>
     <form v-on:submit.prevent="createCelebration()">
       <div class="form-group">
         <label>Name</label>
@@ -8,6 +13,13 @@
       <div class="form-group">
         <label>Occasion</label>
         <input type="text" class="form-control" v-model="occasion" />
+      </div>
+      <div class="form-group">
+        <label>Cabal</label>
+        <select @change="pickCabal($event)" class="form-control" v-model="selectedCabal">
+          <option>Select Cabal</option>
+          <option v-for="cabal in cabals" :value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
+        </select>
       </div>
       <div class="form-group">
         <label>Theme</label>
@@ -32,7 +44,7 @@
       <div class="form-group">
         <textarea class="form-control" v-model="notes" placeholder="Write additional Notes here" />
       </div>
-      <input type="submit" class="btn btn-primary" value="Update" />
+      <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
   </div>
 </template>
@@ -43,6 +55,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
+      selectedCabal: {},
       name: "",
       occasion: "",
       theme: "",
@@ -52,13 +65,18 @@ export default {
       notes: "",
       activity: "",
       errors: [],
+      cabals: [],
     };
+  },
+  created: function () {
+    this.indexCabals();
   },
   methods: {
     createCelebration: function () {
       let params = {
         name: this.name,
         occasion: this.occasion,
+        cabal_id: this.selectedCabal.id,
         theme: this.theme,
         colors: this.colors,
         signature_drink: this.signature_drink,
@@ -81,6 +99,14 @@ export default {
           this.activity = "";
         })
         .catch((errors) => console.log(errors.response));
+    },
+    indexCabals: function () {
+      axios.get("/api/cabals").then((response) => {
+        this.cabals = response.data;
+      });
+    },
+    pickCabal: function (event) {
+      console.log(event.target.value);
     },
   },
 };
