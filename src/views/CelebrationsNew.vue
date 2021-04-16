@@ -91,9 +91,8 @@ export default {
       };
       axios
         .post("/api/celebrations", params)
-        .then((response) => {
-          console.log(this.celebrations);
-          this.celebrations.push(response.data);
+        .then(() => {
+          console.log("Creating an Event!");
           this.$router.push("/celebrations");
         })
         .catch((errors) => console.log(errors.response));

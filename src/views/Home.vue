@@ -30,9 +30,8 @@ export default {
       let params = { name: this.name };
       axios
         .post("/api/cabals", params)
-        .then((response) => {
-          console.log(this.cabals);
-          this.cabals.push(response.data);
+        .then(() => {
+          this.$router.push("/profile");
         })
         .catch((errors) => console.log(errors.response));
     },

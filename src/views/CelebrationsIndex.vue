@@ -27,6 +27,10 @@ export default {
         console.log(this.celebrations);
       });
     },
+    // cabalMatch: function () {
+    //   let userId = localStorage.getItem("user_id");
+    //   return;
+    // },
   },
 };
 </script>
