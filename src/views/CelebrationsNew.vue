@@ -80,7 +80,7 @@ export default {
           this.notes = "";
           this.activity = "";
         })
-        .catch((error) => console.log(error.response));
+        .catch((errors) => console.log(errors.response));
     },
   },
 };

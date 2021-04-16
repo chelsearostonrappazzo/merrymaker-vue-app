@@ -77,7 +77,7 @@ const routes = [
     path: "/profile/edit",
     name: "users-edit",
     component: UsersEdit,
-  }
+  },
 ];
 
 const router = new VueRouter({
