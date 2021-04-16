@@ -16,7 +16,7 @@
       </div>
       <div class="form-group">
         <label>Cabal</label>
-        <select @change="pickCabal($event)" class="form-control" v-model="selectedCabal">
+        <select class="form-control" v-model="selectedCabal">
           <option>Select Cabal</option>
           <option v-for="cabal in cabals" :value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
         </select>
@@ -46,6 +46,11 @@
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
+
+    <!-- <select @change="pickCabal($event)" class="form-control" v-model="selectedCabal">
+          <option>Select Cabal</option>
+          <option v-for="cabal in cabals" :value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
+        </select> -->
   </div>
 </template>
 
@@ -55,7 +60,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      selectedCabal: {},
+      selectedCabal: "",
       name: "",
       occasion: "",
       theme: "",
@@ -76,7 +81,7 @@ export default {
       let params = {
         name: this.name,
         occasion: this.occasion,
-        cabal_id: this.selectedCabal.id,
+        cabal_id: this.selectedCabal,
         theme: this.theme,
         colors: this.colors,
         signature_drink: this.signature_drink,
@@ -89,14 +94,7 @@ export default {
         .then((response) => {
           console.log(this.celebrations);
           this.celebrations.push(response.data);
-          this.name = "";
-          this.occasion = "";
-          this.theme = "";
-          this.colors = "";
-          this.signature_drink = "";
-          this.location = "";
-          this.notes = "";
-          this.activity = "";
+          this.$router.push("/celebrations");
         })
         .catch((errors) => console.log(errors.response));
     },
@@ -105,9 +103,9 @@ export default {
         this.cabals = response.data;
       });
     },
-    pickCabal: function (event) {
-      console.log(event.target.value);
-    },
+    // pickCabal: function (event) {
+    //   console.log(event.target.value);
+    // },
   },
 };
 </script>
