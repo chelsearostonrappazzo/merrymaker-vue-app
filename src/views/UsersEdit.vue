@@ -63,12 +63,13 @@ export default {
         .then(() => {
           this.$router.push("/profile");
         })
-        .catch((error) => console.log(error.response));
+        .catch((errors) => console.log(errors.response));
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
-      this.createImage(files[0]);
+      this.file = files[0];
+      this.createImage(this.file);
     },
     createImage(file) {
       let image = new Image();
