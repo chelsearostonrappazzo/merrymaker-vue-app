@@ -11,6 +11,14 @@
         <input type="submit" class="btn btn-primary" value="Create" />
       </form>
     </div>
+    <h2>Join a Cabal!</h2>
+    <form v-on:submit.prevent="joinCabal()">
+      <div class="form-group">
+        <label>Invitation Code</label>
+        <input type="text" class="form-control" v-model="invitation_token" />
+      </div>
+      <input type="submit" class="btn btn-primary" value="Join" />
+    </form>
   </div>
 </template>
 
@@ -44,6 +52,15 @@ export default {
       // } else {
       // return false;
       // }
+    },
+    joinCabal: function () {
+      let params = {
+        invitation_token: this.invitation_token,
+      };
+      axios
+        .post("/api/members", params)
+        .then(() => this.$router.push("/profile"))
+        .catch((errors) => console.log(errors.response));
     },
   },
 };

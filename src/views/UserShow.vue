@@ -28,8 +28,6 @@ export default {
     return {
       user: {},
       errors: [],
-      celebrations: [],
-      currentCelebration: {},
     };
   },
   mounted: function () {
@@ -41,9 +39,6 @@ export default {
         console.log(response.data);
         this.user = response.data;
       });
-    },
-    indexCelebrations: function () {
-      axios.get("api/celebrations");
     },
     // showCelebration: function (celebration) {
     //   console.log(celebration.response);

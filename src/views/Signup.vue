@@ -9,11 +9,11 @@
       </ul>
       <div class="form-group">
         <label>First Name:</label>
-        <input type="text" class="form-control" v-model="firstName" />
+        <input type="text" class="form-control" v-model="first_name" />
       </div>
       <div class="form-group">
         <label>Last Name:</label>
-        <input type="text" class="form-control" v-model="lastName" />
+        <input type="text" class="form-control" v-model="last_name" />
       </div>
       <div class="form-group">
         <label>Profile Photo:</label>
@@ -24,12 +24,16 @@
         <input type="email" class="form-control" v-model="email" />
       </div>
       <div class="form-group">
+        <label>Invitation Code:</label>
+        <input type="text" class="form-control" v-model="invite_token" />
+      </div>
+      <div class="form-group">
         <label>Password:</label>
         <input type="password" class="form-control" v-model="password" />
       </div>
       <div class="form-group">
         <label>Password confirmation:</label>
-        <input type="password" class="form-control" v-model="passwordConfirmation" />
+        <input type="password" class="form-control" v-model="password_confirmation" />
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
@@ -42,12 +46,13 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       image: "",
       email: "",
       password: "",
-      passwordConfirmation: "",
+      password_confirmation: "",
+      invite_token: "",
       errors: [],
     };
   },
