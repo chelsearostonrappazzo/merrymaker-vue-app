@@ -13,8 +13,9 @@
           <button>Close</button>
         </form>
       </dialog>
+      <h4>Leave Group?</h4>
+      <button v-on:click="destroyMembers(member)">Leave Cabal</button>
     </div>
-
     <h2>Celebrations</h2>
     <div v-for="celebration in cabal.celebrations" v-bind:key="celebration.id">
       <h4>{{ celebration.name }}</h4>
@@ -33,10 +34,12 @@ export default {
     return {
       errors: [],
       cabal: {},
+      members: [],
     };
   },
   mounted: function () {
     this.showCabals();
+    this.indexMembers();
   },
   methods: {
     showCabals: function () {
@@ -45,8 +48,22 @@ export default {
         this.cabal = response.data;
       });
     },
+    indexMembers: function () {
+      axios.get("/api/members/").then((response) => {
+        console.log(response.data);
+        this.members = response.data;
+      });
+    },
     showInvitationToken: function () {
       document.querySelector("#invitation-token").showModal();
+    },
+    destroyMembers: function (member) {
+      axios.delete("/api/members/" + member.id).then(() => {
+        console.log("I'm Leabing the Group");
+        let index = this.members.indexOf(member);
+        this.members.splice(index, 1);
+        this.$router.push("/profile");
+      });
     },
   },
 };

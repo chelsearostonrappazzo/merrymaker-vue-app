@@ -24,10 +24,6 @@
         |
         <router-link to="/celebrations">Celebrations</router-link>
       </span>
-      |
-      <span v-if="isLoggedIn()">
-        <router-link to="/celebrations/new">Add New</router-link>
-      </span>
     </div>
     <router-view />
   </div>
