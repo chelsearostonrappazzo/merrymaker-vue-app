@@ -1,6 +1,11 @@
 <template>
   <div class="celebrations-index">
-    <div v-for="celebration in celebrations" v-bind:key="celebration.id">
+    <h3>Filter By Status</h3>
+    <select v-model="status">
+      <option value="Planning">Planning</option>
+      <option value="Completed">Completed</option>
+    </select>
+    <div v-for="celebration in filterCelebrationsByStatus" v-bind:key="celebration.id">
       <router-link v-bind:to="`celebrations/${celebration.id}`">
         <h2>{{ celebration.name }}</h2>
       </router-link>
@@ -15,10 +20,16 @@ export default {
   data: function () {
     return {
       celebrations: [],
+      status: "",
     };
   },
   mounted: function () {
     this.indexCelebrations();
+  },
+  computed: {
+    filterCelebrationsByStatus: function () {
+      return this.celebrations.filter((celebration) => !celebration.status.indexOf(this.status));
+    },
   },
   methods: {
     indexCelebrations: function () {
@@ -27,6 +38,7 @@ export default {
         console.log(this.celebrations);
       });
     },
+    isCompleted: function () {},
     // cabalMatch: function () {
     //   let userId = localStorage.getItem("user_id");
     //   return;
