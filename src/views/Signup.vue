@@ -16,10 +16,6 @@
         <input type="text" class="form-control" v-model="last_name" />
       </div>
       <div class="form-group">
-        <label>Profile Photo:</label>
-        <input type="text" class="form-control" v-model="image" />
-      </div>
-      <div class="form-group">
         <label>Email:</label>
         <input type="email" class="form-control" v-model="email" />
       </div>
@@ -34,6 +30,17 @@
       <div class="form-group">
         <label>Password confirmation:</label>
         <input type="password" class="form-control" v-model="password_confirmation" />
+      </div>
+      <div class="form-group">
+        <label>Profile Photo:</label>
+        <div v-if="!image">
+          <h2>No Image :(</h2>
+          <input type="file" @change="onFileChange" />
+        </div>
+        <div v-else>
+          <img :src="image" />
+          <button @click="removeImage">Remove image</button>
+        </div>
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
@@ -75,6 +82,25 @@ export default {
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
+    },
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      let image = new Image();
+      let reader = new FileReader();
+      let vm = this;
+      console.log(image);
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (e) {
+      this.image = "";
+      console.log(e);
     },
   },
 };

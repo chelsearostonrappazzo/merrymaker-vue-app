@@ -16,9 +16,17 @@
         <label>Email</label>
         <input type="text" class="form-control" v-model="user.email" />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>Profile Picture</label>
         <input type="text" class="form-control" v-model="user.image" />
+      </div> -->
+      <div v-if="!image">
+        <h2>No Image :(</h2>
+        <input type="file" @change="onFileChange" />
+      </div>
+      <div v-else>
+        <img :src="image" />
+        <button @click="removeImage">Remove image</button>
       </div>
       <input type="submit" class="btn btn-primary" value="Update" />
     </form>
@@ -33,6 +41,7 @@ export default {
     return {
       errors: [],
       user: {},
+      image: "",
     };
   },
   created: function () {
@@ -55,6 +64,25 @@ export default {
           this.$router.push("/profile");
         })
         .catch((error) => console.log(error.response));
+    },
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      let image = new Image();
+      let reader = new FileReader();
+      let vm = this;
+      console.log(image);
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (e) {
+      this.image = "";
+      console.log(e);
     },
   },
 };

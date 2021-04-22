@@ -38,11 +38,6 @@ export default {
         console.log(this.celebrations);
       });
     },
-    isCompleted: function () {},
-    // cabalMatch: function () {
-    //   let userId = localStorage.getItem("user_id");
-    //   return;
-    // },
   },
 };
 </script>

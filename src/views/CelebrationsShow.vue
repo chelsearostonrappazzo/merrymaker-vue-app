@@ -42,8 +42,6 @@ export default {
     },
     isCelebrant: function () {
       let userId = localStorage.getItem("user_id");
-      console.log(userId);
-      console.log(this.celebration.user_id);
       return userId == this.celebration.user_id;
     },
     destroyCelebration: function (celebration) {
