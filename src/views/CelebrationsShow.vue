@@ -15,7 +15,6 @@
       <p>Notes: {{ celebration.notes }}</p>
       <div class="celebrant-buttons" >
         <router-link v-if="isCelebrant()" v-bind:to="`/celebrations/${celebration.id}/edit`"><button>Edit</button></router-link>
-        |
         <button v-if="isCelebrant()" v-on:click="destroyCelebration(destroy)">Completed?</button>
       </div>
     </div>

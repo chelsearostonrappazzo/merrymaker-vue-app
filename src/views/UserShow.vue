@@ -8,14 +8,7 @@
       <h3>Cabals</h3>
       <div v-for="cabal in user.cabals" v-bind:key="cabal.id">
         <p>{{ cabal.name }}</p>
-        <router-link v-bind:to="`/cabals/${cabal.id}`">See Members</router-link>
-      </div>
-      <h3>Celebrations</h3>
-      <div v-for="celebration in user.celebrations" v-bind:key="celebration.id">
-        <h4>{{ celebration.name }}</h4>
-        <p>Theme: {{ celebration.theme }}</p>
-        <p>Occasion: {{ celebration.occasion }}</p>
-        <router-link v-bind:to="`/celebrations/${celebration.id}`">See All Info</router-link>
+        <router-link v-bind:to="`/cabals/${cabal.id}`">See More Details</router-link>
       </div>
     </div>
   </div>
@@ -48,6 +41,9 @@ export default {
         console.log(response.data);
         this.user = response.data;
       });
+    },
+    indexCelebrations: function () {
+      axios.get("api/celebrations");
     },
     // showCelebration: function (celebration) {
     //   console.log(celebration.response);

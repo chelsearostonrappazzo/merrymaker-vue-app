@@ -1,14 +1,16 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <h2>Cabals</h2>
-    <form v-on:submit.prevent="createCabal()">
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" v-model="name" />
-      </div>
-      <input type="submit" class="btn btn-primary" value="Create" />
-    </form>
+    <div v-if="isLoggedIn()">
+      <h2>Cabals</h2>
+      <form v-on:submit.prevent="createCabal()">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" v-model="name" />
+        </div>
+        <input type="submit" class="btn btn-primary" value="Create" />
+      </form>
+    </div>
   </div>
 </template>
 
@@ -34,6 +36,14 @@ export default {
           this.$router.push("/profile");
         })
         .catch((errors) => console.log(errors.response));
+    },
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+      // if (localStorage.getItem("jwt")) {
+      // return true;
+      // } else {
+      // return false;
+      // }
     },
   },
 };
