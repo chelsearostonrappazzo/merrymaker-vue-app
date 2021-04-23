@@ -3,33 +3,29 @@
     <h1>Moodboard</h1>
     <input type="text" placeholder="it's the aesthetic for me" v-model="searchPhoto" />
     <button type="submit" v-on:click="searchPhotos(searchPhoto)">Search</button>
-    <div v-for="photo in photoList" :key="photo.id">
-      <p>
-        <img
-          v-bind:src="photo.url"
-          @click="selectfromSearch(photo.url)"
-          :class="{ selected: selectedPhoto == photo.url }"
-        />
-        <button v-on:click="addToMoodboardModal(selectedPhoto)">Add to Mooboard</button>
-      </p>
+    <vue-select-image
+      :dataImages="photoList"
+      @onselectimage="onSelectImage"
+      ref="single-select-image"
+    ></vue-select-image>
+    <div>
+      <span v-if="imageSelected.src_id !== ''">
+        <span>id = {{ imageSelected.src_id }}</span>
+      </span>
+      <button @click="onUnselectSingleImage">Reset Selection</button>
     </div>
     <dialog id="add-moodboard-modal">
       <form method="dialog">
-        {{ selectedPhoto }}
-        <button v-on:click="addToMoodboard(selectedPhoto)">Add</button>
+        {{ imageSelected }}
+        <button v-on:click="addToMoodboard(imageSelected)">Add</button>
         <button>Close</button>
       </form>
     </dialog>
   </div>
 </template>
-<style>
-img.selected {
-  border: solid 5px mistyrose;
-}
-</style>
+
 <script>
 import axios from "axios";
-// import "vue-search-select/dist/VueSearchSelect.css";
 
 export default {
   data: function () {
@@ -38,37 +34,39 @@ export default {
       status: "",
       errors: [],
       searchPhoto: "",
-      currentPhoto: {},
       photo: "",
-      selectedPhoto: "",
+      imageSelected: {
+        src_id: "",
+        src: "",
+        alt: "",
+      },
     };
   },
-  mounted: function () {
-    // this.getPhotos();
-  },
+  mounted: function () {},
   methods: {
     searchPhotos: function (photo) {
-      // let apiKey = process.env.VUE_APP_PIXABAY_API_KEY;
       axios.get(`/api/photos?search=${photo}`).then((response) => {
         console.log(response.data);
         this.photoList = response.data;
       });
     },
-    selectfromSearch: function (photo) {
-      this.selectedPhoto = photo;
-    },
-    addToMoodboardModal: function (selectedPhoto) {
-      this.currentPhoto = selectedPhoto;
-      document.querySelector("#add-moodboard-modal").showModal();
-    },
-    addToMoodboard: function (currentPhoto) {
+    addToMoodboard: function (imageSelected) {
       let params = {
-        url: this.currentPhoto,
+        photo: this.imageSelected.src,
+        src_id: this.imageSelected.src_id,
       };
       axios.post("api/photos", params).then((response) => {
         console.log(response.data);
-        console.log(currentPhoto);
+        console.log(imageSelected);
       });
+    },
+    onSelectImage: function (data) {
+      console.log("fire event onSelectImage:  ", data);
+      this.imageSelected = data;
+      document.querySelector("#add-moodboard-modal").showModal();
+    },
+    onUnselectSingleImage: function () {
+      this.$refs["single-select-image"].removeFromSingleSelected();
     },
   },
 };

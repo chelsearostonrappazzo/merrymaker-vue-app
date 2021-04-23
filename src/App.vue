@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<style></style>
+<style lang="scss"></style>
 <script>
 export default {
   methods: {
