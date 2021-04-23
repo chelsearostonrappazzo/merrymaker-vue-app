@@ -56,7 +56,7 @@ export default {
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email,
-        image: user.image,
+        image: this.image,
       };
       axios
         .patch("/api/users/" + this.$route.params.id, params)
