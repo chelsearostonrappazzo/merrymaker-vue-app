@@ -11,6 +11,7 @@ import CelebrationsNew from "../views/CelebrationsNew.vue";
 import CelebrationsShow from "../views/CelebrationsShow.vue";
 import CelebrationsEdit from "../views/CelebrationsEdit.vue";
 import CabalsShow from "../views/CabalsShow.vue";
+import Moodboard from "../views/Moodboard.vue";
 
 Vue.use(VueRouter);
 
@@ -77,6 +78,11 @@ const routes = [
     path: "/profile/edit",
     name: "users-edit",
     component: UsersEdit,
+  },
+  {
+    path: "/moodboard",
+    name: "moodboard",
+    component: Moodboard,
   },
 ];
 
