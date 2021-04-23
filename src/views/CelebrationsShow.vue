@@ -4,18 +4,23 @@
       <h1>Celebrations</h1>
       <h2>{{ celebration.name }}</h2>
       <h3>Celebrant: {{ celebration.celebrant }}</h3>
-      <p><strong>Status: {{celebration.status}}</strong></p>
+      <p>
+        <strong>Status: {{ celebration.status }}</strong>
+      </p>
       <p>Theme: {{ celebration.theme }}</p>
       <p>Occasion: {{ celebration.occasion }}</p>
       <p>Location: {{ celebration.location }}</p>
       <p>Colors: {{ celebration.colors }}</p>
       <p>Signature Drink: {{ celebration.signature_drink }}</p>
       <p>Cabal: {{ celebration.cabal }}</p>
-      <p>Members: <ol><li v-for="member in celebration.members" v-bind:key="member.id"> {{ member.first_name }}</li></ol></p>
       <p>Notes: {{ celebration.notes }}</p>
-      <div class="celebrant-buttons" >
-        <router-link v-if="isCelebrant()" v-bind:to="`/celebrations/${celebration.id}/edit`"><button>Edit</button></router-link>
-        <button v-if="isCelebrant()" v-on:click="destroyCelebration(celebration)">Completed?</button>
+      <p v-for="moodboard in celebration.moodboard" :key="moodboard.id"><img :src="moodboard.photo" /></p>
+      <div v-if="isCelebrant()" class="celebrant-buttons">
+        <router-link v-bind:to="`/celebrations/${celebration.id}/edit`">
+          <button>Edit</button>
+        </router-link>
+        <button v-on:click="destroyCelebration(celebration)">Completed?</button>
+        <router-link to="/moodboard"><button>Create a Moodboard</button></router-link>
       </div>
     </div>
   </div>
@@ -32,6 +37,7 @@ export default {
   },
   mounted: function () {
     this.showCelebrations();
+    this.showMoodboard();
   },
   methods: {
     showCelebrations: function () {
@@ -45,9 +51,14 @@ export default {
       return userId == this.celebration.user_id;
     },
     destroyCelebration: function (celebration) {
-      axios.delete("/api/celebrations/" + celebration.id).then(()=> {
-      console.log("Event is completed!");
-      this.$router.push("/celebrations");
+      axios.delete("/api/celebrations/" + celebration.id).then(() => {
+        console.log("Event is completed!");
+        this.$router.push("/celebrations");
+      });
+    },
+    showMoodboard: function () {
+      axios.get("/api/moodboards").then(() => {
+        console.log("The Aesthetic");
       });
     },
   },

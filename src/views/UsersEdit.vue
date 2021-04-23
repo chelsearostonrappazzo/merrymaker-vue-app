@@ -20,13 +20,13 @@
         <label>Profile Picture</label>
         <input type="text" class="form-control" v-model="user.image" />
       </div> -->
-      <div v-if="!image">
-        <h2>No Image :(</h2>
-        <input type="file" @change="onFileChange" />
+      <div v-if="user.image">
+        <img :src="user.image" />
+        <button @click="removeImage">Remove image</button>
       </div>
       <div v-else>
-        <img :src="image" />
-        <button @click="removeImage">Remove image</button>
+        <h2>No Image :(</h2>
+        <input type="file" @change="onFileChange" />
       </div>
       <input type="submit" class="btn btn-primary" value="Update" />
     </form>
@@ -82,7 +82,7 @@ export default {
       reader.readAsDataURL(file);
     },
     removeImage: function (e) {
-      this.image = "";
+      this.user.image = "";
       console.log(e);
     },
   },

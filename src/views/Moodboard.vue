@@ -16,8 +16,8 @@
     </div>
     <dialog id="add-moodboard-modal">
       <form method="dialog">
-        {{ imageSelected }}
-        <button v-on:click="addToMoodboard(imageSelected)">Add</button>
+        {{ imageSelected.src }}
+        <button v-on:click="addToMoodboard(imageSelected)">Add to Moodboard</button>
         <button>Close</button>
       </form>
     </dialog>
