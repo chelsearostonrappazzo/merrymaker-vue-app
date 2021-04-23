@@ -9,11 +9,11 @@
       </ul>
       <div class="form-group">
         <label>First Name:</label>
-        <input type="text" class="form-control" v-model="first_name" />
+        <input type="text" class="form-control" v-model="firstName" />
       </div>
       <div class="form-group">
         <label>Last Name:</label>
-        <input type="text" class="form-control" v-model="last_name" />
+        <input type="text" class="form-control" v-model="lastName" />
       </div>
       <div class="form-group">
         <label>Email:</label>
@@ -21,7 +21,7 @@
       </div>
       <div class="form-group">
         <label>Invitation Code:</label>
-        <input type="text" class="form-control" v-model="invite_token" />
+        <input type="text" class="form-control" v-model="inviteToken" />
       </div>
       <div class="form-group">
         <label>Password:</label>
@@ -29,7 +29,8 @@
       </div>
       <div class="form-group">
         <label>Password confirmation:</label>
-        <input type="password" class="form-control" v-model="password_confirmation" />
+        <input type="password" class="form-control" v-model="passwordConfirmation" />
+        <small v-if="passwordConfirmation !== password" class="text-danger">Your passwords must match!</small>
       </div>
       <div class="form-group">
         <label>Profile Photo:</label>
@@ -53,25 +54,26 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      first_name: "",
-      last_name: "",
+      firstName: "",
+      lastName: "",
       image: "",
       email: "",
       password: "",
-      password_confirmation: "",
-      invite_token: "",
+      passwordConfirmation: "",
+      inviteToken: "",
       errors: [],
     };
   },
   methods: {
     submit: function () {
       var params = {
-        first_name: this.first_name,
-        last_name: this.last_name,
+        first_name: this.firstName,
+        last_name: this.lastName,
         image: this.image,
         email: this.email,
         password: this.password,
         password_confirmation: this.passwordConfirmation,
+        invite_token: this.inviteToken,
       };
       axios
         .post("/api/users", params)

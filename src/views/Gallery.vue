@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     getPhotos: function () {
-      axios.get("/api/gallery").then((response) => {
+      axios.get("/api/moodboards").then((response) => {
         this.photos = response.data;
       });
     },
