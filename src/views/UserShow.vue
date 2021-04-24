@@ -4,7 +4,7 @@
       <img v-bind:src="user.image" alt="user.full_name" />
       <h1>{{ user.full_name }}</h1>
       <p>Email: {{ user.email }}</p>
-      <router-link v-bind:to="`/profile/edit`">Edit Profile</router-link>
+      <router-link v-bind:to="`/profile/edit`" tag="button">Edit Profile</router-link>
       <h2>Dashboard</h2>
       <h4>Create a Cabal!</h4>
       <form v-on:submit.prevent="createCabal()">
@@ -24,12 +24,12 @@
       <input type="submit" class="btn btn-primary" value="Join" />
     </form>
     <h4>Ready to Start Planning?</h4>
-    <router-link to="/celebrations/new">Add Celebration</router-link>
+    <router-link to="/celebrations/new" tag="button">Add Celebration</router-link>
     <h2>Information</h2>
     <h3>Cabals</h3>
     <div v-for="cabal in user.cabals" v-bind:key="cabal.id">
       <p>{{ cabal.name }}</p>
-      <router-link v-bind:to="`/cabals/${cabal.id}`">See More Details</router-link>
+      <router-link v-bind:to="`/cabals/${cabal.id}`" tag="button">See More Details</router-link>
     </div>
   </div>
 </template>
@@ -68,7 +68,10 @@ export default {
       };
       axios
         .post("/api/members", params)
-        .then(() => this.$router.push("/profile"))
+        .then(() => {
+          this.invitation_token = "";
+          this.$router.push("/profile");
+        })
         .catch((errors) => console.log(errors.response));
     },
     createCabal: function () {
@@ -77,6 +80,7 @@ export default {
         .post("/api/cabals", params)
         .then(() => {
           this.$router.push("/profile");
+          this.name = "";
         })
         .catch((errors) => console.log(errors.response));
     },

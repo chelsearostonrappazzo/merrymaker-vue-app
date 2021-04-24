@@ -10,6 +10,14 @@
       <dialog id="invitation-token">
         <form method="dialog">
           <h4>{{ cabal.invitation_token }}</h4>
+          <button
+            type="button"
+            v-clipboard:copy="cabal.invitation_token"
+            v-clipboard:success="onCopy"
+            v-clipboard:error="onError"
+          >
+            Copy!
+          </button>
           <button>Close</button>
         </form>
       </dialog>
@@ -21,7 +29,7 @@
       <h4>{{ celebration.name }}</h4>
       <p>Theme: {{ celebration.theme }}</p>
       <p>Occasion: {{ celebration.occasion }}</p>
-      <router-link v-bind:to="`/celebrations/${celebration.id}`">See All Info</router-link>
+      <router-link v-bind:to="`/celebrations/${celebration.id}`" tag="button">See All Info</router-link>
     </div>
   </div>
 </template>
@@ -56,6 +64,13 @@ export default {
     },
     showInvitationToken: function () {
       document.querySelector("#invitation-token").showModal();
+    },
+    onCopy: function (e) {
+      alert("You just copied: " + e.text);
+    },
+    onError: function (e) {
+      alert("Failed to copy texts");
+      console.log(e);
     },
     // destroyMembers: function (member) {
     //   axios.delete("/api/members/" + member.id).then(() => {

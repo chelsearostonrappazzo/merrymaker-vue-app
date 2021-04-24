@@ -16,11 +16,9 @@
       <p>Notes: {{ celebration.notes }}</p>
       <p v-for="moodboard in celebration.moodboard" :key="moodboard.id"><img :src="moodboard.photo" /></p>
       <div v-if="isCelebrant()" class="celebrant-buttons">
-        <router-link v-bind:to="`/celebrations/${celebration.id}/edit`">
-          <button>Edit</button>
-        </router-link>
+        <router-link v-bind:to="`/celebrations/${celebration.id}/edit`" tag="button">Edit</router-link>
         <button v-on:click="destroyCelebration(celebration)">Completed?</button>
-        <router-link to="/moodboard"><button>Create a Moodboard</button></router-link>
+        <router-link to="/moodboard" tag="button">Create a Moodboard</router-link>
       </div>
     </div>
   </div>

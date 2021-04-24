@@ -7,7 +7,7 @@
       honour without our input.
     </p>
     <p>
-      With Un-ZILLA, the celebrant is the one who creates the event with their particulars. Through this, they can
+      With MerryMaker, the celebrant is the one who creates the event with their particulars. Through this, they can
       invite people to their cabal and view the details. A Celebrant can join many cabals and does not own the cabal
       since a lot of times, friend groups will have multiple celebrations.
     </p>

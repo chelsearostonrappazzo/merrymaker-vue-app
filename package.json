@@ -1,5 +1,5 @@
 {
-  "name": "un-zilla-vue-app",
+  "name": "merrymaker-vue-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,9 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
+    "isomorphic-fetch": "^3.0.0",
     "vue": "^2.6.11",
+    "vue-clipboard2": "^0.3.1",
     "vue-photo-upload": "^1.0.4",
     "vue-router": "^3.2.0",
     "vue-select-image": "^1.9.0"

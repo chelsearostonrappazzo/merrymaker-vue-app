@@ -4,6 +4,7 @@ import router from "./router";
 import axios from "axios";
 import VueSelectImage from "vue-select-image";
 require("vue-select-image/dist/vue-select-image.css");
+import VueClipboard from "vue-clipboard2";
 
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
@@ -14,6 +15,7 @@ if (jwt) {
 }
 
 Vue.use(VueSelectImage);
+Vue.use(VueClipboard)
 Vue.config.productionTip = false;
 
 new Vue({
