@@ -16,7 +16,7 @@
             v-clipboard:success="onCopy"
             v-clipboard:error="onError"
           >
-            Copy!
+            Copy
           </button>
           <button>Close</button>
         </form>

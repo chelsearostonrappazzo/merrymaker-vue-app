@@ -1,18 +1,67 @@
 <template>
+  <!--prettier-ignore-->
   <div id="app">
-    <div id="nav">
-      <span><router-link to="/">Home</router-link></span>
-      |
-      <span><router-link to="/about">About</router-link></span>
-      <span v-if="!isLoggedIn()">
-        |
-        <router-link to="/signup">Signup</router-link>
-      </span>
-      <span v-if="!isLoggedIn()">
-        |
-        <router-link to="/login">Login</router-link>
-      </span>
-      <span v-if="isLoggedIn()">
+    <!--    
+    <div id="preloader-active">
+      <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+          <div class="preloader-circle"></div>
+          <div class="preloader-img pere-text">
+            <img src="assets/img/logo/loder.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <header>
+      <div class="header-area">
+        <div class="main-header header-sticky">
+          <div class="container-fluid">
+            <div class="row align-items-center">
+              <!-- Logo -->
+              <div class="col-xl-2 col-lg-2 col-md-1">
+                <div class="logo">
+                  <a href="index.html"><img src="assets/img/logo/logo.png" alt="" /></a>
+                </div>
+              </div>
+              <div class="col-xl-9 col-lg-10">
+                <div class="main-menu black-menu menu-bg-white d-none d-lg-block">
+                  <div class="hamburger hamburger--collapse">
+                    <div class="hamburger-box">
+                      <div class="hamburger-inner"></div>
+                    </div>
+                  </div>
+                  <nav class="hamburger-menu">
+                    <ul id="navigation">
+                      <li><a href="/">Home</a></li>
+                      <li><a href="/about">About</a></li>
+                      <li v-if="!isLoggedIn()"><a href="/signup">Signup</a></li>
+                      <li v-if="!isLoggedIn()"><a href="/login">Login</a></li>
+                      <li v-if="isLoggedIn()"><a href="/logout">Logout</a></li>
+
+                      <li>
+                        <a href="/profile">Profile</a>
+                        <ul class="submenu">
+                          <li><a href="/profile/edit">Edit</a></li>
+                          <li><a href="/moodboard">Moodboard</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <!-- Mobile Menu -->
+              <div class="col-12">
+                <div class="mobile_menu d-block d-lg-none"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Header End -->
+    </header>
+
+    <!-- <span v-if="isLoggedIn()">
         |
         <router-link to="/logout">Logout</router-link>
       </span>
@@ -24,12 +73,77 @@
         |
         <router-link to="/celebrations">Celebrations</router-link>
       </span>
-    </div>
+     -->
     <router-view />
+
+    <footer>
+      <div class="footer-wrappper">
+        <!-- Footer Start-->
+        <div class="footer-area footer-padding">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="single-footer-caption mb-50 text-center">
+                  <!-- logo -->
+                  <div class="footer-logo mb-25">
+                    <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt="" /></a>
+                  </div>
+                  <!-- meNU -->
+                  <div class="main-menu2">
+                    <nav>
+                      <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">contact</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <!-- social -->
+                  <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area">
+          <div class="container">
+            <div class="footer-border">
+              <div class="row d-flex align-items-center">
+                <div class="col-xl-12">
+                  <div class="footer-copy-right text-center">
+                    <p>
+                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      Copyright &copy;
+                      <!-- <script>
+                        document.write(new Date().getFullYear());
+                      </script> -->
+                      All rights reserved | This template is made with
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                      by
+                      <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer End-->
+      </div>
+    </footer>
   </div>
 </template>
 
-<style lang="scss"></style>
+<style></style>
 <script>
 export default {
   methods: {

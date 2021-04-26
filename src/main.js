@@ -15,7 +15,7 @@ if (jwt) {
 }
 
 Vue.use(VueSelectImage);
-Vue.use(VueClipboard)
+Vue.use(VueClipboard);
 Vue.config.productionTip = false;
 
 new Vue({
