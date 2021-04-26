@@ -1,35 +1,94 @@
 <template>
-  <div class="user-show">
-    <div class="container">
-      <img v-bind:src="user.image" alt="user.full_name" />
-      <h1>{{ user.full_name }}</h1>
-      <p>Email: {{ user.email }}</p>
-      <router-link v-bind:to="`/profile/edit`" tag="button">Edit Profile</router-link>
-      <h2>Dashboard</h2>
-      <h4>Create a Cabal!</h4>
-      <form v-on:submit.prevent="createCabal()">
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" class="form-control" v-model="name" />
+  <div class="container user-show">
+    <div class="whole-wrap">
+      <div class="container box_1170">
+        <div class="section-top-border text-left">
+          <div class="row">
+            <div class="col-md-3">
+              <img v-bind:src="user.image" alt="user.full_name" class="img-fluid" />
+              <h1 class="mb-30">{{ user.full_name }}</h1>
+              <p>{{ user.email }}</p>
+              <router-link v-bind:to="`/profile/edit`" tag="button" class="genric-btn primary-border radius">
+                Edit Profile
+              </router-link>
+            </div>
+            <!-- <img v-bind:src="user.image" alt="user.full_name" />
+          </div> -->
+            <div class="col-md-9 mt-sm-20">
+              <div class="section-tittle mb-50">
+                <h1>Dashboard</h1>
+              </div>
+              <div class="section-tittle mb-20">
+                <h3>Create a Cabal!</h3>
+                <form v-on:submit.prevent="createCabal()">
+                  <div class="form-group">
+                    <div class="mt-10">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder =
+          'Name'"
+                        required
+                        class="single-input"
+                        v-model="name"
+                      />
+                    </div>
+
+                    <!-- <input type="text" class="form-control" v-model="name" /> -->
+                    <input type="submit" class="genric-btn primary-border radius small" value="Create" />
+                  </div>
+                </form>
+              </div>
+              <div class="section-tittle mb-20">
+                <h3>Join a Cabal!</h3>
+                <form v-on:submit.prevent="joinCabal()">
+                  <div class="form-group">
+                    <div class="mt-10">
+                      <input
+                        type="text"
+                        name="invitation-code"
+                        placeholder="Invitation Code"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder =
+          'Name'"
+                        required
+                        class="single-input"
+                        v-model="invitation_token"
+                      />
+                    </div>
+                    <!-- <div class="form-group">
+                  <label>Invitation Code</label>
+                  <input type="text" class="form-control" v-model="invitation_token" />
+                </div> -->
+                  </div>
+                  <input type="submit" class="genric-btn primary-border radius small" value="Join" />
+                </form>
+              </div>
+              <div class="section-tittle mb-20">
+                <h3>Cabals</h3>
+                <div v-for="cabal in user.cabals" v-bind:key="cabal.id">
+                  <p>{{ cabal.name }}</p>
+                  <router-link
+                    v-bind:to="`/cabals/${cabal.id}`"
+                    tag="button"
+                    class="genric-btn primary-border radius small"
+                  >
+                    See More Details
+                  </router-link>
+                </div>
+              </div>
+              <div class="section-top-border text-right">
+                <h2>Ready to Start Planning?</h2>
+                <router-link to="/celebrations/new" tag="button" class="genric-btn primary-border radius">
+                  Add Celebration
+                </router-link>
+              </div>
+            </div>
+          </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Create" />
-      </form>
-    </div>
-    <h4>Join a Cabal!</h4>
-    <form v-on:submit.prevent="joinCabal()">
-      <div class="form-group">
-        <label>Invitation Code</label>
-        <input type="text" class="form-control" v-model="invitation_token" />
       </div>
-      <input type="submit" class="btn btn-primary" value="Join" />
-    </form>
-    <h4>Ready to Start Planning?</h4>
-    <router-link to="/celebrations/new" tag="button">Add Celebration</router-link>
-    <h2>Information</h2>
-    <h3>Cabals</h3>
-    <div v-for="cabal in user.cabals" v-bind:key="cabal.id">
-      <p>{{ cabal.name }}</p>
-      <router-link v-bind:to="`/cabals/${cabal.id}`" tag="button">See More Details</router-link>
     </div>
   </div>
 </template>

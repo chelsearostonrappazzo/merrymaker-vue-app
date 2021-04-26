@@ -1,8 +1,8 @@
 <template>
   <!--prettier-ignore-->
   <div id="app">
-    <!--    
-    <div id="preloader-active">
+       
+    <!-- <div id="preloader-active">
       <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-inner position-relative">
           <div class="preloader-circle"></div>
@@ -21,7 +21,7 @@
               <!-- Logo -->
               <div class="col-xl-2 col-lg-2 col-md-1">
                 <div class="logo">
-                  <a href="index.html"><img src="assets/img/logo/logo.png" alt="" /></a>
+                  <a href="/"><img src="assets/img/logo/logo-header.png" alt="" /></a>
                 </div>
               </div>
               <div class="col-xl-9 col-lg-10">
@@ -39,7 +39,7 @@
                       <li v-if="!isLoggedIn()"><a href="/login">Login</a></li>
                       <li v-if="isLoggedIn()"><a href="/logout">Logout</a></li>
 
-                      <li>
+                      <li v-if="isLoggedIn()">
                         <a href="/profile">Profile</a>
                         <ul class="submenu">
                           <li><a href="/profile/edit">Edit</a></li>
@@ -60,20 +60,6 @@
       </div>
       <!-- Header End -->
     </header>
-
-    <!-- <span v-if="isLoggedIn()">
-        |
-        <router-link to="/logout">Logout</router-link>
-      </span>
-      <span v-if="isLoggedIn()">
-        |
-        <router-link to="/profile">Profile</router-link>
-      </span>
-      <span v-if="isLoggedIn()">
-        |
-        <router-link to="/celebrations">Celebrations</router-link>
-      </span>
-     -->
     <router-view />
 
     <footer>
@@ -86,18 +72,17 @@
                 <div class="single-footer-caption mb-50 text-center">
                   <!-- logo -->
                   <div class="footer-logo mb-25">
-                    <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt="" /></a>
+                    <a href="index.html"><img src="assets/img/logo/logo.png" alt="" /></a>
                   </div>
                   <!-- meNU -->
                   <div class="main-menu2">
                     <nav>
                       <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">contact</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="/celebrations">Celebrations</a></li>
+                        <li><a href="/moodboard">Moodboard</a></li>
                       </ul>
                     </nav>
                   </div>
