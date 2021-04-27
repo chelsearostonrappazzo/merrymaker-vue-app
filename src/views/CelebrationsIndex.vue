@@ -1,15 +1,28 @@
 <template>
   <div class="celebrations-index">
-    <h3>Filter By Status</h3>
-    <select v-model="status">
-      <option value="Planning">Planning</option>
-      <option value="Completed">Completed</option>
-    </select>
-    <div v-for="celebration in filterCelebrationsByStatus" v-bind:key="celebration.id">
-      <router-link v-bind:to="`celebrations/${celebration.id}`">
-        <h2>{{ celebration.name }}</h2>
-      </router-link>
-      <p>Celebrant: {{ celebration.celebrant }}</p>
+    <section class="slider-area slider-area2 slider-height2 d-flex align-items-center hero-overly">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-8 col-lg-11 col-md-12">
+            <div class="hero__caption hero__caption2 text-center">
+              <h2>Let's Celebrate!</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="section-top-border">
+      <h3>Filter By Status</h3>
+      <select v-model="status">
+        <option value="Planning">Planning</option>
+        <option value="Completed">Completed</option>
+      </select>
+      <div v-for="celebration in filterCelebrationsByStatus" v-bind:key="celebration.id">
+        <router-link v-bind:to="`celebrations/${celebration.id}`">
+          <h2>{{ celebration.name }}</h2>
+        </router-link>
+        <p>Celebrant: {{ celebration.celebrant }}</p>
+      </div>
     </div>
   </div>
 </template>

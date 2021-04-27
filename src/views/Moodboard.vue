@@ -11,31 +11,49 @@
         </div>
       </div>
     </section>
-    <input type="text" placeholder="it's the aesthetic for me" v-model="searchPhoto" />
-    <button type="submit" v-on:click="searchPhotos(searchPhoto)" class="genric-btn primary-border radius">
-      Search
-    </button>
-    <vue-select-image
-      :dataImages="photoList"
-      @onselectimage="onSelectImage"
-      ref="single-select-image"
-    ></vue-select-image>
-    <div>
-      <span v-if="imageSelected.src_id !== ''">
-        <span>id = {{ imageSelected.src_id }}</span>
-      </span>
-      <button @click="onUnselectSingleImage" class="genric-btn primary-border radius">Reset Selection</button>
+    <div class="about-details section-padding40">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-6">
+            <div class="section-tittle mb-50">
+              <h2>It's the aesthetic for me.</h2>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="section-tittle mb-20">
+              <p>
+                <input type="text" placeholder="your heart's desire" v-model="searchPhoto" />
+                <button type="submit" v-on:click="searchPhotos(searchPhoto)" class="genric-btn primary-border radius">
+                  Search
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <vue-select-image
+        :dataImages="photoList"
+        @onselectimage="onSelectImage"
+        ref="single-select-image"
+      ></vue-select-image>
+      <div>
+        <span v-if="imageSelected.src_id !== ''">
+          <span>id = {{ imageSelected.src_id }}</span>
+        </span>
+        <button @click="onUnselectSingleImage" class="genric-btn primary-border radius">Reset Selection</button>
+      </div>
+      <dialog id="add-moodboard-modal">
+        <form method="dialog">
+          <img :src="imageSelected.src" />
+          {{ imageSelected.tags }}
+          <button class="genric-btn primary-border radius" v-on:click="addToMoodboard(imageSelected)">
+            Add to Moodboard
+          </button>
+          <button class="genric-btn primary-border radius">Close</button>
+        </form>
+      </dialog>
     </div>
-    <dialog id="add-moodboard-modal">
-      <form method="dialog">
-        <img :src="imageSelected.src" />
-        {{ imageSelected.tags }}
-        <button class="genric-btn primary-border radius" v-on:click="addToMoodboard(imageSelected)">
-          Add to Moodboard
-        </button>
-        <button>Close</button>
-      </form>
-    </dialog>
   </div>
 </template>
 

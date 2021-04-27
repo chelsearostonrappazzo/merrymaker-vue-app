@@ -1,5 +1,16 @@
 <template>
   <div class="celebrations-edit">
+    <section class="slider-area slider-area2 slider-height2 d-flex align-items-center hero-overly">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-8 col-lg-11 col-md-12">
+            <div class="hero__caption hero__caption2 text-center">
+              <h2>For Celebrant Eyes Only</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <form v-on:submit.prevent="updateCelebration(celebration)">
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">{{ error }}</li>

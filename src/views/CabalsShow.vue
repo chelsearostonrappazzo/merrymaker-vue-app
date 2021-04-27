@@ -1,5 +1,16 @@
 <template>
-  <div class="container cabal-show">
+  <div class="cabal-show">
+    <section class="slider-area slider-area2 slider-height2 d-flex align-items-center hero-overly">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-8 col-lg-11 col-md-12">
+            <div class="hero__caption hero__caption2 text-center">
+              <h2>Cabal</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <h1>{{ cabal.name }}</h1>
     <ol>
       <li v-for="member in cabal.members" v-bind:key="member.id">{{ member.first_name }} {{ member.last_name }}</li>
