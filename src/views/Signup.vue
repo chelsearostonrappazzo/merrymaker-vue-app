@@ -1,5 +1,5 @@
 <template>
-  <div class="container signup">
+  <div class="signup">
     <!-- <form v-on:submit.prevent="submit()">
       <h1>Signup</h1> -->
     <ul>
@@ -7,7 +7,18 @@
         {{ error }}
       </li>
     </ul>
-    <div class="section-top-border text-left">
+    <section class="slider-area slider-area2 slider-height2 d-flex align-items-center hero-overly">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-8 col-lg-11 col-md-12">
+            <div class="hero__caption hero__caption2 text-center">
+              <h2>Join Us</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container section-top-border text-left">
       <h3 class="mb-30">Signup</h3>
       <div class="row">
         <form v-on:submit.prevent="submit()">

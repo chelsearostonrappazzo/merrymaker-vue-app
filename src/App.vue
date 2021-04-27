@@ -1,7 +1,5 @@
 <template>
-  <!--prettier-ignore-->
   <div id="app">
-       
     <!-- <div id="preloader-active">
       <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-inner position-relative">
@@ -14,15 +12,16 @@
     </div> -->
 
     <header>
+      <!--? Header Start -->
       <div class="header-area">
         <div class="main-header header-sticky">
           <div class="container-fluid">
             <div class="row align-items-center">
               <!-- Logo -->
               <div class="col-xl-2 col-lg-2 col-md-1">
-                <div class="logo">
-                  <a href="/"><img src="assets/img/logo/logo-header.png" alt="" /></a>
-                </div>
+                <!-- <div class="logo">
+                  <a href="/"><img src="assets/img/logo/logo-2.png" alt="" /></a>
+                </div> -->
               </div>
               <div class="col-xl-9 col-lg-10">
                 <div class="main-menu black-menu menu-bg-white d-none d-lg-block">
@@ -39,8 +38,8 @@
                       <li v-if="!isLoggedIn()"><a href="/login">Login</a></li>
                       <li v-if="isLoggedIn()"><a href="/logout">Logout</a></li>
 
-                      <li v-if="isLoggedIn()">
-                        <a href="/profile">Profile</a>
+                      <li>
+                        <a v-if="isLoggedIn()" href="/profile">Profile</a>
                         <ul class="submenu">
                           <li><a href="/profile/edit">Edit</a></li>
                           <li><a href="/moodboard">Moodboard</a></li>
@@ -71,9 +70,9 @@
               <div class="col-xl-12">
                 <div class="single-footer-caption mb-50 text-center">
                   <!-- logo -->
-                  <div class="footer-logo mb-25">
-                    <a href="index.html"><img src="assets/img/logo/logo.png" alt="" /></a>
-                  </div>
+                  <!-- <div class="footer-logo mb-25">
+                    <a href="index.html"><img src="assets/img/logo/logofooter.png" alt="" /></a>
+                  </div> -->
                   <!-- meNU -->
                   <div class="main-menu2">
                     <nav>
@@ -85,12 +84,6 @@
                         <li><a href="/moodboard">Moodboard</a></li>
                       </ul>
                     </nav>
-                  </div>
-                  <!-- social -->
-                  <div class="footer-social">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
                   </div>
                 </div>
               </div>

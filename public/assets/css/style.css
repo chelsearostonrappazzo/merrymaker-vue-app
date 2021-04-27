@@ -83,7 +83,7 @@
 
 /* line 85, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_color.scss */
 .theme-color {
-  color: #79053f;
+  color: #487292;
 }
 
 /* line 51, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_variables.scss */
@@ -3296,7 +3296,7 @@ hr {
 
 /* line 67, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_color.scss */
 .theme-bg {
-  background: #79053f;
+  background: #487292;
 }
 
 /* line 70, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_color.scss */
@@ -3685,14 +3685,14 @@ nav.nav-menu-show {
 
 /* line 30, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_h1-hero.scss */
 .slider-bg1 {
-  background-image: url(../img/hero/h1_hero1.png);
+  background-image: url(../img/hero/h1_hero1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 /* line 35, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_h1-hero.scss */
 .slider-bg2 {
-  background-image: url(../img/hero/h1_hero2.png);
+  background-image: url(../img/hero/h1_hero1.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -3711,7 +3711,7 @@ nav.nav-menu-show {
 
 /* line 53, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_h1-hero.scss */
 .slider-area.slider-area2 {
-  background-image: url(../img/hero/h2_hero.png);
+  background-image: url(../img/hero/h2_heroine.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -4835,7 +4835,7 @@ nav.nav-menu-show {
 
 /* line 1, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_footer.scss */
 .footer-wrappper {
-  background: #79053f;
+  background: #487292;
 }
 
 /* line 4, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_footer.scss */
@@ -8455,5 +8455,3 @@ del {
 .switch-wrap {
   margin-bottom: 10px;
 }
-
-/*# sourceMappingURL=style.css.map */

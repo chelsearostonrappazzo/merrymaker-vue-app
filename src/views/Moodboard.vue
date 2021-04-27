@@ -1,8 +1,20 @@
 <template>
   <div class="moodboard">
-    <h1>Moodboard</h1>
+    <section class="slider-area slider-area2 slider-height2 d-flex align-items-center hero-overly">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-8 col-lg-11 col-md-12">
+            <div class="hero__caption hero__caption2 text-center">
+              <h2>Moodboard</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <input type="text" placeholder="it's the aesthetic for me" v-model="searchPhoto" />
-    <button type="submit" v-on:click="searchPhotos(searchPhoto)">Search</button>
+    <button type="submit" v-on:click="searchPhotos(searchPhoto)" class="genric-btn primary-border radius">
+      Search
+    </button>
     <vue-select-image
       :dataImages="photoList"
       @onselectimage="onSelectImage"
@@ -12,13 +24,15 @@
       <span v-if="imageSelected.src_id !== ''">
         <span>id = {{ imageSelected.src_id }}</span>
       </span>
-      <button @click="onUnselectSingleImage">Reset Selection</button>
+      <button @click="onUnselectSingleImage" class="genric-btn primary-border radius">Reset Selection</button>
     </div>
     <dialog id="add-moodboard-modal">
       <form method="dialog">
         <img :src="imageSelected.src" />
         {{ imageSelected.tags }}
-        <button v-on:click="addToMoodboard(imageSelected)">Add to Moodboard</button>
+        <button class="genric-btn primary-border radius" v-on:click="addToMoodboard(imageSelected)">
+          Add to Moodboard
+        </button>
         <button>Close</button>
       </form>
     </dialog>
