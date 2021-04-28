@@ -94,7 +94,7 @@ export default {
       password: "",
     };
   },
-  created: function () {
+  mounted: function () {
     axios.get("api/users/" + this.$route.params.id).then((response) => {
       console.log(response.data);
       this.user = response.data;

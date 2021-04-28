@@ -3699,7 +3699,7 @@ nav.nav-menu-show {
 
 /* line 40, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_h1-hero.scss */
 .slider-bg3 {
-  background-image: url(../img/hero/h1_hero3.png);
+  background-image: url(../img/hero/403_error.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -7253,6 +7253,7 @@ del {
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
+  margin: 5px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;

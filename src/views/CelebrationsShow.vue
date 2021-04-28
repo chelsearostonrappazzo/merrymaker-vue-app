@@ -43,6 +43,7 @@
                 </router-link>
               </div>
               <h3>The Aesthetic</h3>
+
               <div class="row gallery-item">
                 <div v-for="moodboard in celebration.moodboard" :key="moodboard.id" class="col-md-4">
                   <div class="single-gallery-image">
@@ -60,6 +61,7 @@
 <style></style>
 <script>
 import axios from "axios";
+
 export default {
   data: function () {
     return {
@@ -67,6 +69,7 @@ export default {
       celebration: {},
     };
   },
+
   mounted: function () {
     this.showCelebrations();
     this.showMoodboard();
@@ -88,9 +91,10 @@ export default {
         this.$router.push("/celebrations");
       });
     },
-    showMoodboard: function () {
-      axios.get("/api/moodboards").then(() => {
+    getData: function () {
+      axios.get("/api/moodboards").then((response) => {
         console.log("The Aesthetic");
+        this.imgsArr = response.data;
       });
     },
   },

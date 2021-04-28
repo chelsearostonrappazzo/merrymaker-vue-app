@@ -94,6 +94,7 @@ export default {
     return {
       errors: [],
       cabal: {},
+      user: {},
       // members: [],
     };
   },
