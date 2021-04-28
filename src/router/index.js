@@ -13,6 +13,7 @@ import CelebrationsEdit from "../views/CelebrationsEdit.vue";
 import CabalsShow from "../views/CabalsShow.vue";
 import CabalsIndex from "../views/CabalsIndex.vue";
 import Moodboard from "../views/Moodboard.vue";
+import NotFound from "../views/NotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -88,8 +89,13 @@ const routes = [
   {
     path: "/cabals",
     name: "cabals",
-    component: CabalsIndex
-  }
+    component: CabalsIndex,
+  },
+  {
+    path: "/404",
+    name: "NotFound",
+    component: NotFound,
+  },
 ];
 
 const router = new VueRouter({

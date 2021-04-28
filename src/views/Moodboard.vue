@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div v-if="!photoList.length">Huh. We don't have anything like that. Try uploading your own!</div>
+      <div v-if="!searchResults.length">Huh. We don't have anything like that. Try uploading your own!</div>
       <div v-else>
         <vue-select-image
           :dataImages="photoList"
@@ -78,11 +78,16 @@ export default {
       imageSelected: {
         src_id: "",
         src: "",
-        alt: "",
+        color: "",
       },
     };
   },
   mounted: function () {},
+  computed: {
+    searchResults: function () {
+      return this.photoList;
+    },
+  },
   methods: {
     searchPhotos: function (photo) {
       axios.get(`/api/photos?search=${photo}`).then((response) => {

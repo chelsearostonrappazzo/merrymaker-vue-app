@@ -3692,7 +3692,7 @@ nav.nav-menu-show {
 
 /* line 35, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_h1-hero.scss */
 .slider-bg2 {
-  background-image: url(../img/hero/h1_hero1.png);
+  background-image: url(../img/hero/404_error.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -3714,6 +3714,7 @@ nav.nav-menu-show {
   background-image: url(../img/hero/h2_heroine.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center bottom;
 }
 
 /* line 58, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_h1-hero.scss */

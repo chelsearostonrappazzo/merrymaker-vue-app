@@ -11,7 +11,7 @@
         </div>
       </div>
     </section>
-    <div class="section-top-border">
+    <div class="container section-top-border">
       <div v-for="cabal in cabals" v-bind:key="cabal.id">
         <router-link v-bind:to="`cabals/${cabal.id}`">
           <h2>{{ cabal.name }}</h2>

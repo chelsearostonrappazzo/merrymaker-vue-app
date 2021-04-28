@@ -44,7 +44,7 @@
               </div>
               <h3>The Aesthetic</h3>
               <div class="row gallery-item">
-                <div v-for="moodboard in celebration.moodboard" :key="moodboard.id" class="col-md-3">
+                <div v-for="moodboard in celebration.moodboard" :key="moodboard.id" class="col-md-4">
                   <div class="single-gallery-image">
                     <img :src="moodboard.photo" class="img-pop-up" />
                   </div>
