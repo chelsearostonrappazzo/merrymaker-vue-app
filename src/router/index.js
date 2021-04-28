@@ -11,6 +11,7 @@ import CelebrationsNew from "../views/CelebrationsNew.vue";
 import CelebrationsShow from "../views/CelebrationsShow.vue";
 import CelebrationsEdit from "../views/CelebrationsEdit.vue";
 import CabalsShow from "../views/CabalsShow.vue";
+import CabalsIndex from "../views/CabalsIndex.vue";
 import Moodboard from "../views/Moodboard.vue";
 
 Vue.use(VueRouter);
@@ -84,6 +85,11 @@ const routes = [
     name: "moodboard",
     component: Moodboard,
   },
+  {
+    path: "/cabals",
+    name: "cabals",
+    component: CabalsIndex
+  }
 ];
 
 const router = new VueRouter({

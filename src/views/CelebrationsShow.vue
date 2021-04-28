@@ -42,17 +42,10 @@
                   Create a Moodboard
                 </router-link>
               </div>
-            </div>
-            <div class="col-md-3">
               <h3>The Aesthetic</h3>
               <div class="row gallery-item">
-                <div class="col-md-3">
-                  <div
-                    v-for="moodboard in celebration.moodboard"
-                    :key="moodboard.id"
-                    class="single-gallery-image"
-                    style="background: url(moodboard.photo)"
-                  >
+                <div v-for="moodboard in celebration.moodboard" :key="moodboard.id" class="col-md-3">
+                  <div class="single-gallery-image">
                     <img :src="moodboard.photo" class="img-pop-up" />
                   </div>
                 </div>
@@ -61,16 +54,10 @@
           </div>
         </div>
       </div>
-      <!-- <p v-for="moodboard in celebration.moodboard" :key="moodboard.id"><img :src="moodboard.photo" /></p> -->
-      <!-- <div class="col-md-4">
-          <a href="assets/img/elements/g1.jpg" class="img-pop-up">
-            <div class="single-gallery-image" style="background: url(assets/img/elements/g1.jpg)"></div></a> -->
-
-      <div class="section-top-border"></div>
     </div>
   </div>
 </template>
-
+<style></style>
 <script>
 import axios from "axios";
 export default {
@@ -109,3 +96,4 @@ export default {
   },
 };
 </script>
+-->

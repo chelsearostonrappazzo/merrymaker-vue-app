@@ -27,33 +27,40 @@
                   Search
                 </button>
               </p>
+              <p v-if="!photo">
+                <input type="file" @change="onFileChange" />
+              </p>
+              <p v-else>
+                <img class="img-fluid" :src="photo" />
+                <button class="genric-btn primary-border radius" @click="removeImage">Remove image</button>
+              </p>
             </div>
           </div>
         </div>
       </div>
-
-      <vue-select-image
-        :dataImages="photoList"
-        @onselectimage="onSelectImage"
-        ref="single-select-image"
-      ></vue-select-image>
-      <div>
-        <span v-if="imageSelected.src_id !== ''">
-          <span>id = {{ imageSelected.src_id }}</span>
-        </span>
-        <button @click="onUnselectSingleImage" class="genric-btn primary-border radius">Reset Selection</button>
+      <div v-if="!photoList.length">Huh. We don't have anything like that. Try uploading your own!</div>
+      <div v-else>
+        <vue-select-image
+          :dataImages="photoList"
+          @onselectimage="onSelectImage"
+          ref="single-select-image"
+        ></vue-select-image>
       </div>
-      <dialog id="add-moodboard-modal">
-        <form method="dialog">
-          <img :src="imageSelected.src" />
-          {{ imageSelected.tags }}
-          <button class="genric-btn primary-border radius" v-on:click="addToMoodboard(imageSelected)">
-            Add to Moodboard
-          </button>
-          <button class="genric-btn primary-border radius">Close</button>
-        </form>
-      </dialog>
+      <span v-if="imageSelected.src_id !== ''">
+        <span>id = {{ imageSelected.src_id }}</span>
+      </span>
+      <button @click="onUnselectSingleImage" class="genric-btn primary-border radius">Reset Selection</button>
     </div>
+    <dialog id="add-moodboard-modal">
+      <form method="dialog">
+        <img :src="imageSelected.src" />
+        {{ imageSelected.color }}
+        <button class="genric-btn primary-border radius" v-on:click="addToMoodboard(imageSelected)">
+          Add to Moodboard
+        </button>
+        <button class="genric-btn primary-border radius">Close</button>
+      </form>
+    </dialog>
   </div>
 </template>
 
@@ -87,6 +94,7 @@ export default {
       let params = {
         photo: this.imageSelected.src,
         src_id: this.imageSelected.src_id,
+        color: this.imageSelected.color,
       };
       axios.post("api/photos", params).then((response) => {
         console.log(response.data);
@@ -100,6 +108,25 @@ export default {
     },
     onUnselectSingleImage: function () {
       this.$refs["single-select-image"].removeFromSingleSelected();
+    },
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      let image = new Image();
+      let reader = new FileReader();
+      let vm = this;
+      console.log(image);
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (e) {
+      this.image = "";
+      console.log(e);
     },
   },
 };
