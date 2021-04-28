@@ -12,12 +12,11 @@
       </div>
     </section>
     <div class="container section-top-border">
-      <div class="celebrations-filter">
+      <div class="mb-30">
         <select v-model="status">
           <option value="Planning">Planning</option>
           <option value="Completed">Completed</option>
         </select>
-        <small>Filter By Status</small>
       </div>
       <div v-for="celebration in filterCelebrationsByStatus" v-bind:key="celebration.id">
         <router-link v-bind:to="`celebrations/${celebration.id}`">

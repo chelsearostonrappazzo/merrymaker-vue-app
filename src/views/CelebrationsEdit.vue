@@ -11,43 +11,102 @@
         </div>
       </div>
     </section>
-    <form v-on:submit.prevent="updateCelebration(celebration)">
-      <ul>
-        <li class="text-danger" v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" v-model="celebration.name" />
-      </div>
-      <div class="form-group">
-        <label>Occasion</label>
-        <input type="text" class="form-control" v-model="celebration.occasion" />
-      </div>
-      <div class="form-group">
-        <label>Theme</label>
-        <input type="text" class="form-control" v-model="celebration.theme" />
-      </div>
-      <div class="form-group">
-        <label>Location</label>
-        <input type="text" class="form-control" v-model="celebration.location" />
-      </div>
-      <div class="form-group">
-        <label>Colors</label>
-        <input type="text" class="form-control" v-model="celebration.colors" />
-      </div>
-      <div class="form-group">
-        <label>Activity</label>
-        <input type="text" class="form-control" v-model="celebration.activity" />
-      </div>
-      <div class="form-group">
-        <label>Signature Drink</label>
-        <input type="text" class="form-control" v-model="celebration.signature_drink" />
-      </div>
-      <div class="form-group">
-        <textarea class="form-control" v-model="celebration.notes" placeholder="Write additional Notes here" />
-      </div>
-      <input type="submit" class="btn btn-primary" value="Update" />
-    </form>
+    <div class="container section-top-border">
+      <h3 class="mb-30">Changed Your Mind?</h3>
+      <form v-on:submit.prevent="updateCelebration(celebration)">
+        <div class="col-lg-8 col-md-8">
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Name"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Name'"
+              required
+              class="single-input"
+              v-model="celebration.name"
+            />
+          </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Occasion"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Occasion'"
+              required
+              class="single-input"
+              v-model="celebration.occasion"
+            />
+          </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Theme"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Theme'"
+              required
+              class="single-input"
+              v-model="celebration.theme"
+            />
+          </div>
+
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Colors"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Colors'"
+              required
+              class="single-input"
+              v-model="celebration.colors"
+            />
+          </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Location"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Location'"
+              required
+              class="single-input"
+              v-model="celebration.location"
+            />
+          </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Activity"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Activity'"
+              required
+              class="single-input"
+              v-model="celebration.activity"
+            />
+          </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Signature Drink"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Signature Drink'"
+              required
+              class="single-input"
+              v-model="celebration.signature_drink"
+            />
+          </div>
+          <div class="mt-10">
+            <textarea
+              class="form-control w-100"
+              v-model="celebration.notes"
+              cols="30"
+              rows="9"
+              placeholder="What else is there to say?"
+            ></textarea>
+          </div>
+        </div>
+
+        <input type="submit" class="genric-btn primary-border radius" value="Submit" />
+      </form>
+    </div>
   </div>
 </template>
 

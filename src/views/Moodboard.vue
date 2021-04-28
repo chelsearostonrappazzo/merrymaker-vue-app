@@ -90,10 +90,13 @@ export default {
   },
   methods: {
     searchPhotos: function (photo) {
-      axios.get(`/api/photos?search=${photo}`).then((response) => {
-        console.log(response.data);
-        this.photoList = response.data;
-      });
+      axios
+        .get(`/api/photos?search=${photo}`)
+        .then((response) => {
+          console.log(response.data);
+          this.photoList = response.data;
+        })
+        .catch((errors) => console.log(errors.response));
     },
     addToMoodboard: function (imageSelected) {
       let params = {

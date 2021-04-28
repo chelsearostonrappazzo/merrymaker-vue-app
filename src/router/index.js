@@ -92,7 +92,7 @@ const routes = [
     component: CabalsIndex,
   },
   {
-    path: "/404",
+    path: "/:catchAll(.*)",
     name: "NotFound",
     component: NotFound,
   },

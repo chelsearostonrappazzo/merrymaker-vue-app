@@ -39,7 +39,7 @@
                   Completed?
                 </button>
                 <router-link to="/moodboard" tag="button" class="genric-btn primary-border radius">
-                  Create a Moodboard
+                  Moodboard
                 </router-link>
               </div>
               <h3>The Aesthetic</h3>

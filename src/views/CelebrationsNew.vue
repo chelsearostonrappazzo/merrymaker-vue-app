@@ -16,163 +16,109 @@
         </div>
       </div>
     </section>
-    <div class="container section-top-border text-left">
-      <h3 class="mb-30">What's your Poison?</h3>
-      <div class="row">
-        <form v-on:submit.prevent="createCelebration()">
-          <div class="col-lg-8 col-md-8">
-            <div class="mt-10">
-              <input
-                type="text"
-                placeholder="Name"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Name'"
-                required
-                class="single-input"
-                v-model="name"
-              />
-            </div>
-            <div class="mt-10">
-              <input
-                type="text"
-                placeholder="Occasion"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Occasion'"
-                required
-                class="single-input"
-                v-model="occasion"
-              />
-            </div>
-            <div class="mt-10">
-              <select class="form-control" v-model="selectedCabal">
-                <option>Select Cabal</option>
-                <option v-for="cabal in cabals" :value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
-              </select>
-            </div>
-            <div class="mt-10">
-              <input
-                type="text"
-                placeholder="Theme"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Theme'"
-                required
-                class="single-input"
-                v-model="theme"
-              />
-            </div>
-            <div class="mt-10">
-              <input
-                type="text"
-                placeholder="Occasion"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Occasion'"
-                required
-                class="single-input"
-                v-model="occasion"
-              />
-            </div>
-            <div class="mt-10">
-              <input
-                type="text"
-                placeholder="Colors"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Colors'"
-                required
-                class="single-input"
-                v-model="colors"
-              />
-            </div>
-            <div class="mt-10">
-              <input
-                type="text"
-                placeholder="Location"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Location'"
-                required
-                class="single-input"
-                v-model="location"
-              />
-            </div>
-            <div class="mt-10">
-              <input
-                type="text"
-                placeholder="Activity"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Activity'"
-                required
-                class="single-input"
-                v-model="activity"
-              />
-            </div>
-            <div class="mt-10">
-              <input
-                type="text"
-                placeholder="Signature Drink"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Signature Drink'"
-                required
-                class="single-input"
-                v-model="signature_drink"
-              />
-            </div>
-            <div class="mt-10">
-              <input />
-              <textarea
-                class="form-control w-100"
-                v-model="notes"
-                cols="30"
-                rows="9"
-                placeholder="What else is there to say?"
-              ></textarea>
-            </div>
+    <div class="container section-top-border">
+      <h3 class="mb-30">Create a Celebration</h3>
+
+      <form v-on:submit.prevent="createCelebration()">
+        <div class="col-lg-8 col-md-8">
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Name"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Name'"
+              required
+              class="single-input"
+              v-model="name"
+            />
           </div>
-          <!-- <form v-on:submit.prevent="createCelebration()">
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" v-model="name" />
-      </div>
-      <div class="form-group">
-        <label>Occasion</label>
-        <input type="text" class="form-control" v-model="occasion" />
-      </div>
-      <div class="form-group">
-        <label>Cabal</label>
-        <select class="form-control" v-model="selectedCabal">
-          <option>Select Cabal</option>
-          <option v-for="cabal in cabals" :value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Theme</label>
-        <input type="text" class="form-control" v-model="theme" />
-      </div>
-      <div class="form-group">
-        <label>Colors</label>
-        <input type="text" class="form-control" v-model="colors" />
-      </div>
-      <div class="form-group">
-        <label>Location</label>
-        <input type="text" class="form-control" v-model="location" />
-      </div>
-      <div class="form-group">
-        <label>Activity</label>
-        <input type="text" class="form-control" v-model="activity" />
-      </div>
-      <div class="form-group">
-        <label>Signature Drink</label>
-        <input type="text" class="form-control" v-model="signature_drink" />
-      </div>
-      <div class="form-group">
-        <textarea class="form-control" v-model="notes" placeholder="Write additional Notes here" />
-      </div> -->
-          <input type="submit" class="genric-btn primary-border radius" value="Submit" />
-        </form>
-      </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Occasion"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Occasion'"
+              required
+              class="single-input"
+              v-model="occasion"
+            />
+          </div>
+          <div class="mt-10">
+            <select class="form-control" v-model="selectedCabal">
+              <option>Select Cabal</option>
+              <option v-for="cabal in cabals" :value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
+            </select>
+          </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Theme"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Theme'"
+              required
+              class="single-input"
+              v-model="theme"
+            />
+          </div>
+
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Colors"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Colors'"
+              required
+              class="single-input"
+              v-model="colors"
+            />
+          </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Location"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Location'"
+              required
+              class="single-input"
+              v-model="location"
+            />
+          </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Activity"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Activity'"
+              required
+              class="single-input"
+              v-model="activity"
+            />
+          </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              placeholder="Signature Drink"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Signature Drink'"
+              required
+              class="single-input"
+              v-model="signature_drink"
+            />
+          </div>
+          <div class="mt-10">
+            <textarea
+              class="form-control w-100"
+              v-model="notes"
+              cols="30"
+              rows="9"
+              placeholder="What else is there to say?"
+            ></textarea>
+          </div>
+        </div>
+
+        <input type="submit" class="genric-btn primary-border radius" value="Submit" />
+      </form>
     </div>
-    <!-- <select @change="pickCabal($event)" class="form-control" v-model="selectedCabal">
-          <option>Select Cabal</option>
-          <option v-for="cabal in cabals" :value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
-        </select> -->
   </div>
 </template>
 

@@ -7,7 +7,7 @@
             <div class="col-xl-9 col-lg-10">
               <div class="slide-content">
                 <h1>404.</h1>
-                <h2>We can't even.</h2>
+                <h2 class="not-found">We can't even.</h2>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@
   </div>
 </template>
 <style>
-h2 {
+.not-found {
   color: white;
   font-size: 75px;
 }

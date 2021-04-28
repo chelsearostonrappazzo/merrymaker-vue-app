@@ -16,7 +16,7 @@
         <div class="section-top-border text-left">
           <div class="row">
             <div class="col-md-3">
-              <img v-bind:src="user.image" alt="user.full_name" class="img-fluid" />
+              <img v-bind:src="user.image" alt="user.first_name" class="img-fluid" />
               <h1 class="mb-30">{{ user.full_name }}</h1>
               <p>{{ user.email }}</p>
               <router-link v-bind:to="`/profile/edit`" tag="button" class="genric-btn primary-border radius">

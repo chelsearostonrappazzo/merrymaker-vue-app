@@ -11,36 +11,74 @@
         </div>
       </div>
     </section>
-    <form v-on:submit.prevent="updateUser(user)">
-      <ul>
-        <li class="text-danger" v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>First Name</label>
-        <input type="text" class="form-control" v-model="user.first_name" />
+
+    <div class="container section-top-border text-left">
+      <h3 class="mb-30">Update Your Information</h3>
+      <div class="row">
+        <form v-on:submit.prevent="updateUser(user)">
+          <div class="col-lg-8 col-md-8">
+            <div class="mt-10">
+              <input
+                type="text"
+                name="first_name"
+                placeholder="First Name"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'First Name'"
+                required
+                class="single-input"
+                v-model="user.first_name"
+              />
+            </div>
+            <div class="mt-10">
+              <input
+                type="text"
+                name="last_name"
+                placeholder="Last Name"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Last Name'"
+                required
+                class="single-input"
+                v-model="user.last_name"
+              />
+            </div>
+            <div class="mt-10">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Email'"
+                required
+                class="single-input"
+                v-model="user.email"
+              />
+            </div>
+            <div class="mt-10">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Password'"
+                class="single-input"
+                v-model="password"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div v-if="user.image">
+              <img :src="user.image" />
+              <button class="genric-btn primary-border radius" @click="removeImage">Remove</button>
+            </div>
+            <div v-else>
+              <h2>No Image :(</h2>
+              <input type="file" @change="onFileChange" />
+            </div>
+          </div>
+          <input type="submit" class="genric-btn primary-border radius" value="Update" />
+        </form>
       </div>
-      <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" class="form-control" v-model="user.last_name" />
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="text" class="form-control" v-model="user.email" />
-      </div>
-      <!-- <div class="form-group">
-        <label>Profile Picture</label>
-        <input type="text" class="form-control" v-model="user.image" />
-      </div> -->
-      <div v-if="user.image">
-        <img :src="user.image" />
-        <button @click="removeImage">Remove image</button>
-      </div>
-      <div v-else>
-        <h2>No Image :(</h2>
-        <input type="file" @change="onFileChange" />
-      </div>
-      <input type="submit" class="btn btn-primary" value="Update" />
-    </form>
+    </div>
   </div>
 </template>
 
@@ -53,6 +91,7 @@ export default {
       errors: [],
       user: {},
       image: "",
+      password: "",
     };
   },
   created: function () {
@@ -66,6 +105,7 @@ export default {
       let params = {
         first_name: user.first_name,
         last_name: user.last_name,
+        password: user.password_digest,
         email: user.email,
         image: this.image,
       };
