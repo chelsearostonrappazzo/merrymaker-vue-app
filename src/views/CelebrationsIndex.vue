@@ -12,7 +12,7 @@
       </div>
     </section>
     <div class="container section-top-border">
-      <div class="mb-30">
+      <div class="default-select" id="default-select">
         <select v-model="status">
           <option value="Planning">Planning</option>
           <option value="Completed">Completed</option>

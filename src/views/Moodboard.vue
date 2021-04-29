@@ -21,31 +21,46 @@
           </div>
           <div class="col-lg-6">
             <div class="section-tittle mb-20">
-              <p>
+              <div class="mt-10">
                 <input type="text" placeholder="your heart's desire" v-model="searchPhoto" />
-                <button type="submit" v-on:click="searchPhotos(searchPhoto)" class="genric-btn primary-border radius">
+                <button
+                  type="submit"
+                  v-on:click="searchPhotos(searchPhoto)"
+                  class="genric-btn primary-border radius small"
+                >
                   Search
                 </button>
-              </p>
-              <p v-if="!photo">
-                <input type="file" @change="onFileChange" />
-              </p>
-              <p v-else>
-                <img class="img-fluid" :src="photo" />
-                <button class="genric-btn primary-border radius" @click="removeImage">Remove image</button>
-              </p>
+              </div>
+              <div class="upload-photo">
+                <p>Can't find anything you like? Try uploading your own!</p>
+                <p v-if="!image">
+                  <input type="file" @change="onFileChange" />
+                </p>
+                <p v-else>
+                  <img class="img-fluid" :src="image" />
+                  <button class="genric-btn primary-border radius small" @click="removeImage">Remove image</button>
+                  <button class="genric-btn primary-border radius small" v-on:click="uploadToMoodboard(image)">
+                    Add to Moodboard
+                  </button>
+                  <select v-model="selectedCelebration">
+                    <option>Select Celebration</option>
+                    <option v-for="celebration in celebrations" :value="celebration.id" :key="celebration.id">
+                      {{ celebration.name }}
+                    </option>
+                  </select>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div v-if="!searchResults.length">Huh. We don't have anything like that. Try uploading your own!</div>
-      <div v-else>
-        <vue-select-image
-          :dataImages="photoList"
-          @onselectimage="onSelectImage"
-          ref="single-select-image"
-        ></vue-select-image>
-      </div>
+
+      <vue-select-image
+        :dataImages="photoList"
+        @onselectimage="onSelectImage"
+        ref="single-select-image"
+      ></vue-select-image>
+
       <span v-if="imageSelected.src_id !== ''">
         <span>id = {{ imageSelected.src_id }}</span>
       </span>
@@ -54,11 +69,17 @@
     <dialog id="add-moodboard-modal">
       <form method="dialog">
         <img :src="imageSelected.src" />
-        {{ imageSelected.color }}
-        <button class="genric-btn primary-border radius" v-on:click="addToMoodboard(imageSelected)">
+        <!-- {{ imageSelected.color }} -->
+        <select v-model="selectedCelebration">
+          <option>Select Celebration</option>
+          <option v-for="celebration in celebrations" :value="celebration.id" :key="celebration.id">
+            {{ celebration.name }}
+          </option>
+        </select>
+        <button class="genric-btn primary-border radius small" v-on:click="addToMoodboard(imageSelected)">
           Add to Moodboard
         </button>
-        <button class="genric-btn primary-border radius">Close</button>
+        <button class="genric-btn primary-border radius small">Close</button>
       </form>
     </dialog>
   </div>
@@ -80,13 +101,13 @@ export default {
         src: "",
         color: "",
       },
+      selectedCelebration: "",
+      celebrations: [],
+      image: "",
     };
   },
-  mounted: function () {},
-  computed: {
-    searchResults: function () {
-      return this.photoList;
-    },
+  mounted: function () {
+    this.indexCelebrations();
   },
   methods: {
     searchPhotos: function (photo) {
@@ -103,10 +124,21 @@ export default {
         photo: this.imageSelected.src,
         src_id: this.imageSelected.src_id,
         color: this.imageSelected.color,
+        celebration_id: this.selectedCelebration,
       };
       axios.post("api/photos", params).then((response) => {
         console.log(response.data);
         console.log(imageSelected);
+      });
+    },
+    uploadToMoodboard: function (image) {
+      let params = {
+        photo: this.image,
+        celebration_id: this.selectedCelebration,
+      };
+      axios.post("api/photos", params).then((response) => {
+        console.log(response.data);
+        console.log(image);
       });
     },
     onSelectImage: function (data) {
@@ -135,6 +167,11 @@ export default {
     removeImage: function (e) {
       this.image = "";
       console.log(e);
+    },
+    indexCelebrations: function () {
+      axios.get("/api/celebrations").then((response) => {
+        this.celebrations = response.data;
+      });
     },
   },
 };

@@ -45,6 +45,7 @@
                         <ul class="submenu">
                           <li><a href="/profile/edit">Edit</a></li>
                           <li><a href="/moodboard">Moodboard</a></li>
+                          <li><a href="/gallery">Gallery</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -123,7 +124,11 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.copyright-link {
+  color: #fff;
+}
+</style>
 <script>
 export default {
   methods: {

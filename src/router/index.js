@@ -14,6 +14,7 @@ import CabalsShow from "../views/CabalsShow.vue";
 import CabalsIndex from "../views/CabalsIndex.vue";
 import Moodboard from "../views/Moodboard.vue";
 import NotFound from "../views/NotFound.vue";
+import Gallery from "../views/Gallery.vue";
 
 Vue.use(VueRouter);
 
@@ -90,6 +91,11 @@ const routes = [
     path: "/cabals",
     name: "cabals",
     component: CabalsIndex,
+  },
+  {
+    path: "/gallery",
+    name: "photos-gallery",
+    component: Gallery,
   },
   {
     path: "/:catchAll(.*)",
