@@ -10,14 +10,13 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <div class="container section-top-border text-left">
-      <h3 class="mb-30">Update Your Information</h3>
-      <div class="row">
+      <div class="container section-top-border text-left">
+        <h2 class="mb-30">Update Your Information</h2>
         <form v-on:submit.prevent="updateUser(user)">
           <div class="col-lg-8 col-md-8">
             <div class="mt-10">
+              <p>First Name</p>
               <input
                 type="text"
                 name="first_name"
@@ -30,6 +29,7 @@
               />
             </div>
             <div class="mt-10">
+              <p>Last Name</p>
               <input
                 type="text"
                 name="last_name"
@@ -42,6 +42,7 @@
               />
             </div>
             <div class="mt-10">
+              <p>Email</p>
               <input
                 type="email"
                 name="email"
@@ -54,6 +55,7 @@
               />
             </div>
             <div class="mt-10">
+              <p>Password</p>
               <input
                 type="password"
                 name="password"
@@ -64,22 +66,23 @@
                 v-model="password"
               />
             </div>
+            <div class="mt-10">
+              <p>Quote</p>
+              <input
+                type="text"
+                name="quote"
+                placeholder="Quote"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Quote'"
+                class="single-input"
+                v-model="user.quote"
+              />
+            </div>
+            <input type="submit" class="genric-btn primary-border radius" value="Update" />
           </div>
-          <div class="mt-10">
-            <input
-              type="text"
-              name="quote"
-              placeholder="Quote"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Quote'"
-              class="single-input"
-              v-model="user.quote"
-            />
-          </div>
-          <input type="submit" class="genric-btn primary-border radius" value="Update" />
         </form>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -108,7 +111,7 @@ export default {
         last_name: user.last_name,
         password: user.password_digest,
         email: user.email,
-        quote: this.quote,
+        quote: user.quote,
       };
       axios
         .patch("/api/users/" + this.$route.params.id, params)

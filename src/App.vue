@@ -37,8 +37,8 @@
                       <li v-if="!isLoggedIn()"><a href="/signup">Signup</a></li>
                       <li v-if="!isLoggedIn()"><a href="/login">Login</a></li>
                       <li v-if="isLoggedIn()"><a href="/logout">Logout</a></li>
-                      <li><a href="/celebrations">Celebrations</a></li>
-                      <li><a href="/cabals">Cabals</a></li>
+                      <li v-if="isLoggedIn()"><a href="/celebrations">Celebrations</a></li>
+                      <!-- <li><a href="/cabals">Cabals</a></li> -->
 
                       <li>
                         <a v-if="isLoggedIn()" href="/profile">Profile</a>
@@ -84,8 +84,9 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About</a></li>
                         <li><a href="/profile">Profile</a></li>
-                        <li><a href="/celebrations">Celebrations</a></li>
-                        <li><a href="/moodboard">Moodboard</a></li>
+                        <li v-if="isLoggedIn()"><a href="/celebrations">Celebrations</a></li>
+                        <li v-if="isLoggedIn()"><a href="/moodboard">Moodboard</a></li>
+                        <li v-if="isLoggedIn()"><a href="/gallery">Gallery</a></li>
                       </ul>
                     </nav>
                   </div>

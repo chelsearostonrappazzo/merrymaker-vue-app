@@ -11,52 +11,84 @@
         </div>
       </div>
     </section>
-    <div class="whole-wrap">
-      <div class="container box_1170">
-        <div class="section-top-border text-left">
-          <div class="row">
-            <div class="col-md-9 mt-sm-20">
-              <h2>Celebrant: {{ celebration.celebrant }}</h2>
-              <p>
-                <strong>Status: {{ celebration.status }}</strong>
-              </p>
-              <p>Theme: {{ celebration.theme }}</p>
-              <p>Occasion: {{ celebration.occasion }}</p>
-              <p>Location: {{ celebration.location }}</p>
-              <p>Colors: {{ celebration.colors }}</p>
-              <p>Signature Drink: {{ celebration.signature_drink }}</p>
-              <p>Cabal: {{ celebration.cabal }}</p>
-              <p>Notes: {{ celebration.notes }}</p>
-              <div v-if="isCelebrant()" class="celebrant-buttons">
-                <router-link
-                  v-bind:to="`/celebrations/${celebration.id}/edit`"
-                  tag="button"
-                  class="genric-btn primary-border radius"
-                >
-                  Edit
-                </router-link>
-                <button class="genric-btn primary-border radius" v-on:click="destroyCelebration(celebration)">
-                  Completed?
-                </button>
-                <router-link to="/moodboard" tag="button" class="genric-btn primary-border radius">
-                  Moodboard
-                </router-link>
-              </div>
-              <h2>The Aesthetic</h2>
+    <section class="blog_area single-post-area section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 posts-list">
+            <h2>Celebrant: {{ celebration.celebrant }}</h2>
+            <p>
+              <strong>Status: {{ celebration.status }}</strong>
+            </p>
+            <p>Theme: {{ celebration.theme }}</p>
+            <p>Occasion: {{ celebration.occasion }}</p>
+            <p>Location: {{ celebration.location }}</p>
+            <p>Colors: {{ celebration.colors }}</p>
+            <p>Signature Drink: {{ celebration.signature_drink }}</p>
+            <p>Cabal: {{ celebration.cabal }}</p>
+            <p>Notes: {{ celebration.notes }}</p>
+            <div v-if="isCelebrant()" class="celebrant-buttons">
+              <router-link
+                v-bind:to="`/celebrations/${celebration.id}/edit`"
+                tag="button"
+                class="genric-btn primary-border radius"
+              >
+                Edit
+              </router-link>
+              <button class="genric-btn primary-border radius" v-on:click="destroyCelebration(celebration)">
+                Completed?
+              </button>
+              <router-link to="/moodboard" tag="button" class="genric-btn primary-border radius">Moodboard</router-link>
+            </div>
+            <h2>The Aesthetic</h2>
 
-              <div class="row gallery-item">
-                <div v-for="photo in celebration.photos" :key="photo.id" class="col-md-4">
-                  <img :src="photo.photo" class="img-fluid" />
-                </div>
+            <div class="row gallery-item">
+              <div v-for="photo in celebration.photos" :key="photo.id" class="col-md-4">
+                <img :src="photo.photo" class="img-fluid" />
               </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <h2>Discussion</h2>
+            <div v-for="comment in celebration.comments" :key="comment.id" class="comments-area">
+              <p class="comment">{{ comment.body }}</p>
+              <p>
+                <small>{{ comment.user }}</small>
+              </p>
+            </div>
+            <div class="comment-form">
+              <h4>Leave a Reply</h4>
+              <form v-on:submit="addComment()">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <textarea
+                        class="form-control w-100"
+                        name="comment"
+                        id="comment"
+                        cols="30"
+                        rows="9"
+                        placeholder="Write Comment"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="button button-contactForm btn_1 boxed-btn">Post Comment</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
-<style></style>
+<style>
+.guest-comments {
+  float: right;
+}
+</style>
 <script>
 import axios from "axios";
 
@@ -65,12 +97,13 @@ export default {
     return {
       errors: [],
       celebration: {},
+      comments: [],
     };
   },
 
   mounted: function () {
     this.showCelebrations();
-    this.showMoodboard();
+    this.getComments();
   },
   methods: {
     showCelebrations: function () {
@@ -89,13 +122,20 @@ export default {
         this.$router.push("/celebrations");
       });
     },
-    getData: function () {
-      axios.get("/api/moodboards").then((response) => {
-        console.log("The Aesthetic");
-        this.imgsArr = response.data;
+    getComments: function () {
+      axios.get("/api/comments").then((response) => {
+        console.log(response.data);
+        this.comments = response.data;
+      });
+    },
+    addComment: function () {
+      let params = {
+        body: this.body,
+      };
+      axios.post("/api/comments", params).then((response) => {
+        console.log(response.data, "You did it!");
       });
     },
   },
 };
 </script>
--->

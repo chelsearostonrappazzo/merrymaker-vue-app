@@ -22,6 +22,7 @@
         <form v-on:submit.prevent="updateCelebration(celebration)">
           <div class="col-lg-8 col-md-8">
             <div class="mt-10">
+              <p>Name</p>
               <input
                 type="text"
                 placeholder="Name"
@@ -33,6 +34,7 @@
               />
             </div>
             <div class="mt-10">
+              <p>Occasion</p>
               <input
                 type="text"
                 placeholder="Occasion"
@@ -44,6 +46,7 @@
               />
             </div>
             <div class="mt-10">
+              <p>Theme</p>
               <input
                 type="text"
                 placeholder="Theme"
@@ -54,8 +57,8 @@
                 v-model="celebration.theme"
               />
             </div>
-
             <div class="mt-10">
+              <p>Colors</p>
               <input
                 type="text"
                 placeholder="Colors"
@@ -67,6 +70,7 @@
               />
             </div>
             <div class="mt-10">
+              <p>Location</p>
               <input
                 type="text"
                 placeholder="Location"
@@ -78,6 +82,7 @@
               />
             </div>
             <div class="mt-10">
+              <p>Activity</p>
               <input
                 type="text"
                 placeholder="Activity"
@@ -89,6 +94,7 @@
               />
             </div>
             <div class="mt-10">
+              <p>Signature Drink</p>
               <input
                 type="text"
                 placeholder="Signature Drink"
@@ -100,6 +106,7 @@
               />
             </div>
             <div class="mt-10">
+              <p>Notes</p>
               <textarea
                 class="form-control w-100"
                 v-model="celebration.notes"
