@@ -50,11 +50,13 @@
 
           <div class="col-lg-4">
             <h2>Discussion</h2>
-            <div v-for="comment in celebration.comments" :key="comment.id" class="comments-area">
+            <div v-for="comment in celebration.comments" :key="comment.id">
               <p class="comment">{{ comment.body }}</p>
-              <p>
-                <small>{{ comment.user }}</small>
-              </p>
+              <span>
+                <p>
+                  <small>{{ comment.user }}</small>
+                </p>
+              </span>
             </div>
             <div class="comment-form">
               <h4>Leave a Reply</h4>
@@ -65,7 +67,7 @@
                       <textarea
                         class="form-control w-100"
                         name="comment"
-                        id="comment"
+                        v-model="body"
                         cols="30"
                         rows="9"
                         placeholder="Write Comment"
@@ -98,6 +100,7 @@ export default {
       errors: [],
       celebration: {},
       comments: [],
+      body: "",
     };
   },
 
@@ -131,6 +134,7 @@ export default {
     addComment: function () {
       let params = {
         body: this.body,
+        celebration_id: this.celebration.id,
       };
       axios.post("/api/comments", params).then((response) => {
         console.log(response.data, "You did it!");
