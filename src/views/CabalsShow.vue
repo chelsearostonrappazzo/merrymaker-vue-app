@@ -58,8 +58,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div v-for="celebration in cabal.celebrations" v-bind:key="celebration.id" class="single-defination">
+        <div v-for="celebration in cabal.celebrations" v-bind:key="celebration.id" class="col-md-4">
+          <div class="single-defination">
             <h2 class="mb-20">{{ celebration.name }}</h2>
             <div>
               <p>Theme</p>

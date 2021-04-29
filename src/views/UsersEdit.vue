@@ -65,13 +65,25 @@
               />
             </div>
           </div>
+          <div class="mt-10">
+            <input
+              type="text"
+              name="quote"
+              placeholder="Quote"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Quote'"
+              required
+              class="single-input"
+              v-model="user.quote"
+            />
+          </div>
           <div class="col-md-3">
             <div v-if="user.image">
               <img :src="user.image" />
               <button class="genric-btn primary-border radius" @click="removeImage">Remove</button>
             </div>
             <div v-else>
-              <h2>No Image :(</h2>
+              <h2>No Image</h2>
               <input type="file" @change="onFileChange" />
             </div>
           </div>
@@ -108,6 +120,7 @@ export default {
         password: user.password_digest,
         email: user.email,
         image: this.image,
+        quote: this.quote,
       };
       axios
         .patch("/api/users/" + this.$route.params.id, params)
