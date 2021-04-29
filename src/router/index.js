@@ -15,6 +15,7 @@ import CabalsIndex from "../views/CabalsIndex.vue";
 import Moodboard from "../views/Moodboard.vue";
 import NotFound from "../views/NotFound.vue";
 import Gallery from "../views/Gallery.vue";
+import PublicProfile from "../views/PublicProfile.vue";
 
 Vue.use(VueRouter);
 
@@ -96,6 +97,11 @@ const routes = [
     path: "/gallery",
     name: "photos-gallery",
     component: Gallery,
+  },
+  {
+    path: "/user/:id",
+    name: "public-profile",
+    component: PublicProfile,
   },
   {
     path: "/:catchAll(.*)",

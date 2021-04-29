@@ -44,6 +44,7 @@
                         <a v-if="isLoggedIn()" href="/profile">Profile</a>
                         <ul class="submenu">
                           <li><a href="/profile/edit">Edit</a></li>
+                          <li><a href="/celebrations/new">Start Planning</a></li>
                           <li><a href="/moodboard">Moodboard</a></li>
                           <li><a href="/gallery">Gallery</a></li>
                         </ul>

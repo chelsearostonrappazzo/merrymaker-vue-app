@@ -171,6 +171,7 @@ export default {
     indexCelebrations: function () {
       axios.get("/api/celebrations").then((response) => {
         this.celebrations = response.data;
+        console.log(this.celebrations);
       });
     },
   },

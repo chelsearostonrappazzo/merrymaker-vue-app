@@ -42,13 +42,11 @@
                   Moodboard
                 </router-link>
               </div>
-              <h3>The Aesthetic</h3>
+              <h2>The Aesthetic</h2>
 
               <div class="row gallery-item">
                 <div v-for="photo in celebration.photos" :key="photo.id" class="col-md-4">
-                  <div class="single-gallery-image">
-                    <img :src="photo.photo" class="img-pop-up" />
-                  </div>
+                  <img :src="photo.photo" class="img-fluid" />
                 </div>
               </div>
             </div>

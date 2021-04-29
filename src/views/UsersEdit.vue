@@ -72,20 +72,9 @@
               placeholder="Quote"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'Quote'"
-              required
               class="single-input"
               v-model="user.quote"
             />
-          </div>
-          <div class="col-md-3">
-            <div v-if="user.image">
-              <img :src="user.image" />
-              <button class="genric-btn primary-border radius" @click="removeImage">Remove</button>
-            </div>
-            <div v-else>
-              <h2>No Image</h2>
-              <input type="file" @change="onFileChange" />
-            </div>
           </div>
           <input type="submit" class="genric-btn primary-border radius" value="Update" />
         </form>
@@ -107,7 +96,7 @@ export default {
     };
   },
   mounted: function () {
-    axios.get("api/users/" + this.$route.params.id).then((response) => {
+    axios.get("api/profile").then((response) => {
       console.log(response.data);
       this.user = response.data;
     });
@@ -119,7 +108,6 @@ export default {
         last_name: user.last_name,
         password: user.password_digest,
         email: user.email,
-        image: this.image,
         quote: this.quote,
       };
       axios

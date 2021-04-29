@@ -25,6 +25,9 @@
               <ol class="ordered-list">
                 <li v-for="member in cabal.members" v-bind:key="member.id">
                   {{ member.first_name }} {{ member.last_name }}
+                  <small>
+                    <router-link class="public-profile" :to="`/user/${member.id}`">view profile</router-link>
+                  </small>
                 </li>
               </ol>
             </div>
@@ -83,6 +86,10 @@
 <style>
 .celeb-info {
   font-style: italic;
+}
+
+.public-profile {
+  color: #487292;
 }
 </style>
 

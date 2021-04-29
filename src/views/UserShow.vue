@@ -16,14 +16,28 @@
         <div class="section-top-border text-left">
           <div class="row">
             <div class="col-md-3">
-              <img v-bind:src="user.image" alt="user.first_name" class="img-fluid" />
+              <div class="edit-image">
+                <div v-if="user.image">
+                  <img v-bind:src="user.image" alt="user.first_name" class="img-fluid" />
+                  <button class="genric-btn primary-border radius small" @click="removeImage">Change</button>
+                </div>
+                <div v-else-if="image">
+                  <img :src="image" />
+                  <button v-on:click="updateUser()" class="genric-btn primary-border radius small">Save</button>
+                </div>
+                <div v-else>
+                  <h2>No Image</h2>
+                  <input type="file" @change="onFileChange" />
+                  <button v-on:click="updateUser(user)" class="genric-btn primary-border radius small">Save</button>
+                </div>
+              </div>
               <h1 class="mb-30">{{ user.full_name }}</h1>
               <q>{{ user.quote }}</q>
 
               <p>{{ user.email }}</p>
-              <router-link v-bind:to="`/profile/edit`" tag="button" class="genric-btn primary-border radius">
-                Edit Info
-              </router-link>
+              <p><router-link class="public-profile" v-bind:to="`/profile/edit`">Edit Info</router-link></p>
+              <p><router-link class="public-profile" :to="`/user/${user.id}`">View Your Profile</router-link></p>
+              <p><router-link class="public-profile" to="/celebrations/new">Add Celebration</router-link></p>
             </div>
 
             <div class="col-md-9 mt-sm-20">
@@ -33,17 +47,13 @@
                   <div class="col-md-4">
                     <div class="single-defination">
                       <h3 class="mb-20">Cabals</h3>
-                      <div v-if="user.cabals.length">
-                        <div v-for="cabal in user.cabals" v-bind:key="cabal.id">
-                          <p>{{ cabal.name }}</p>
-                          <router-link
-                            v-bind:to="`/cabals/${cabal.id}`"
-                            tag="button"
-                            class="genric-btn primary-border radius small"
-                          >
-                            See More Details
-                          </router-link>
-                        </div>
+                      <div v-if="user.cabals">
+                        <ol class="ordered-list">
+                          <li v-for="cabal in user.cabals" v-bind:key="cabal.id">
+                            {{ cabal.name }}
+                            <router-link class="public-profile" v-bind:to="`/cabals/${cabal.id}`">Details</router-link>
+                          </li>
+                        </ol>
                       </div>
                       <div v-else>
                         <p>You're not in any cabals.</p>
@@ -96,16 +106,6 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="single-defination">
-                      <h3 class="mb-20">Ready to Start Planning?</h3>
-                      <router-link to="/celebrations/new" tag="button" class="genric-btn primary-border radius">
-                        Add Celebration
-                      </router-link>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default {
       errors: [],
       name: "",
       invitation_token: "",
-      editedUser: null,
+      image: "",
     };
   },
   mounted: function () {
@@ -139,7 +139,7 @@ export default {
   },
   methods: {
     showUser: function () {
-      axios.get("api/users/" + this.$route.params.id).then((response) => {
+      axios.get("api/profile").then((response) => {
         console.log(response.data);
         this.user = response.data;
       });
@@ -166,15 +166,36 @@ export default {
         })
         .catch((errors) => console.log(errors.response));
     },
-    updateUser: function (user) {
+    updateUser: function () {
       let params = {
-        quote: user.quote,
-        image: user.image,
+        image: this.image,
       };
       axios
         .patch("/api/users/" + this.$route.params.id, params)
-        .then(() => {})
+        .then((response) => {
+          console.log(response.data);
+        })
         .catch((errors) => console.log(errors.response));
+    },
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.file = files[0];
+      this.createImage(this.file);
+    },
+    createImage(file) {
+      let image = new Image();
+      let reader = new FileReader();
+      let vm = this;
+      console.log(image);
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (e) {
+      this.user.image = "";
+      console.log(e);
     },
   },
 };
