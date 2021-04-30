@@ -20,9 +20,15 @@
             <div class="col-xl-4 col-lg-4 col-md-7 col-sm-8">
               <div class="slide-content2">
                 <h4>Because who even likes surprises?</h4>
-                <p>
+                <p v-if="!isLoggedIn()">
                   <router-link to="/signup" tag="button" class="genric-btn primary-border radius">Signup</router-link>
                   <router-link to="/login" tag="button" class="genric-btn primary-border radius">Login</router-link>
+                </p>
+                <p v-else>
+                  <router-link to="/profile" tag="button" class="genric-btn primary-border radius">Profile</router-link>
+                  <router-link to="/moodboard" tag="button" class="genric-btn primary-border radius">
+                    Moodboard
+                  </router-link>
                 </p>
               </div>
             </div>

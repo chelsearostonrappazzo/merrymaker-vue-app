@@ -54,7 +54,8 @@
           </div>
         </div>
       </div>
-
+    </div>
+    <div class="pexels-gallery">
       <vue-select-image
         :dataImages="photoList"
         @onselectimage="onSelectImage"

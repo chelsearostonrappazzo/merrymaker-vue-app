@@ -15,11 +15,13 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 posts-list">
-            <h2>Celebrant: {{ celebration.celebrant }}</h2>
+            <h1>{{ celebration.celebrant }}</h1>
+            <h3><small>Celebrant</small></h3>
             <p>
               <strong>Status: {{ celebration.status }}</strong>
             </p>
-            <p>Theme: {{ celebration.theme }}</p>
+            <p>Theme</p>
+            <p>{{ celebration.theme }}</p>
             <p>Occasion: {{ celebration.occasion }}</p>
             <p>Location: {{ celebration.location }}</p>
             <p>Colors: {{ celebration.colors }}</p>
@@ -65,8 +67,8 @@
 
           <div class="col-lg-6">
             <h2>The Aesthetic</h2>
-            <div class="row gallery-item">
-              <div v-for="photo in celebration.photos" :key="photo.id" class="col-md-5">
+            <div class="moodboard-gallery">
+              <div class="moodboard-gallery-panel" v-for="photo in celebration.photos" :key="photo.id">
                 <img :src="photo.photo" class="img-fluid" />
               </div>
             </div>
@@ -105,6 +107,21 @@
 .guest-comments {
   float: right;
 }
+
+.moodboard-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 1rem;
+  max-width: 250rem;
+  margin: 5rem auto;
+  padding: 0 5rem;
+}
+.moodboard-gallery-panel img {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
 </style>
 <script>
 import axios from "axios";
@@ -118,17 +135,9 @@ export default {
       body: "",
     };
   },
-
   mounted: function () {
     this.showCelebrations();
     this.getComments();
-  },
-  computed: {
-    filterCommentsByCelebration: function () {
-      return this.comments.filter((comment) => {
-        return comment.celebration_id === this.celebration.id;
-      });
-    },
   },
   methods: {
     showCelebrations: function () {

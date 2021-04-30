@@ -11,15 +11,44 @@
         </div>
       </div>
     </section>
-    <div v-for="celebration in celebrations" :key="celebration.id">
-      {{ celebration.theme }}
-      <span v-for="photo in celebration.photos" :key="photo.id">
-        <img :src="photo.photo" />
-      </span>
+    <div class="whole-wrap">
+      <div class="container" v-for="celebration in celebrations" :key="celebration.id">
+        <div class="section-top-border">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="section-tittle mb-60 text-center">
+                <h2>{{ celebration.theme }}</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="moodboard-gallery">
+              <div class="moodboard-gallery-panel" v-for="photo in celebration.photos" :key="photo.id">
+                <img :src="photo.photo" class="img-fluid" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
-
+<style>
+.moodboard-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 1rem;
+  max-width: 500rem;
+  margin: 5rem auto;
+  padding: 0 5rem;
+}
+.moodboard-gallery-panel img {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+</style>
 <script>
 import axios from "axios";
 
@@ -38,6 +67,14 @@ export default {
         this.celebrations = response.data;
         console.log(this.celebrations);
       });
+    },
+    onSelectImage: function (data) {
+      console.log("fire event onSelectImage:  ", data);
+      this.imageSelected = data;
+      document.querySelector("#delete-moodboard-modal").showModal();
+    },
+    onUnselectSingleImage: function () {
+      this.$refs["single-select-image"].removeFromSingleSelected();
     },
   },
 };

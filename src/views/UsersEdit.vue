@@ -10,11 +10,12 @@
           </div>
         </div>
       </div>
-
-      <div class="container section-top-border text-left">
+    </section>
+    <div class="container section-top-border">
+      <div class="row">
         <h2 class="mb-30">Update Your Information</h2>
-        <form v-on:submit.prevent="updateUser(user)">
-          <div class="col-lg-8 col-md-8">
+        <div class="col-lg-12 col-md-8">
+          <form v-on:submit.prevent="updateUser(user)">
             <div class="mt-10">
               <p>First Name</p>
               <input
@@ -79,10 +80,10 @@
               />
             </div>
             <input type="submit" class="genric-btn primary-border radius" value="Update" />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 

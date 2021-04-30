@@ -12,7 +12,7 @@
       </div>
     </section>
     <div class="whole-wrap">
-      <div class="container box_1170">
+      <div class="container">
         <div class="section-top-border">
           <div class="row">
             <div class="col-md-3">
@@ -21,19 +21,38 @@
               <q>{{ user.quote }}</q>
 
               <p>{{ user.email }}</p>
+              <p v-if="isUser()"><router-link class="public-profile" to="/profile/edit">Edit Profile</router-link></p>
             </div>
-          </div>
-          <div class="col-md-9 mt-sm-20">
-            <span v-for="photo in user.photos" :key="photo.id">
-              <img :src="photo.photo" class="img-fluid" />
-            </span>
+            <div class="col-md-9">
+              <h1>My Aesthetic</h1>
+              <div class="moodboard-gallery">
+                <div class="moodboard-gallery-panel" v-for="photo in user.photos" :key="photo.id">
+                  <img :src="photo.photo" class="img-fluid" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
+<style>
+.moodboard-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 1rem;
+  max-width: 250rem;
+  margin: 5rem auto;
+  padding: 0 5rem;
+}
+.moodboard-gallery-panel img {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+</style>
 <script>
 import axios from "axios";
 export default {
@@ -54,6 +73,12 @@ export default {
         console.log(response.data);
         this.user = response.data;
       });
+    },
+    isUser: function () {
+      let userId = localStorage.getItem("user_id");
+      console.log(userId);
+      console.log(this.user.id);
+      return userId == this.user.id;
     },
   },
 };
