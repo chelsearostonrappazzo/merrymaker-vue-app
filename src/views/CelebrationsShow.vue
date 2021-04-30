@@ -14,7 +14,7 @@
     <section class="blog_area single-post-area section-padding">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 posts-list">
+          <div class="col-lg-6 posts-list">
             <h2>Celebrant: {{ celebration.celebrant }}</h2>
             <p>
               <strong>Status: {{ celebration.status }}</strong>
@@ -39,25 +39,40 @@
               </button>
               <router-link to="/moodboard" tag="button" class="genric-btn primary-border radius">Moodboard</router-link>
             </div>
-            <h2>The Aesthetic</h2>
+            <div class="comments-area">
+              <h2>Discussion</h2>
+              <div class="comment-list" v-for="comment in celebration.comments" :key="comment.id">
+                <div class="single-comment justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                      <img :src="comment.user.image" alt="" />
+                    </div>
+                    <div class="desc">
+                      <p class="comment">
+                        {{ comment.body }}
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+                          <h5>{{ comment.user.first_name }} {{ comment.user.last_name }}</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-lg-6">
+            <h2>The Aesthetic</h2>
             <div class="row gallery-item">
-              <div v-for="photo in celebration.photos" :key="photo.id" class="col-md-4">
+              <div v-for="photo in celebration.photos" :key="photo.id" class="col-md-5">
                 <img :src="photo.photo" class="img-fluid" />
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4">
-            <h2>Discussion</h2>
-            <div v-for="comment in celebration.comments" :key="comment.id">
-              <p class="comment">{{ comment.body }}</p>
-              <span>
-                <p>
-                  <small>{{ comment.user }}</small>
-                </p>
-              </span>
-            </div>
+          <div class="col-lg-8">
             <div class="comment-form">
               <h4>Leave a Reply</h4>
               <form v-on:submit="addComment()">
@@ -107,6 +122,13 @@ export default {
   mounted: function () {
     this.showCelebrations();
     this.getComments();
+  },
+  computed: {
+    filterCommentsByCelebration: function () {
+      return this.comments.filter((comment) => {
+        return comment.celebration_id === this.celebration.id;
+      });
+    },
   },
   methods: {
     showCelebrations: function () {
