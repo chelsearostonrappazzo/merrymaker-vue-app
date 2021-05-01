@@ -22,6 +22,11 @@
             </div>
           </div>
           <div class="col-md-12">
+            <div class="color-palette-gallery">
+              <div class="color-palette-panel" v-for="photo in celebration.photos" :key="photo.id">
+                <img v-if="photo.color != null" :style="{ 'background-color': photo.color }" />
+              </div>
+            </div>
             <div class="moodboard-gallery">
               <div class="moodboard-gallery-panel" v-for="photo in celebration.photos" :key="photo.id">
                 <img :src="photo.photo" class="img-fluid" />
@@ -34,6 +39,20 @@
   </div>
 </template>
 <style>
+.color-palette-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 1rem;
+  max-width: 500rem;
+  margin: 5rem auto;
+  padding: 0 5rem;
+}
+.color-palette-panel img {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
 .moodboard-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));

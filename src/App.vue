@@ -132,7 +132,17 @@
 }
 </style>
 <script>
+import axios from "axios";
+
 export default {
+  data: function () {
+    return {
+      user: {},
+    };
+  },
+  mounted: function () {
+    this.showUser();
+  },
   methods: {
     isLoggedIn: function () {
       return localStorage.getItem("jwt");
@@ -144,6 +154,12 @@ export default {
     },
     getUserId: function () {
       return localStorage.getItem("user_id");
+    },
+    showUser: function () {
+      axios.get("api/profile").then((response) => {
+        console.log(response.data);
+        this.user = response.data;
+      });
     },
   },
 };

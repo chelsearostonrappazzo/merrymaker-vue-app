@@ -105,16 +105,6 @@
                 v-model="celebration.signature_drink"
               />
             </div>
-            <div class="mt-10">
-              <p>Notes</p>
-              <textarea
-                class="form-control w-100"
-                v-model="celebration.notes"
-                cols="30"
-                rows="9"
-                placeholder="What else is there to say?"
-              ></textarea>
-            </div>
           </div>
 
           <input type="submit" class="genric-btn primary-border radius" value="Submit" />
@@ -186,7 +176,6 @@ export default {
         location: celebration.location,
         activity: celebration.activity,
         signature_drink: celebration.signature_drink,
-        notes: celebration.notes,
         cabal: celebration.cabal,
       };
       axios

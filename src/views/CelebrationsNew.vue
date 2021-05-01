@@ -105,15 +105,7 @@
               v-model="signature_drink"
             />
           </div>
-          <div class="mt-10">
-            <textarea
-              class="form-control w-100"
-              v-model="notes"
-              cols="30"
-              rows="9"
-              placeholder="What else is there to say?"
-            ></textarea>
-          </div>
+          
         </div>
 
         <input type="submit" class="genric-btn primary-border radius" value="Submit" />
@@ -135,7 +127,7 @@ export default {
       colors: "",
       signature_drink: "",
       location: "",
-      notes: "",
+    
       activity: "",
       errors: [],
       cabals: [],
@@ -154,7 +146,7 @@ export default {
         colors: this.colors,
         signature_drink: this.signature_drink,
         location: this.location,
-        notes: this.notes,
+   
         activity: this.activity,
       };
       axios

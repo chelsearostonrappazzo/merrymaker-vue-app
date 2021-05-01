@@ -42,12 +42,6 @@
                   <button class="genric-btn primary-border radius small" v-on:click="uploadToMoodboard(image)">
                     Add to Moodboard
                   </button>
-                  <select v-model="selectedCelebration">
-                    <option>Select Celebration</option>
-                    <option v-for="celebration in celebrations" :value="celebration.id" :key="celebration.id">
-                      {{ celebration.name }}
-                    </option>
-                  </select>
                 </p>
               </div>
             </div>
@@ -107,7 +101,7 @@ export default {
       image: "",
     };
   },
-  mounted: function () {
+  created: function () {
     this.indexCelebrations();
   },
   methods: {
@@ -119,6 +113,12 @@ export default {
           this.photoList = response.data;
         })
         .catch((errors) => console.log(errors.response));
+    },
+    indexCelebrations: function () {
+      axios.get("/api/celebrations").then((response) => {
+        this.celebrations = response.data;
+        console.log(this.celebrations);
+      });
     },
     addToMoodboard: function (imageSelected) {
       let params = {
@@ -168,12 +168,6 @@ export default {
     removeImage: function (e) {
       this.image = "";
       console.log(e);
-    },
-    indexCelebrations: function () {
-      axios.get("/api/celebrations").then((response) => {
-        this.celebrations = response.data;
-        console.log(this.celebrations);
-      });
     },
   },
 };
