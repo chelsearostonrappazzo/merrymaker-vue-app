@@ -30,6 +30,22 @@
                 >
                   Search
                 </button>
+                <dialog id="add-moodboard-modal">
+                  <form method="dialog">
+                    <img :src="imageSelected.src" />
+                    <!-- {{ imageSelected.color }} -->
+                    <select v-model="selectedCelebration">
+                      <option disabled value="">Select Celebration</option>
+                      <option v-for="celebration in celebrations" :value="celebration.id" :key="celebration.id">
+                        {{ celebration.name }}
+                      </option>
+                    </select>
+                    <button class="genric-btn primary-border radius small" v-on:click="addToMoodboard(imageSelected)">
+                      Add to Moodboard
+                    </button>
+                    <button class="genric-btn primary-border radius small">Close</button>
+                  </form>
+                </dialog>
               </div>
               <div class="upload-photo">
                 <p>Can't find anything you like? Try uploading your own!</p>
@@ -56,27 +72,11 @@
         ref="single-select-image"
       ></vue-select-image>
 
-      <span v-if="imageSelected.src_id !== ''">
+      <!-- <span v-if="imageSelected.src_id !== ''">
         <span>id = {{ imageSelected.src_id }}</span>
-      </span>
+      </span> -->
       <button @click="onUnselectSingleImage" class="genric-btn primary-border radius">Reset Selection</button>
     </div>
-    <dialog id="add-moodboard-modal">
-      <form method="dialog">
-        <img :src="imageSelected.src" />
-        <!-- {{ imageSelected.color }} -->
-        <select v-model="selectedCelebration">
-          <option>Select Celebration</option>
-          <option v-for="celebration in celebrations" :value="celebration.id" :key="celebration.id">
-            {{ celebration.name }}
-          </option>
-        </select>
-        <button class="genric-btn primary-border radius small" v-on:click="addToMoodboard(imageSelected)">
-          Add to Moodboard
-        </button>
-        <button class="genric-btn primary-border radius small">Close</button>
-      </form>
-    </dialog>
   </div>
 </template>
 
@@ -101,10 +101,17 @@ export default {
       image: "",
     };
   },
-  created: function () {
+  mounted: function () {
     this.indexCelebrations();
   },
   methods: {
+    indexCelebrations: function () {
+      axios.get("/api/celebrations").then((response) => {
+        this.celebrations = response.data;
+        console.log(this.celebrations);
+      });
+    },
+
     searchPhotos: function (photo) {
       axios
         .get(`/api/photos?search=${photo}`)
@@ -114,12 +121,7 @@ export default {
         })
         .catch((errors) => console.log(errors.response));
     },
-    indexCelebrations: function () {
-      axios.get("/api/celebrations").then((response) => {
-        this.celebrations = response.data;
-        console.log(this.celebrations);
-      });
-    },
+
     addToMoodboard: function (imageSelected) {
       let params = {
         photo: this.imageSelected.src,
@@ -140,6 +142,7 @@ export default {
       axios.post("api/photos", params).then((response) => {
         console.log(response.data);
         console.log(image);
+        this.image = "";
       });
     },
     onSelectImage: function (data) {

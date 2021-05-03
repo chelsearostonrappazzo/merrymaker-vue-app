@@ -19,9 +19,9 @@
             <div class="row align-items-center">
               <!-- Logo -->
               <div class="col-xl-2 col-lg-2 col-md-1">
-                <!-- <div class="logo">
-                  <a href="/"><img src="assets/img/logo/logo-2.png" alt="" /></a>
-                </div> -->
+                <div class="logo">
+                  <a href="/"><img src="/assets/img/logo/merrymakerlogo.png" alt="" /></a>
+                </div>
               </div>
               <div class="col-xl-9 col-lg-10">
                 <div class="main-menu black-menu menu-bg-white d-none d-lg-block">
@@ -74,9 +74,9 @@
               <div class="col-xl-12">
                 <div class="single-footer-caption mb-50 text-center">
                   <!-- logo -->
-                  <!-- <div class="footer-logo mb-25">
-                    <a href="index.html"><img src="assets/img/logo/logofooter.png" alt="" /></a>
-                  </div> -->
+                  <div class="footer-logo mb-25">
+                    <a href="index.html"><img src="/assets/img/logo/logofooter.png" alt="" /></a>
+                  </div>
                   <!-- meNU -->
                   <div class="main-menu2">
                     <nav>
@@ -132,7 +132,7 @@
 }
 </style>
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   data: function () {
@@ -141,7 +141,7 @@ export default {
     };
   },
   mounted: function () {
-    this.showUser();
+    // this.showUser();
   },
   methods: {
     isLoggedIn: function () {
@@ -155,12 +155,12 @@ export default {
     getUserId: function () {
       return localStorage.getItem("user_id");
     },
-    showUser: function () {
-      axios.get("api/profile").then((response) => {
-        console.log(response.data);
-        this.user = response.data;
-      });
-    },
+    // showUser: function () {
+    //   axios.get("api/profile").then((response) => {
+    //     console.log(response.data);
+    //     this.user = response.data;
+    //   });
+    // },
   },
 };
 </script>

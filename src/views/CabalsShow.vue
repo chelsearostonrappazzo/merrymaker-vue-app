@@ -41,6 +41,7 @@
         <div class="col-md-4">
           <div class="single-defination">
             <h3 class="mb-20">Add a MerryMaker</h3>
+            <p>Send to a friend so they can see your ideas!</p>
             <div class="invitation code">
               <button v-on:click="showInvitationToken()" class="genric-btn primary-border radius">Invite Code</button>
               <dialog id="invitation-token">

@@ -22,7 +22,7 @@
                   <button class="genric-btn primary-border radius small" @click="removeImage">Change</button>
                 </div>
                 <div v-else-if="image">
-                  <img :src="image" />
+                  <img class="profile-picture" :src="image" />
                   <button v-on:click="updateUser()" class="genric-btn primary-border radius small">Save</button>
                 </div>
                 <div v-else>
@@ -116,7 +116,7 @@
 </template>
 
 <style>
-img {
+.profile-picture {
   height: 250px;
   width: auto;
 }

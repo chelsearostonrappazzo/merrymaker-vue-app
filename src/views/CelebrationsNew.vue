@@ -38,15 +38,14 @@
               placeholder="Occasion"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'Occasion'"
-              required
               class="single-input"
               v-model="occasion"
             />
           </div>
           <div class="mt-10">
             <select class="form-control" v-model="selectedCabal">
-              <option>Select Cabal</option>
-              <option v-for="cabal in cabals" :value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
+              <option disabled value="">Select Cabal</option>
+              <option v-for="cabal in cabals" v-bind:value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
             </select>
           </div>
           <div class="mt-10">
@@ -55,7 +54,6 @@
               placeholder="Theme"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'Theme'"
-              required
               class="single-input"
               v-model="theme"
             />
@@ -67,7 +65,6 @@
               placeholder="Colors"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'Colors'"
-              required
               class="single-input"
               v-model="colors"
             />
@@ -78,7 +75,6 @@
               placeholder="Location"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'Location'"
-              required
               class="single-input"
               v-model="location"
             />
@@ -89,7 +85,6 @@
               placeholder="Activity"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'Activity'"
-              required
               class="single-input"
               v-model="activity"
             />
@@ -100,12 +95,10 @@
               placeholder="Signature Drink"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'Signature Drink'"
-              required
               class="single-input"
               v-model="signature_drink"
             />
           </div>
-          
         </div>
 
         <input type="submit" class="genric-btn primary-border radius" value="Submit" />
@@ -127,13 +120,13 @@ export default {
       colors: "",
       signature_drink: "",
       location: "",
-    
+
       activity: "",
       errors: [],
       cabals: [],
     };
   },
-  created: function () {
+  mounted: function () {
     this.indexCabals();
   },
   methods: {
@@ -146,7 +139,7 @@ export default {
         colors: this.colors,
         signature_drink: this.signature_drink,
         location: this.location,
-   
+
         activity: this.activity,
       };
       axios
@@ -160,11 +153,9 @@ export default {
     indexCabals: function () {
       axios.get("/api/cabals").then((response) => {
         this.cabals = response.data;
+        console.log(this.cabals);
       });
     },
-    // pickCabal: function (event) {
-    //   console.log(event.target.value);
-    // },
   },
 };
 </script>

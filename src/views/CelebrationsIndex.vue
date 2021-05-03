@@ -37,7 +37,7 @@ export default {
       status: "",
     };
   },
-  mounted: function () {
+  created: function () {
     this.indexCelebrations();
   },
   computed: {

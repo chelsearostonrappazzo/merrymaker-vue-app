@@ -21,13 +21,18 @@
             <p>
               <strong>Status: {{ celebration.status }}</strong>
             </p>
-            <p>Theme</p>
+            <span>theme</span>
             <p>{{ celebration.theme }}</p>
-            <p>Occasion: {{ celebration.occasion }}</p>
-            <p>Location: {{ celebration.location }}</p>
-            <p>Colors: {{ celebration.colors }}</p>
-            <p>Signature Drink: {{ celebration.signature_drink }}</p>
-            <p>Cabal: {{ celebration.cabal }}</p>
+            <span>occasion</span>
+            <p>{{ celebration.occasion }}</p>
+            <span>location</span>
+            <p>{{ celebration.location }}</p>
+            <span>colors</span>
+            <p>{{ celebration.colors }}</p>
+            <span>signature drink</span>
+            <p>{{ celebration.signature_drink }}</p>
+            <span>cabal</span>
+            <p>{{ celebration.cabal }}</p>
             <!-- Can see if Celebrant -->
             <div v-if="isCelebrant()" class="celebrant-buttons">
               <router-link
@@ -54,14 +59,21 @@
                     <div class="desc">
                       <p class="comment">
                         {{ comment.body }}
+                        <small>
+                          <a
+                            v-if="isAuthor(comment)"
+                            class="public-profile"
+                            href=""
+                            v-on:click="destroyComment(comment)"
+                          >
+                            delete
+                          </a>
+                        </small>
                       </p>
                       <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
                           <h5>{{ comment.user.first_name }} {{ comment.user.last_name }}</h5>
                         </div>
-                        <button v-on:click="destroyComment(comment)" class="genric-btn primary-border radius small">
-                          Delete
-                        </button>
                       </div>
                     </div>
                   </div>
@@ -79,11 +91,11 @@
             </div>
           </div>
         </div>
-
+        <!-- Leave A Comment -->
         <h4>Leave a Reply</h4>
         <div class="wrapper-comment">
           <textarea class="comment-regular-input" v-model="body" placeholder="Write Comment"></textarea>
-
+          <!-- Emoji Add-on -->
           <emoji-picker @emoji="append" :search="search">
             <div
               class="emoji-invoker"
@@ -160,7 +172,7 @@ export default {
 
   mounted: function () {
     this.showCelebrations();
-    this.getComments();
+    // this.getComments();
   },
   methods: {
     showCelebrations: function () {
@@ -179,12 +191,12 @@ export default {
         this.$router.push("/celebrations");
       });
     },
-    getComments: function () {
-      axios.get("/api/comments").then((response) => {
-        console.log(response.data);
-        this.comments = response.data;
-      });
-    },
+    // getComments: function () {
+    //   axios.get("/api/comments").then((response) => {
+    //     console.log(response.data);
+    //     this.comments = response.data;
+    //   });
+    // },
     addComment: function () {
       let params = {
         body: this.body,
@@ -203,6 +215,12 @@ export default {
         console.log("Deleted!");
         this.comments.splice(this.comments.indexOf(comment), 1);
       });
+    },
+    isAuthor: function (comment) {
+      let userId = localStorage.getItem("user_id");
+      console.log(userId);
+      console.log(comment.user.id);
+      return userId == comment.user.id;
     },
   },
   directives: {
