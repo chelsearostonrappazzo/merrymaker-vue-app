@@ -60,8 +60,11 @@
                 </form>
               </dialog>
             </div>
-            <div class="leave-cabal">
-              <a class="public-profile" href="" v-on:click="destroyMembers(cabal, member)">Leave Cabal</a>
+            <div class="leave-cabal section-top-border">
+              <h3>Over it?</h3>
+              <small>
+                <a class="public-profile" href="" v-on:click="destroyMembers(cabal, member)">leave cabal</a>
+              </small>
             </div>
           </div>
         </div>
@@ -69,10 +72,14 @@
           <div class="single-defination">
             <h2 class="mb-20">{{ celebration.name }}</h2>
             <div>
-              <p>Theme</p>
-              <p class="celeb-info">{{ celebration.theme }}</p>
-              <p>Occasion</p>
-              <p class="celeb-info">{{ celebration.occasion }}</p>
+              <span class="span-spacing">
+                <p class="zero-margin">theme</p>
+                <p class="celeb-info">{{ celebration.theme }}</p>
+              </span>
+              <span class="span-spacing">
+                <p class="zero-margin">occasion</p>
+                <p class="celeb-info">{{ celebration.occasion }}</p>
+              </span>
               <router-link
                 v-bind:to="`/celebrations/${celebration.id}`"
                 tag="button"
@@ -94,6 +101,11 @@
 
 .public-profile {
   color: #487292;
+}
+
+.zero-margin {
+  margin: 0;
+  font-style: bold;
 }
 </style>
 

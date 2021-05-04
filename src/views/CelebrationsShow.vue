@@ -73,11 +73,25 @@
             </div>
             <!-- Comments -->
             <div class="comments-area">
-              <h2>Discussion</h2>
+              <h2>
+                Chat
+                <small>
+                  <a class="public-profile" href="" @click.prevent="showGuests = !showGuests">see members</a>
+                </small>
+              </h2>
+
+              <ul v-show="showGuests" class="ordered-list">
+                <li v-for="guest in celebration.guests" :key="guest.id">
+                  {{ guest.first_name }}
+                  <small>
+                    <router-link class="public-profile" :to="`/user/${guest.id}`">view profile</router-link>
+                  </small>
+                </li>
+              </ul>
               <div class="comment-list" v-for="comment in celebration.comments" :key="comment.id">
                 <div class="single-comment justify-content-between d-flex">
                   <div class="user justify-content-between d-flex">
-                    <div class="avatar">
+                    <div class="thumb">
                       <img :src="comment.user.image" alt="" />
                     </div>
                     <div class="desc">
@@ -181,13 +195,6 @@
   object-fit: cover;
   border-radius: 0.75rem;
 }
-.avatar img {
-  vertical-align: middle;
-  width: 75px;
-  height: 90px;
-  border-radius: 50%;
-  padding: 5px;
-}
 </style>
 <script>
 import axios from "axios";
@@ -203,6 +210,7 @@ export default {
       input: "",
       selectedUser: "",
       users: [],
+      showGuests: false,
     };
   },
 

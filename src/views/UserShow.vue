@@ -176,6 +176,8 @@ export default {
         .patch("/api/users/" + this.$route.params.id, params)
         .then((response) => {
           console.log(response.data);
+
+          this.$router.go(0);
         })
         .catch((errors) => console.log(errors.response));
     },
