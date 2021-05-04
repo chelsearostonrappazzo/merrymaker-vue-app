@@ -60,6 +60,9 @@
                 </form>
               </dialog>
             </div>
+            <div class="leave-cabal">
+              <a class="public-profile" href="" v-on:click="destroyMembers(cabal, member)">Leave Cabal</a>
+            </div>
           </div>
         </div>
         <div v-for="celebration in cabal.celebrations" v-bind:key="celebration.id" class="col-md-4">
@@ -103,7 +106,7 @@ export default {
       errors: [],
       cabal: {},
       user: {},
-      // members: [],
+      members: [],
     };
   },
   mounted: function () {
@@ -133,14 +136,14 @@ export default {
       alert("Failed to copy texts");
       console.log(e);
     },
-    // destroyMembers: function (member) {
-    //   axios.delete("/api/members/" + member.id).then(() => {
-    //     console.log("I'm Leabing the Group");
-    //     let index = this.members.indexOf(member);
-    //     this.members.splice(index, 1);
-    //     this.$router.push("/profile");
-    //   });
-    // },
+    destroyMembers: function (cabal, member) {
+      axios.delete("/api/members/" + this.$route.params.id).then(() => {
+        console.log("I'm Leabing the Group");
+        let index = this.members.indexOf(member);
+        this.members.splice(index, 1);
+        this.$router.push("/profile");
+      });
+    },
   },
 };
 </script>

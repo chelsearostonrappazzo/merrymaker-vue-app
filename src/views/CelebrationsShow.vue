@@ -32,7 +32,7 @@
             <span>signature drink</span>
             <p>{{ celebration.signature_drink }}</p>
             <span>cabal</span>
-            <p>{{ celebration.cabal.name }}</p>
+            <p>{{ celebration.cabal }}</p>
             <!-- Can see if Celebrant -->
             <div v-if="isCelebrant()" class="celebrant-buttons">
               <router-link
@@ -48,10 +48,10 @@
               <button class="genric-btn primary-border radius small" v-on:click="openGuestModal()">Add Guests</button>
               <dialog id="add-celebration-guest">
                 <form method="dialog">
-                  <select>
+                  <select v-model="selectedUser">
                     <option disabled value="">Select Guest</option>
-                    <option v-for="user in celebration.users" :key="user.id" :value="user.id">
-                      {{ user.first_name }}
+                    <option v-for="user in users" :key="user.id" :value="user.id">
+                      {{ user.first_name }} {{ user.last_name }}
                     </option>
                   </select>
                   <button class="genric-btn primary-border radius small" v-on:click="addGuest(selectedUser)">
@@ -184,12 +184,14 @@ export default {
       body: "",
       search: "",
       input: "",
-      selectedUser: {},
+      selectedUser: "",
+      users: [],
     };
   },
 
   mounted: function () {
     this.showCelebrations();
+    this.indexUsers();
   },
   methods: {
     showCelebrations: function () {
@@ -245,6 +247,16 @@ export default {
     openGuestModal: function () {
       document.querySelector("#add-celebration-guest").showModal();
     },
+    indexUsers: function () {
+      axios.get("/api/users").then((response) => {
+        this.users = response.data;
+        console.log(this.users);
+      });
+    },
+    // isGuest: function () {
+    //   let userID = localStorage.getItem("user_id");
+
+    // }
   },
   directives: {
     focus: {

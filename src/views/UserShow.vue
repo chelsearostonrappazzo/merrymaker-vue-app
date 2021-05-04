@@ -116,10 +116,10 @@
 </template>
 
 <style>
-.profile-picture {
+/* .profile-picture {
   height: 250px;
   width: auto;
-}
+} */
 </style>
 <script>
 import axios from "axios";
