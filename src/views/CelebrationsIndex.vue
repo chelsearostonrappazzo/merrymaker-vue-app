@@ -12,22 +12,37 @@
       </div>
     </section>
     <div class="container section-top-border">
-      <div class="default-select" id="default-select">
-        <select v-model="status">
-          <option value="Planning">Planning</option>
-          <option value="Completed">Completed</option>
-        </select>
-      </div>
-      <div v-for="celebration in filterCelebrationsByStatus" v-bind:key="celebration.id">
-        <router-link v-bind:to="`celebrations/${celebration.id}`">
-          <h2>{{ celebration.name }}</h2>
-        </router-link>
-        <p>Celebrant: {{ celebration.celebrant }}</p>
+      <div class="row">
+        <div class="col-lg-8">
+          <span class="span-spacing">
+            <select v-model="status">
+              <option disabled value="">Filter by Status</option>
+              <option value="Planning">Planning</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </span>
+          <span class="span-spacing">
+            <input type="text" v-model="occasion" placeholder="Filter By Occasion" />
+          </span>
+          <div class="section-top-border">
+            <div v-for="celebration in filteredCelebrations" v-bind:key="celebration.id">
+              <router-link v-bind:to="`celebrations/${celebration.id}`">
+                <h2>{{ celebration.name }}</h2>
+              </router-link>
+              <p>Celebrant: {{ celebration.celebrant }}</p>
+              <p>Occasion: {{ celebration.occasion }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
-
+<style>
+.span-spacing {
+  padding: 5px;
+}
+</style>
 <script>
 import axios from "axios";
 export default {
@@ -35,14 +50,15 @@ export default {
     return {
       celebrations: [],
       status: "",
+      occasion: "",
     };
   },
   created: function () {
     this.indexCelebrations();
   },
   computed: {
-    filterCelebrationsByStatus: function () {
-      return this.celebrations.filter((celebration) => !celebration.status.indexOf(this.status));
+    filteredCelebrations: function () {
+      return this.filterCelebrationsByOccasion(this.filterCelebrationsByStatus(this.celebrations));
     },
   },
   methods: {
@@ -51,6 +67,12 @@ export default {
         this.celebrations = response.data;
         console.log(this.celebrations);
       });
+    },
+    filterCelebrationsByStatus: function (celebrations) {
+      return celebrations.filter((celebration) => !celebration.status.indexOf(this.status));
+    },
+    filterCelebrationsByOccasion: function (celebrations) {
+      return celebrations.filter((celebration) => !celebration.occasion.indexOf(this.occasion));
     },
   },
 };

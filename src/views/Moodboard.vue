@@ -137,6 +137,8 @@ export default {
       axios.post("api/photos", params).then((response) => {
         console.log(response.data);
         console.log(imageSelected);
+        this.selectedCelebration = "";
+        this.$alert("Photo added to Moodboard", "success", { confirmButtonText: "Yas!" });
       });
     },
     uploadToMoodboard: function (image) {

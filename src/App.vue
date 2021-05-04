@@ -40,16 +40,17 @@
                       <li v-if="isLoggedIn()"><a href="/celebrations">Celebrations</a></li>
                       <!-- <li><a href="/cabals">Cabals</a></li> -->
 
-                      <li>
-                        <a v-if="isLoggedIn()" href="/profile">{{ user.first_name }} {{ user.last_name }}</a>
+                      <li v-if="isLoggedIn()">
+                        <a href="/profile">{{ user.first_name }} {{ user.last_name }}</a>
                         <ul class="submenu">
-                          <li><a v-if="isLoggedIn()" href="/profile">Profile</a></li>
+                          <li><a href="/profile">Profile</a></li>
                           <li><a href="/profile/edit">Edit</a></li>
                           <li><a href="/celebrations/new">Start Planning</a></li>
                           <li><a href="/moodboard">Moodboard</a></li>
                           <li><a href="/gallery">Gallery</a></li>
                         </ul>
                       </li>
+                      <li v-else>Guest</li>
                     </ul>
                   </nav>
                 </div>

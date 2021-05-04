@@ -20,7 +20,19 @@
             <h3><small>Celebrant</small></h3>
             <p>
               <strong>Status: {{ celebration.status }}</strong>
+
+              <small>
+                <a
+                  v-if="isCelebrant()"
+                  class="public-profile span-spacing"
+                  href=""
+                  v-on:click="destroyCelebration(celebration)"
+                >
+                  complete?
+                </a>
+              </small>
             </p>
+
             <span>theme</span>
             <p>{{ celebration.theme }}</p>
             <span>occasion</span>
@@ -42,9 +54,7 @@
               >
                 Edit
               </router-link>
-              <button class="genric-btn primary-border radius small" v-on:click="destroyCelebration(celebration)">
-                Completed?
-              </button>
+
               <button class="genric-btn primary-border radius small" v-on:click="openGuestModal()">Add Guests</button>
               <dialog id="add-celebration-guest">
                 <form method="dialog">
@@ -60,9 +70,6 @@
                   <button class="genric-btn primary-border radius small">Close</button>
                 </form>
               </dialog>
-              <router-link to="/moodboard" tag="button" class="genric-btn primary-border radius small">
-                Moodboard
-              </router-link>
             </div>
             <!-- Comments -->
             <div class="comments-area">
@@ -98,9 +105,10 @@
               </div>
             </div>
           </div>
-
+          <!-- Moodboard -->
           <div class="col-lg-6">
             <h2>The Aesthetic</h2>
+            <router-link class="public-profile" to="/moodboard">add to moodboard</router-link>
             <div class="moodboard-gallery">
               <div class="moodboard-gallery-panel" v-for="photo in celebration.photos" :key="photo.id">
                 <img :src="photo.photo" class="img-fluid" />
@@ -189,7 +197,7 @@ export default {
     };
   },
 
-  mounted: function () {
+  created: function () {
     this.showCelebrations();
     this.indexUsers();
   },
@@ -218,6 +226,8 @@ export default {
       axios.post("/api/comments", params).then((response) => {
         console.log(response.data, "You did it!");
         this.body = "";
+        this.$alert("Comment Added");
+        this.$router.go(0);
       });
     },
     append(emoji) {

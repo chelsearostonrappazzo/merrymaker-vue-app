@@ -47,16 +47,16 @@
                   <div class="col-md-4">
                     <div class="single-defination">
                       <h3 class="mb-20">Cabals</h3>
-                      <div v-if="user.cabals.length > 0">
+                      <div v-if="!user.cabals">
+                        <p>You're not in any cabals.</p>
+                      </div>
+                      <div v-else>
                         <ol class="ordered-list">
                           <li v-for="cabal in user.cabals" v-bind:key="cabal.id">
                             {{ cabal.name }}
                             <router-link class="public-profile" v-bind:to="`/cabals/${cabal.id}`">Details</router-link>
                           </li>
                         </ol>
-                      </div>
-                      <div v-else>
-                        <p>You're not in any cabals.</p>
                       </div>
                     </div>
                   </div>
@@ -151,8 +151,9 @@ export default {
       axios
         .post("/api/members", params)
         .then(() => {
+          this.$alert("You're In!");
           this.invitation_token = "";
-          this.$router.push("/profile");
+          this.$router.go(0);
         })
         .catch((errors) => console.log(errors.response));
     },
@@ -161,8 +162,9 @@ export default {
       axios
         .post("/api/cabals", params)
         .then(() => {
-          this.$router.push("/profile");
+          this.$alert(this.name + "created!");
           this.name = "";
+          this.$router.go(0);
         })
         .catch((errors) => console.log(errors.response));
     },
