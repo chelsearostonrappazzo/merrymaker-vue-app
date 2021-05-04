@@ -43,10 +43,10 @@
             />
           </div>
           <div class="mt-10">
-            <select class="form-control" v-model="selectedCabal">
-              <option disabled value="">Select Cabal</option>
-              <option v-for="cabal in cabals" v-bind:value="cabal.id" :key="cabal.id">{{ cabal.name }}</option>
-            </select>
+            <label v-for="cabal in cabals" :key="cabal.id">
+              {{ cabal.name }}
+              <input :key="cabal.id" :value="cabal.id" type="radio" v-model="selectedCabal" />
+            </label>
           </div>
           <div class="mt-10">
             <input
@@ -126,6 +126,7 @@ export default {
       cabals: [],
     };
   },
+
   mounted: function () {
     this.indexCabals();
   },

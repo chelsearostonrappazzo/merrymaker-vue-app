@@ -25,12 +25,12 @@
               </div>
               <div class="col-xl-9 col-lg-10">
                 <div class="main-menu black-menu menu-bg-white d-none d-lg-block">
-                  <div class="hamburger hamburger--collapse">
+                  <!-- <div class="hamburger hamburger--collapse">
                     <div class="hamburger-box">
                       <div class="hamburger-inner"></div>
                     </div>
-                  </div>
-                  <nav class="hamburger-menu">
+                  </div> -->
+                  <nav class="non-burger">
                     <ul id="navigation">
                       <li><a href="/">Home</a></li>
                       <li><a href="/about">About</a></li>
@@ -41,8 +41,9 @@
                       <!-- <li><a href="/cabals">Cabals</a></li> -->
 
                       <li>
-                        <a v-if="isLoggedIn()" href="/profile">Profile</a>
+                        <a v-if="isLoggedIn()" href="/profile">{{ user.first_name }} {{ user.last_name }}</a>
                         <ul class="submenu">
+                          <li><a v-if="isLoggedIn()" href="/profile">Profile</a></li>
                           <li><a href="/profile/edit">Edit</a></li>
                           <li><a href="/celebrations/new">Start Planning</a></li>
                           <li><a href="/moodboard">Moodboard</a></li>
@@ -75,7 +76,7 @@
                 <div class="single-footer-caption mb-50 text-center">
                   <!-- logo -->
                   <div class="footer-logo mb-25">
-                    <a href="index.html"><img src="/assets/img/logo/logofooter.png" alt="" /></a>
+                    <a href="index.html"><img src="/assets/img/logo/merrymaker.png" alt="" /></a>
                   </div>
                   <!-- meNU -->
                   <div class="main-menu2">
@@ -130,9 +131,13 @@
 .copyright-link {
   color: #fff;
 }
+
+.non-burger {
+  float: right;
+}
 </style>
 <script>
-// import axios from "axios";
+import axios from "axios";
 
 export default {
   data: function () {
@@ -141,7 +146,7 @@ export default {
     };
   },
   mounted: function () {
-    // this.showUser();
+    this.showUser();
   },
   methods: {
     isLoggedIn: function () {
@@ -155,12 +160,12 @@ export default {
     getUserId: function () {
       return localStorage.getItem("user_id");
     },
-    // showUser: function () {
-    //   axios.get("api/profile").then((response) => {
-    //     console.log(response.data);
-    //     this.user = response.data;
-    //   });
-    // },
+    showUser: function () {
+      axios.get("api/profile").then((response) => {
+        console.log(response.data);
+        this.user = response.data;
+      });
+    },
   },
 };
 </script>

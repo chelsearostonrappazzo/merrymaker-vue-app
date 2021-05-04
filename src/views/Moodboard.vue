@@ -104,6 +104,11 @@ export default {
   mounted: function () {
     this.indexCelebrations();
   },
+  computed: {
+    getCelebrations: function () {
+      return this.indexCelebrations();
+    },
+  },
   methods: {
     indexCelebrations: function () {
       axios.get("/api/celebrations").then((response) => {

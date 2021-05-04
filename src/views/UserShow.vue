@@ -47,7 +47,7 @@
                   <div class="col-md-4">
                     <div class="single-defination">
                       <h3 class="mb-20">Cabals</h3>
-                      <div v-if="user.cabals">
+                      <div v-if="user.cabals.length > 0">
                         <ol class="ordered-list">
                           <li v-for="cabal in user.cabals" v-bind:key="cabal.id">
                             {{ cabal.name }}

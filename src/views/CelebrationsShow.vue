@@ -32,20 +32,37 @@
             <span>signature drink</span>
             <p>{{ celebration.signature_drink }}</p>
             <span>cabal</span>
-            <p>{{ celebration.cabal }}</p>
+            <p>{{ celebration.cabal.name }}</p>
             <!-- Can see if Celebrant -->
             <div v-if="isCelebrant()" class="celebrant-buttons">
               <router-link
                 v-bind:to="`/celebrations/${celebration.id}/edit`"
                 tag="button"
-                class="genric-btn primary-border radius"
+                class="genric-btn primary-border radius small"
               >
                 Edit
               </router-link>
-              <button class="genric-btn primary-border radius" v-on:click="destroyCelebration(celebration)">
+              <button class="genric-btn primary-border radius small" v-on:click="destroyCelebration(celebration)">
                 Completed?
               </button>
-              <router-link to="/moodboard" tag="button" class="genric-btn primary-border radius">Moodboard</router-link>
+              <button class="genric-btn primary-border radius small" v-on:click="openGuestModal()">Add Guests</button>
+              <dialog id="add-celebration-guest">
+                <form method="dialog">
+                  <select>
+                    <option disabled value="">Select Guest</option>
+                    <option v-for="user in celebration.users" :key="user.id" :value="user.id">
+                      {{ user.first_name }}
+                    </option>
+                  </select>
+                  <button class="genric-btn primary-border radius small" v-on:click="addGuest(selectedUser)">
+                    Add Guest
+                  </button>
+                  <button class="genric-btn primary-border radius small">Close</button>
+                </form>
+              </dialog>
+              <router-link to="/moodboard" tag="button" class="genric-btn primary-border radius small">
+                Moodboard
+              </router-link>
             </div>
             <!-- Comments -->
             <div class="comments-area">
@@ -167,12 +184,12 @@ export default {
       body: "",
       search: "",
       input: "",
+      selectedUser: {},
     };
   },
 
   mounted: function () {
     this.showCelebrations();
-    // this.getComments();
   },
   methods: {
     showCelebrations: function () {
@@ -191,12 +208,6 @@ export default {
         this.$router.push("/celebrations");
       });
     },
-    // getComments: function () {
-    //   axios.get("/api/comments").then((response) => {
-    //     console.log(response.data);
-    //     this.comments = response.data;
-    //   });
-    // },
     addComment: function () {
       let params = {
         body: this.body,
@@ -221,6 +232,18 @@ export default {
       console.log(userId);
       console.log(comment.user.id);
       return userId == comment.user.id;
+    },
+    addGuest: function (selectedUser) {
+      let params = {
+        celebration_id: this.celebration.id,
+        user_id: this.selectedUser,
+      };
+      axios.post("/api/guests", params).then(() => {
+        console.log(selectedUser);
+      });
+    },
+    openGuestModal: function () {
+      document.querySelector("#add-celebration-guest").showModal();
     },
   },
   directives: {
