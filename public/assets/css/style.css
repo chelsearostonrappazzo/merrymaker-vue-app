@@ -6451,8 +6451,9 @@ nav.nav-menu-show {
 
 /* line 1511, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_blog_page.scss */
 .comments-area .thumb img {
+  vertical-align: middle;
   width: 75px;
-  height: 90px;
+  height: 75px;
   border-radius: 50%;
   padding: 5px;
 }

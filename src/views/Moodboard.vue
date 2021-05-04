@@ -138,7 +138,7 @@ export default {
         console.log(response.data);
         console.log(imageSelected);
         this.selectedCelebration = "";
-        this.$alert("Photo added to Moodboard", "success", { confirmButtonText: "Yas!" });
+        this.$alert("Photo added to Moodboard", "Huzzah!", "success", { confirmButtonText: "Yas!" });
       });
     },
     uploadToMoodboard: function (image) {
@@ -150,6 +150,7 @@ export default {
         console.log(response.data);
         console.log(image);
         this.image = "";
+        this.$alert("Photo added to Moodboard", "Huzzah!", "success", { confirmButtonText: "Yas!" });
       });
     },
     onSelectImage: function (data) {
