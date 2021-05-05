@@ -37,22 +37,7 @@
     </div>
   </div>
 </template>
-<style>
-.moodboard-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  grid-gap: 1rem;
-  max-width: 250rem;
-  margin: 5rem auto;
-  padding: 0 5rem;
-}
-.moodboard-gallery-panel img {
-  width: 100%;
-  height: 15vw;
-  object-fit: cover;
-  border-radius: 0.75rem;
-}
-</style>
+
 <script>
 import axios from "axios";
 export default {

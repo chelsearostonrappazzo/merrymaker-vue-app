@@ -32,14 +32,22 @@
                 </button>
                 <dialog id="add-moodboard-modal">
                   <form method="dialog">
-                    <img :src="imageSelected.src" />
-                    <!-- {{ imageSelected.color }} -->
-                    <select v-model="selectedCelebration">
-                      <option disabled value="">Select Celebration</option>
-                      <option v-for="celebration in celebrations" :value="celebration.id" :key="celebration.id">
-                        {{ celebration.name }}
-                      </option>
-                    </select>
+                    <figure>
+                      <img class="modal-img" :src="imageSelected.src" />
+                      <figcaption>
+                        <select v-model="selectedCelebration" class="modal-select">
+                          <option disabled value="">Select Celebration</option>
+                          <option
+                            v-show="celebration.user_id == userId"
+                            v-for="celebration in celebrations"
+                            :value="celebration.id"
+                            :key="celebration.id"
+                          >
+                            {{ celebration.name }}
+                          </option>
+                        </select>
+                      </figcaption>
+                    </figure>
                     <button class="genric-btn primary-border radius small" v-on:click="addToMoodboard(imageSelected)">
                       Add to Moodboard
                     </button>
@@ -72,9 +80,6 @@
         ref="single-select-image"
       ></vue-select-image>
 
-      <!-- <span v-if="imageSelected.src_id !== ''">
-        <span>id = {{ imageSelected.src_id }}</span>
-      </span> -->
       <button @click="onUnselectSingleImage" class="genric-btn primary-border radius">Reset Selection</button>
     </div>
   </div>
@@ -99,6 +104,7 @@ export default {
       selectedCelebration: "",
       celebrations: [],
       image: "",
+      userId: localStorage.getItem("user_id"),
     };
   },
   mounted: function () {

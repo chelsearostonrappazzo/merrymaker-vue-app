@@ -18,6 +18,14 @@
             <div class="col-lg-10">
               <div class="section-tittle mb-60 text-center">
                 <h2>{{ celebration.theme }}</h2>
+                <a
+                  v-if="celebration.user_id == userId"
+                  class="public-profile"
+                  href=""
+                  @click.prevent="showEdit = !showEdit"
+                >
+                  edit
+                </a>
               </div>
             </div>
           </div>
@@ -30,44 +38,24 @@
             <div class="moodboard-gallery">
               <div class="moodboard-gallery-panel" v-for="photo in celebration.photos" :key="photo.id">
                 <img :src="photo.photo" class="img-fluid" />
+                <input
+                  v-show="showEdit"
+                  id="default-radio"
+                  :key="photo.id"
+                  :value="photo.id"
+                  type="radio"
+                  v-model="selectedPhoto"
+                />
               </div>
             </div>
+            <a href="" class="public-profile" v-show="showEdit" v-on:click="deleteMoodboard">delete image</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<style>
-.color-palette-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 1rem;
-  max-width: 500rem;
-  margin: 5rem auto;
-  padding: 0 5rem;
-}
-.color-palette-panel img {
-  width: 100%;
-  height: 15vw;
-  object-fit: cover;
-  border-radius: 0.75rem;
-}
-.moodboard-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 1rem;
-  max-width: 500rem;
-  margin: 5rem auto;
-  padding: 0 5rem;
-}
-.moodboard-gallery-panel img {
-  width: 100%;
-  height: 15vw;
-  object-fit: cover;
-  border-radius: 0.75rem;
-}
-</style>
+
 <script>
 import axios from "axios";
 
@@ -75,11 +63,15 @@ export default {
   data: function () {
     return {
       celebrations: [],
+      showEdit: false,
+      selectedPhoto: "",
+      userId: localStorage.getItem("user_id"),
     };
   },
   mounted: function () {
     this.getMoodboards();
   },
+
   methods: {
     getMoodboards: function () {
       axios.get("/api/celebrations").then((response) => {
@@ -87,13 +79,11 @@ export default {
         console.log(this.celebrations);
       });
     },
-    onSelectImage: function (data) {
-      console.log("fire event onSelectImage:  ", data);
-      this.imageSelected = data;
-      document.querySelector("#delete-moodboard-modal").showModal();
-    },
-    onUnselectSingleImage: function () {
-      this.$refs["single-select-image"].removeFromSingleSelected();
+    deleteMoodboard: function () {
+      axios.delete("/api/moodboards/" + this.selectedPhoto).then(() => {
+        console.log("Deleted!");
+        this.$router.go(0);
+      });
     },
   },
 };

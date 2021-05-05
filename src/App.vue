@@ -128,15 +128,7 @@
   </div>
 </template>
 
-<style>
-.copyright-link {
-  color: #fff;
-}
 
-.non-burger {
-  float: right;
-}
-</style>
 <script>
 import axios from "axios";
 

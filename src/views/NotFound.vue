@@ -31,9 +31,3 @@
     </div>
   </div>
 </template>
-<style>
-.not-found {
-  color: white;
-  font-size: 75px;
-}
-</style>

@@ -43,9 +43,9 @@
             />
           </div>
           <div class="mt-10">
-            <label v-for="cabal in cabals" :key="cabal.id">
+            <label class="span-spacing" v-for="cabal in cabals" :key="cabal.id">
               {{ cabal.name }}
-              <input :key="cabal.id" :value="cabal.id" type="radio" v-model="selectedCabal" />
+              <input id="default-radio" :key="cabal.id" :value="cabal.id" type="radio" v-model="selectedCabal" />
             </label>
           </div>
           <div class="mt-10">

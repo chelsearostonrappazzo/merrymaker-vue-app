@@ -38,11 +38,7 @@
     </div>
   </div>
 </template>
-<style>
-.span-spacing {
-  padding: 5px;
-}
-</style>
+
 <script>
 import axios from "axios";
 export default {

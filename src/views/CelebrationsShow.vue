@@ -123,8 +123,8 @@
           <div class="col-lg-6">
             <h2>The Aesthetic</h2>
             <router-link class="public-profile" to="/moodboard">add to moodboard</router-link>
-            <div class="moodboard-gallery">
-              <div class="moodboard-gallery-panel" v-for="photo in celebration.photos" :key="photo.id">
+            <div class="moodboard-gallery-1">
+              <div class="moodboard-gallery-panel-1" v-for="photo in celebration.photos" :key="photo.id">
                 <img :src="photo.photo" class="img-fluid" />
               </div>
             </div>
@@ -180,22 +180,7 @@
     </section>
   </div>
 </template>
-<style>
-.moodboard-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  grid-gap: 1rem;
-  max-width: 250rem;
-  margin: 5rem auto;
-  padding: 0 5rem;
-}
-.moodboard-gallery-panel img {
-  width: 100%;
-  height: 15vw;
-  object-fit: cover;
-  border-radius: 0.75rem;
-}
-</style>
+
 <script>
 import axios from "axios";
 

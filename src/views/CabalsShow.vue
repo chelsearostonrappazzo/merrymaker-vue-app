@@ -94,20 +94,7 @@
     </div>
   </div>
 </template>
-<style>
-.celeb-info {
-  font-style: italic;
-}
 
-.public-profile {
-  color: #487292;
-}
-
-.zero-margin {
-  margin: 0;
-  font-style: bold;
-}
-</style>
 
 <script>
 import axios from "axios";
