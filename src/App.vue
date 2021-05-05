@@ -128,7 +128,6 @@
   </div>
 </template>
 
-
 <script>
 import axios from "axios";
 
@@ -138,6 +137,7 @@ export default {
       user: {},
     };
   },
+
   mounted: function () {
     this.showUser();
   },

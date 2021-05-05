@@ -199,10 +199,11 @@ export default {
     };
   },
 
-  created: function () {
+  mounted: function () {
     this.showCelebrations();
     this.indexUsers();
   },
+
   methods: {
     showCelebrations: function () {
       axios.get("/api/celebrations/" + this.$route.params.id).then((response) => {
@@ -226,9 +227,9 @@ export default {
         celebration_id: this.celebration.id,
       };
       axios.post("/api/comments", params).then((response) => {
+        this.celebration.comments.push(response.data);
         console.log(response.data, "You did it!");
         this.body = "";
-        this.$router.go(0);
       });
     },
     append(emoji) {

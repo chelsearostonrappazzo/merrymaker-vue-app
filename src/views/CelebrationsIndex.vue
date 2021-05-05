@@ -24,13 +24,22 @@
           <span class="span-spacing">
             <input type="text" v-model="occasion" placeholder="Filter By Occasion" />
           </span>
-          <div class="section-top-border">
-            <div v-for="celebration in filteredCelebrations" v-bind:key="celebration.id">
-              <router-link v-bind:to="`celebrations/${celebration.id}`">
-                <h2>{{ celebration.name }}</h2>
-              </router-link>
-              <p>Celebrant: {{ celebration.celebrant }}</p>
-              <p>Occasion: {{ celebration.occasion }}</p>
+        </div>
+        <div class="section-top-border">
+          <div class="row">
+            <div v-for="celebration in filteredCelebrations" v-bind:key="celebration.id" class="col-md-4">
+              <div class="single-defination">
+                <router-link v-bind:to="`celebrations/${celebration.id}`">
+                  <h2 class="mb-20">{{ celebration.name }}</h2>
+                </router-link>
+                <div>
+                  <p class="zero-margin">celebrant</p>
+                  <p class="celeb-info">{{ celebration.celebrant }}</p>
+
+                  <p class="zero-margin">occasion</p>
+                  <p class="celeb-info">{{ celebration.occasion }}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

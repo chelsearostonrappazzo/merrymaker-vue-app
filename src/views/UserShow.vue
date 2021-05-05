@@ -131,6 +131,10 @@ export default {
   mounted: function () {
     this.showUser();
   },
+  watch: {},
+  // updated: function () {
+  //   this.showUser();
+  // },
   methods: {
     showUser: function () {
       axios.get("api/profile").then((response) => {
@@ -144,10 +148,10 @@ export default {
       };
       axios
         .post("/api/members", params)
-        .then(() => {
+        .then((response) => {
+          this.user.cabals.push(response.data);
           this.$alert("You're In!");
           this.invitation_token = "";
-          this.$router.go(0);
         })
         .catch((errors) => console.log(errors.response));
     },
@@ -155,10 +159,10 @@ export default {
       let params = { name: this.name };
       axios
         .post("/api/cabals", params)
-        .then(() => {
+        .then((response) => {
+          this.user.cabals.push(response.data);
           this.$alert(this.name + "created!");
           this.name = "";
-          this.$router.go(0);
         })
         .catch((errors) => console.log(errors.response));
     },
