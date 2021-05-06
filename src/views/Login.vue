@@ -20,31 +20,34 @@
               {{ error }}
             </li>
           </ul>
-          <div class="mt-10">
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Email'"
-              required
-              class="single-input"
-              v-model="email"
-            />
+          <div class="form-group">
+            <div class="mt-10">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Email'"
+                required
+                class="single-input"
+                v-model="email"
+              />
+            </div>
           </div>
-          <div class="mt-10">
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Password'"
-              required
-              class="single-input"
-              v-model="password"
-            />
+          <div class="form-group">
+            <div class="mt-10">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Password'"
+                required
+                class="single-input"
+                v-model="password"
+              />
+            </div>
           </div>
-
           <input type="submit" class="genric-btn primary-border radius" value="Submit" />
         </form>
       </div>
@@ -75,7 +78,7 @@ export default {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           localStorage.setItem("user_id", response.data.user_id);
-          this.$router.push("/profile");
+          window.location = "/profile";
         })
         .catch((error) => {
           console.log(error.response);

@@ -21,11 +21,11 @@
 
       <form v-on:submit.prevent="createCelebration()">
         <div class="col-lg-8 col-md-8">
-          <div class="mt-10">
+          <div class="form-group">
             <input
               type="text"
               placeholder="Name"
-              onfocus="this.placeholder = ''"
+              onfocus="this.placeholder = 'Name'"
               onblur="this.placeholder = 'Name'"
               required
               class="single-input"
@@ -36,7 +36,7 @@
             <input
               type="text"
               placeholder="Occasion"
-              onfocus="this.placeholder = ''"
+              onfocus="this.placeholder = 'Occasion'"
               onblur="this.placeholder = 'Occasion'"
               class="single-input"
               v-model="occasion"
@@ -45,14 +45,14 @@
           <div class="mt-10">
             <label class="span-spacing" v-for="cabal in cabals" :key="cabal.id">
               {{ cabal.name }}
-              <input id="default-radio" :key="cabal.id" :value="cabal.id" type="radio" v-model="selectedCabal" />
+              <input :key="cabal.id" :value="cabal.id" type="radio" v-model="selectedCabal" />
             </label>
           </div>
           <div class="mt-10">
             <input
               type="text"
               placeholder="Theme"
-              onfocus="this.placeholder = ''"
+              onfocus="this.placeholder = 'Theme'"
               onblur="this.placeholder = 'Theme'"
               class="single-input"
               v-model="theme"
@@ -63,7 +63,7 @@
             <input
               type="text"
               placeholder="Colors"
-              onfocus="this.placeholder = ''"
+              onfocus="this.placeholder = 'Colors'"
               onblur="this.placeholder = 'Colors'"
               class="single-input"
               v-model="colors"
@@ -73,7 +73,7 @@
             <input
               type="text"
               placeholder="Location"
-              onfocus="this.placeholder = ''"
+              onfocus="this.placeholder = 'Location'"
               onblur="this.placeholder = 'Location'"
               class="single-input"
               v-model="location"
@@ -83,7 +83,7 @@
             <input
               type="text"
               placeholder="Activity"
-              onfocus="this.placeholder = ''"
+              onfocus="this.placeholder = 'Activity'"
               onblur="this.placeholder = 'Activity'"
               class="single-input"
               v-model="activity"
@@ -93,7 +93,7 @@
             <input
               type="text"
               placeholder="Signature Drink"
-              onfocus="this.placeholder = ''"
+              onfocus="this.placeholder = 'Signature Drink'"
               onblur="this.placeholder = 'Signature Drink'"
               class="single-input"
               v-model="signature_drink"
@@ -101,7 +101,7 @@
           </div>
         </div>
 
-        <input type="submit" class="genric-btn primary-border radius" value="Submit" />
+        <input type="submit" class="genric-btn primary-border radius span-spacing" value="Submit" />
       </form>
     </div>
   </div>

@@ -16,7 +16,7 @@
         <div class="section-top-border text-left">
           <div class="row">
             <div class="col-md-3">
-              <div class="edit-image">
+              <div class="single-element-widget edit-image">
                 <div v-if="user.image">
                   <img v-bind:src="user.image" alt="user.first_name" class="img-fluid" />
                   <button class="genric-btn primary-border radius small" @click="removeImage">Change</button>
@@ -71,8 +71,7 @@
                               name="invitation-code"
                               placeholder="Invitation Code"
                               onfocus="this.placeholder = ''"
-                              onblur="this.placeholder =
-          'Name'"
+                              onblur="this.placeholder = 'Name'"
                               required
                               class="single-input"
                               v-model="invitation_token"
@@ -100,8 +99,8 @@
                               v-model="name"
                             />
                           </div>
-                          <input type="submit" class="genric-btn primary-border radius small" value="Create" />
                         </div>
+                        <input type="submit" class="genric-btn primary-border radius small" value="Create" />
                       </form>
                     </div>
                   </div>
@@ -161,7 +160,7 @@ export default {
         .post("/api/cabals", params)
         .then((response) => {
           this.user.cabals.push(response.data);
-          this.$alert(this.name + "created!");
+          this.$alert(this.name + " created!");
           this.name = "";
         })
         .catch((errors) => console.log(errors.response));

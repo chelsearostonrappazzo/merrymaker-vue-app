@@ -181,3 +181,7 @@
   object-fit: cover;
   border-radius: 0.75rem;
 }
+.profile-picture {
+  height: 300px;
+  width: auto;
+}

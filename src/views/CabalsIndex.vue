@@ -30,7 +30,7 @@ export default {
       status: "",
     };
   },
-  mounted: function () {
+  created: function () {
     this.indexcabals();
   },
   methods: {

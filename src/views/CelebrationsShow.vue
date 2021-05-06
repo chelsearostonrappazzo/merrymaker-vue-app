@@ -23,7 +23,7 @@
 
               <small>
                 <a
-                  v-if="isCelebrant()"
+                  v-if="showStatus()"
                   class="public-profile span-spacing"
                   href=""
                   v-on:click="destroyCelebration(celebration)"
@@ -82,7 +82,7 @@
 
               <ul v-show="showGuests" class="ordered-list">
                 <li v-for="guest in celebration.guests" :key="guest.id">
-                  {{ guest.first_name }}
+                  {{ guest.first_name }} {{ guest.last_name }}
                   <small>
                     <router-link class="public-profile" :to="`/user/${guest.id}`">view profile</router-link>
                   </small>
@@ -100,7 +100,7 @@
                         <small>
                           <a
                             v-if="isAuthor(comment)"
-                            class="public-profile"
+                            class="public-profile span-spacing"
                             href=""
                             v-on:click="destroyComment(comment)"
                           >
@@ -122,7 +122,7 @@
           <!-- Moodboard -->
           <div class="col-lg-6">
             <h2>The Aesthetic</h2>
-            <router-link class="public-profile" to="/moodboard">add to moodboard</router-link>
+            <router-link v-if="isCelebrant()" class="public-profile" to="/moodboard">add to moodboard</router-link>
             <div class="moodboard-gallery-1">
               <div class="moodboard-gallery-panel-1" v-for="photo in celebration.photos" :key="photo.id">
                 <img :src="photo.photo" class="img-fluid" />
@@ -198,12 +198,10 @@ export default {
       showGuests: false,
     };
   },
-
   mounted: function () {
     this.showCelebrations();
     this.indexUsers();
   },
-
   methods: {
     showCelebrations: function () {
       axios.get("/api/celebrations/" + this.$route.params.id).then((response) => {
@@ -214,6 +212,10 @@ export default {
     isCelebrant: function () {
       let userId = localStorage.getItem("user_id");
       return userId == this.celebration.user_id;
+    },
+    showStatus: function () {
+      let userId = localStorage.getItem("user_id");
+      return userId == this.celebration.user_id && this.celebration.status === "Planning";
     },
     destroyCelebration: function (celebration) {
       axios.delete("/api/celebrations/" + celebration.id).then(() => {
@@ -250,9 +252,17 @@ export default {
         celebration_id: this.celebration.id,
         user_id: this.selectedUser,
       };
-      axios.post("/api/guests", params).then(() => {
-        console.log(selectedUser);
-      });
+      axios
+        .post("/api/guests", params)
+        .then((response) => {
+          console.log(response.data, selectedUser);
+          this.celebration.guests.push(response.data);
+          this.$alert("Guest added to " + this.celebration.name);
+        })
+        .catch((errors) => {
+          console.log(errors.response);
+          this.$alert("User is already in group!", "Error", "warning");
+        });
     },
     openGuestModal: function () {
       document.querySelector("#add-celebration-guest").showModal();

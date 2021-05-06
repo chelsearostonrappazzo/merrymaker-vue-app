@@ -41,7 +41,7 @@
                       <!-- <li><a href="/cabals">Cabals</a></li> -->
 
                       <li v-if="isLoggedIn()">
-                        <a href="/profile">{{ user.first_name }} {{ user.last_name }}</a>
+                        <strong>{{ user.first_name }} {{ user.last_name }}</strong>
                         <ul class="submenu">
                           <li><a href="/profile">Profile</a></li>
                           <li><a href="/profile/edit">Edit</a></li>
@@ -50,7 +50,7 @@
                           <li><a href="/gallery">Gallery</a></li>
                         </ul>
                       </li>
-                      <li v-else>Guest</li>
+                      <li v-else><strong>Greetings!</strong></li>
                     </ul>
                   </nav>
                 </div>
@@ -85,7 +85,7 @@
                       <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About</a></li>
-                        <li><a href="/profile">Profile</a></li>
+                        <li v-if="isLoggedIn()"><a href="/profile">Profile</a></li>
                         <li v-if="isLoggedIn()"><a href="/celebrations">Celebrations</a></li>
                         <li v-if="isLoggedIn()"><a href="/moodboard">Moodboard</a></li>
                         <li v-if="isLoggedIn()"><a href="/gallery">Gallery</a></li>
@@ -138,24 +138,19 @@ export default {
     };
   },
 
-  mounted: function () {
+  created: function () {
     this.showUser();
   },
   methods: {
     isLoggedIn: function () {
       return localStorage.getItem("jwt");
-      // if (localStorage.getItem("jwt")) {
-      // return true;
-      // } else {
-      // return false;
-      // }
     },
     getUserId: function () {
       return localStorage.getItem("user_id");
     },
     showUser: function () {
       axios.get("api/profile").then((response) => {
-        console.log(response.data);
+        console.log("whoo!");
         this.user = response.data;
       });
     },

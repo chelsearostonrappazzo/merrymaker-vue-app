@@ -20,92 +20,105 @@
       <h3 class="mb-30">Changed Your Mind?</h3>
       <form v-on:submit.prevent="updateCelebration(celebration)">
         <div class="col-lg-8 col-md-8">
-          <div class="mt-10">
-            <p>Name</p>
-            <input
-              type="text"
-              placeholder="Name"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Name'"
-              required
-              class="single-input"
-              v-model="celebration.name"
-            />
+          <div class="form-group">
+            <div class="mt-10">
+              <p>Name</p>
+              <input
+                type="text"
+                placeholder="Name"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Name'"
+                required
+                class="single-input"
+                v-model="celebration.name"
+              />
+            </div>
           </div>
-          <div class="mt-10">
-            <p>Occasion</p>
-            <input
-              type="text"
-              placeholder="Occasion"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Occasion'"
-              required
-              class="single-input"
-              v-model="celebration.occasion"
-            />
+          <div class="form-group">
+            <div class="mt-10">
+              <p>Occasion</p>
+              <input
+                type="text"
+                placeholder="Occasion"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Occasion'"
+                required
+                class="single-input"
+                v-model="celebration.occasion"
+              />
+            </div>
           </div>
-          <div class="mt-10">
-            <p>Theme</p>
-            <input
-              type="text"
-              placeholder="Theme"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Theme'"
-              required
-              class="single-input"
-              v-model="celebration.theme"
-            />
+          <div class="form-group">
+            <div class="mt-10">
+              <p>Theme</p>
+              <input
+                type="text"
+                placeholder="Theme"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Theme'"
+                required
+                class="single-input"
+                v-model="celebration.theme"
+              />
+            </div>
           </div>
-          <div class="mt-10">
-            <p>Colors</p>
-            <input
-              type="text"
-              placeholder="Colors"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Colors'"
-              required
-              class="single-input"
-              v-model="celebration.colors"
-            />
+          <div class="form-group">
+            <div class="mt-10">
+              <p>Colors</p>
+              <input
+                type="text"
+                placeholder="Colors"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Colors'"
+                required
+                class="single-input"
+                v-model="celebration.colors"
+              />
+            </div>
           </div>
-          <div class="mt-10">
-            <p>Location</p>
-            <input
-              type="text"
-              placeholder="Location"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Location'"
-              required
-              class="single-input"
-              v-model="celebration.location"
-            />
+          <div class="form-group">
+            <div class="mt-10">
+              <p>Location</p>
+              <input
+                type="text"
+                placeholder="Location"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Location'"
+                required
+                class="single-input"
+                v-model="celebration.location"
+              />
+            </div>
           </div>
-          <div class="mt-10">
-            <p>Activity</p>
-            <input
-              type="text"
-              placeholder="Activity"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Activity'"
-              required
-              class="single-input"
-              v-model="celebration.activity"
-            />
+          <div class="form-group">
+            <div class="mt-10">
+              <p>Activity</p>
+              <input
+                type="text"
+                placeholder="Activity"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Activity'"
+                required
+                class="single-input"
+                v-model="celebration.activity"
+              />
+            </div>
           </div>
-          <div class="mt-10">
-            <p>Signature Drink</p>
-            <input
-              type="text"
-              placeholder="Signature Drink"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Signature Drink'"
-              required
-              class="single-input"
-              v-model="celebration.signature_drink"
-            />
+          <div class="form-group">
+            <div class="mt-10">
+              <p>Signature Drink</p>
+              <input
+                type="text"
+                placeholder="Signature Drink"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Signature Drink'"
+                required
+                class="single-input"
+                v-model="celebration.signature_drink"
+              />
+            </div>
           </div>
         </div>
-
         <input type="submit" class="genric-btn primary-border radius" value="Submit" />
       </form>
     </div>

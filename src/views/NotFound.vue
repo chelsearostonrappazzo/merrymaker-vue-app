@@ -21,8 +21,8 @@
             <div class="slide-content2">
               <h4>Oh no! Try one of these!</h4>
               <p>
-                <router-link to="/" tag="button" class="genric-btn primary-border radius">Home</router-link>
-                <router-link to="/profile" tag="button" class="genric-btn primary-border radius">Profile</router-link>
+                <router-link to="/" >Home</router-link>|
+                <router-link to="/profile" >Profile</router-link>
               </p>
             </div>
           </div>

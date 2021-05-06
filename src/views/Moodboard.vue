@@ -22,6 +22,11 @@
           <div class="col-lg-6">
             <div class="section-tittle mb-20">
               <div class="mt-10">
+                <small><p>be sure to create a celebration before you start!</p></small>
+                <p>
+                  <small><router-link class="public-profile" to="/celebrations/new">start planning</router-link></small>
+                </p>
+
                 <input type="text" placeholder="your heart's desire" v-model="searchPhoto" />
                 <button
                   type="submit"
@@ -57,16 +62,31 @@
               </div>
               <div class="upload-photo">
                 <p>Can't find anything you like? Try uploading your own!</p>
-                <p v-if="!image">
+                <div v-if="!image">
                   <input type="file" @change="onFileChange" />
-                </p>
-                <p v-else>
-                  <img class="img-fluid" :src="image" />
+                </div>
+                <div v-else>
+                <figure>
+                  <img class="img-fluid profile-picture span-spacing" :src="image" />
+                  <figcaption class="span-spacing">
+                  <select v-model="selectedCelebration" class="modal-select">
+                          <option disabled value="">Select Celebration</option>
+                          <option
+                            v-show="celebration.user_id == userId"
+                            v-for="celebration in celebrations"
+                            :value="celebration.id"
+                            :key="celebration.id"
+                          >
+                            {{ celebration.name }}
+                          </option>
+                        </select>
+                  </figcaption>
+                </figure>
                   <button class="genric-btn primary-border radius small" @click="removeImage">Remove image</button>
                   <button class="genric-btn primary-border radius small" v-on:click="uploadToMoodboard(image)">
                     Add to Moodboard
                   </button>
-                </p>
+                </div>
               </div>
             </div>
           </div>
@@ -110,11 +130,7 @@ export default {
   mounted: function () {
     this.indexCelebrations();
   },
-  computed: {
-    getCelebrations: function () {
-      return this.indexCelebrations();
-    },
-  },
+
   methods: {
     indexCelebrations: function () {
       axios.get("/api/celebrations").then((response) => {
