@@ -148,11 +148,15 @@ export default {
       axios
         .post("/api/members", params)
         .then((response) => {
+          this.$alert("You're In!", "Success", "success");
           this.user.cabals.push(response.data);
-          this.$alert("You're In!");
           this.invitation_token = "";
         })
-        .catch((errors) => console.log(errors.response));
+        .catch((errors) => {
+          console.log(errors.response);
+          this.$alert("You're already in this cabal!", "Error", "warning");
+          this.invitation_token = "";
+        });
     },
     createCabal: function () {
       let params = { name: this.name };

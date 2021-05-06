@@ -77,7 +77,7 @@ export default {
       return celebrations.filter((celebration) => !celebration.status.indexOf(this.status));
     },
     filterCelebrationsByOccasion: function (celebrations) {
-      return celebrations.filter((celebration) => !celebration.occasion.indexOf(this.occasion));
+      return celebrations.filter((celebration) => !celebration.occasion.toLowerCase().indexOf(this.occasion));
     },
   },
 };
