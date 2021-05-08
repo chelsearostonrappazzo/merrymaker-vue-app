@@ -136,7 +136,7 @@ export default {
   // },
   methods: {
     showUser: function () {
-      axios.get("api/profile").then((response) => {
+      axios.get("/api/profile").then((response) => {
         console.log(response.data);
         this.user = response.data;
       });
