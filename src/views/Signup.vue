@@ -154,7 +154,7 @@ export default {
       var params = {
         first_name: this.firstName,
         last_name: this.lastName,
-        image: this.image,
+        profile_picture: this.image,
         email: this.email,
         password: this.password,
         password_confirmation: this.passwordConfirmation,

@@ -16,7 +16,7 @@
         <div class="section-top-border">
           <div class="row">
             <div class="col-md-3">
-              <img v-bind:src="user.image" alt="user.first_name" class="img-fluid" />
+              <img v-bind:src="user.profile_image" alt="user.first_name" class="img-fluid" />
               <h1 class="mb-30">{{ user.full_name }}</h1>
               <q>{{ user.quote }}</q>
 

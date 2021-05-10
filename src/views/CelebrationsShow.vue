@@ -92,7 +92,7 @@
                 <div class="single-comment justify-content-between d-flex">
                   <div class="user justify-content-between d-flex">
                     <div class="thumb">
-                      <img :src="comment.user.image" alt="" />
+                      <img :src="comment.user.profile_image" alt="" />
                     </div>
                     <div class="desc">
                       <p class="comment">
