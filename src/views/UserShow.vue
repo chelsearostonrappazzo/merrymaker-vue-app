@@ -17,7 +17,7 @@
           <div class="row">
             <div class="col-md-3">
               <div class="single-element-widget edit-image">
-                <div v-if="user.profile_image">
+                <div v-if="user.image">
                   <img v-bind:src="user.image" alt="user.first_name" class="img-fluid" />
                   <button class="genric-btn primary-border radius small" @click="removeImage">Change</button>
                 </div>
