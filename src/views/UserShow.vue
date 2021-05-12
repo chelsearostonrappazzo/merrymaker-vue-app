@@ -112,6 +112,12 @@
                   <div class="col-md-4">
                     <div class="single-defination">
                       <h3 class="mb-20">Show off your event!</h3>
+                      <input
+                        type="file"
+                        @change="onFileChange"
+                        data-direct-upload-url="/rails/active_storage/direct_uploads"
+                        direct_upload="true"
+                      />
                     </div>
                   </div>
                 </div>
