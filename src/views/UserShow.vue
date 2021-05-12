@@ -174,7 +174,7 @@ export default {
         avatar: this.image,
       };
       axios
-        .patch("/api/users/" + this.$route.params.id, params)
+        .patch("/api/users/" + this.user.id, params)
         .then((response) => {
           console.log(response.data);
 
