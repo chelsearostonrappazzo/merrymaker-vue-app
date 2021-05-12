@@ -176,7 +176,7 @@ export default {
     },
     updateUser: function () {
       let params = {
-        avatar: this.image,
+        image: this.image,
       };
       axios
         .patch("/api/users/" + this.user.id, params)
