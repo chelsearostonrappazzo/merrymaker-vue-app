@@ -27,7 +27,12 @@
                 </div>
                 <div v-else>
                   <h2>No Image</h2>
-                  <input type="file" @change="onFileChange" />
+                  <input
+                    type="file"
+                    @change="onFileChange"
+                    data-direct-upload-url="/rails/active_storage/direct_uploads"
+                    direct_upload="true"
+                  />
                   <button v-on:click="updateUser(user)" class="genric-btn primary-border radius small">Save</button>
                 </div>
               </div>
