@@ -109,6 +109,11 @@
                       </form>
                     </div>
                   </div>
+                  <div class="col-md-4">
+                    <div class="single-defination">
+                      <h3 class="mb-20">Show off your event!</h3>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
