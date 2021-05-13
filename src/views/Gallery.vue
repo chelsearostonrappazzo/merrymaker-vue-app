@@ -32,17 +32,17 @@
           <div class="col-md-12">
             <div class="color-palette-gallery">
               <div class="color-palette-panel" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
-                <img v-if="moodboard.photo.color != null" :style="{ 'background-color': moodboard.photo.color }" />
+                <img v-if="moodboard.photo != null" :style="{ 'background-color': moodboard.photo }" />
               </div>
             </div>
             <div class="moodboard-gallery">
               <div class="moodboard-gallery-panel" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
-                <img :src="moodboard.photo.photo" class="img-fluid" />
+                <img :src="moodboard.photo" class="img-fluid" />
                 <input
                   v-show="showEdit"
                   id="default-radio"
-                  :key="moodboard.photo.id"
-                  :value="moodboard.photo.id"
+                  :key="moodboard.photo"
+                  :value="moodboard.photo"
                   type="radio"
                   v-model="selectedPhoto"
                 />
