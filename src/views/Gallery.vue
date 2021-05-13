@@ -29,7 +29,7 @@
               </div>
             </div>
           </div>
-          <!-- <div class="col-md-12">
+          <div class="col-md-12">
             <div class="color-palette-gallery">
               <div class="color-palette-panel" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
                 <img v-if="moodboard.photo != null" :style="{ 'background-color': moodboard.photo }" />
@@ -49,7 +49,7 @@
               </div>
             </div>
             <a href="" class="public-profile" v-show="showEdit" v-on:click="deleteMoodboard">delete image</a>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@ export default {
       userId: localStorage.getItem("user_id"),
     };
   },
-  mounted: function () {
+  created: function () {
     this.getMoodboards();
   },
 
