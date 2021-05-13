@@ -113,8 +113,22 @@
                     <div class="single-defination">
                       <h3 class="mb-20">Show off your event!</h3>
                       <div v-if="image">
-                        <img class="profile-picture" :src="image" />
-                        <button v-on:click="updateUser()" class="genric-btn primary-border radius small">Save</button>
+                        <figure>
+                          <img class="img-fluid profile-picture span-spacing" :src="image" />
+                          <figcaption class="span-spacing">
+                            <select v-model="selectedCelebration" class="modal-select">
+                              <option disabled value="">Select Celebration</option>
+                              <option
+                                v-show="celebration.user_id == userId"
+                                v-for="celebration in user.celebrations"
+                                :value="celebration.id"
+                                :key="celebration.id"
+                              >
+                                {{ celebration.name }}
+                              </option>
+                            </select>
+                          </figcaption>
+                        </figure>
                       </div>
                       <div v-else>
                         <input
@@ -124,7 +138,10 @@
                           direct_upload="true"
                         />
                       </div>
-                      <button class="genric-btn primary-border radius small" v-on:click="uploadToMoodboard(image)">
+                      <button
+                        class="genric-btn primary-border radius small"
+                        v-on:click="createCelebrationPhotos(image)"
+                      >
                         Add to Moodboard
                       </button>
                     </div>
