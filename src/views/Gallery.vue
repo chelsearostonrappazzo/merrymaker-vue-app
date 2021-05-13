@@ -90,7 +90,7 @@ export default {
       });
     },
     getCelebrationPhotos: function () {
-      axios.get("/api/celebration_photos").then((response) => {
+      axios.get("/api/celebrationphotos").then((response) => {
         this.celebrationPhotos = response.data;
         console.log(this.celebrationPhotos);
       });
