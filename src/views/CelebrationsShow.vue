@@ -122,14 +122,16 @@
           <!-- Moodboard -->
           <div class="col-lg-6">
             <h2>The Aesthetic</h2>
-            <router-link v-if="isCelebrant()" class="public-profile" to="/moodboard">add to moodboard</router-link>
-            <h3>The Inspiration</h3>
+            <router-link v-if="isCelebrant()" class="public-profile span-spacing" to="/moodboard">
+              add to moodboard
+            </router-link>
+            <h3 class="aesthetic-header">The Inspiration</h3>
             <div class="moodboard-gallery-1">
               <div class="moodboard-gallery-panel-1" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
                 <img :src="moodboard.photo.photo" class="img-fluid" />
               </div>
             </div>
-            <h3>The Result</h3>
+            <h3 class="aesthetic-header">The Result</h3>
             <div class="moodboard-gallery-1">
               <div
                 class="moodboard-gallery-panel-1"
