@@ -56,9 +56,9 @@
                 </div>
               </div>
               <!-- Mobile Menu -->
-              <div class="col-12">
-                <div class="mobile_menu d-block d-lg-none">
-                  <nav class="non-burger">
+              <div class="hamburger hamburger--collapse">
+                <div class="hamburger-box">
+                  <div class="hamburger-inner">
                     <ul id="navigation">
                       <li><a href="/">Home</a></li>
                       <li><a href="/about">About</a></li>
@@ -80,7 +80,7 @@
                       </li>
                       <li v-else><strong>Greetings!</strong></li>
                     </ul>
-                  </nav>
+                  </div>
                 </div>
               </div>
             </div>
