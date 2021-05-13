@@ -250,7 +250,7 @@ export default {
         photo: this.image,
         celebration_id: this.selectedCelebration,
       };
-      axios.post("api/photos", params).then((response) => {
+      axios.post("api/resultphotos", params).then((response) => {
         console.log(response.data);
         console.log(image);
         this.image = "";
