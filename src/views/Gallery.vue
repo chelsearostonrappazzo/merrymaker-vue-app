@@ -12,8 +12,8 @@
       </div>
     </section>
     <div class="whole-wrap">
-      <div class="section-top-border">
-        <div class="container" v-for="celebration in celebrations" :key="celebration.id">
+      <div class="container" v-for="celebration in celebrations" :key="celebration.id">
+        <div class="section-top-border">
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <div class="section-tittle mb-60 text-center">
@@ -29,7 +29,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-12">
+          <!-- <div class="col-md-12">
             <div class="color-palette-gallery">
               <div class="color-palette-panel" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
                 <img v-if="moodboard.photo != null" :style="{ 'background-color': moodboard.photo }" />
@@ -49,7 +49,7 @@
               </div>
             </div>
             <a href="" class="public-profile" v-show="showEdit" v-on:click="deleteMoodboard">delete image</a>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
