@@ -89,7 +89,7 @@ export default {
         console.log(this.moodboards);
       });
     },
-    getCelebration_Photos: function () {
+    getCelebrationPhotos: function () {
       axios.get("/api/celebration_photos").then((response) => {
         this.celebrationPhotos = response.data;
         console.log(this.celebrationPhotos);
