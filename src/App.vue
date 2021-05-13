@@ -57,7 +57,31 @@
               </div>
               <!-- Mobile Menu -->
               <div class="col-12">
-                <div class="mobile_menu d-block d-lg-none"></div>
+                <div class="mobile_menu d-block d-lg-none">
+                  <nav class="non-burger">
+                    <ul id="navigation">
+                      <li><a href="/">Home</a></li>
+                      <li><a href="/about">About</a></li>
+                      <li v-if="!isLoggedIn()"><a href="/signup">Signup</a></li>
+                      <li v-if="!isLoggedIn()"><a href="/login">Login</a></li>
+                      <li v-if="isLoggedIn()"><a href="/logout">Logout</a></li>
+                      <li v-if="isLoggedIn()"><a href="/celebrations">Celebrations</a></li>
+                      <!-- <li><a href="/cabals">Cabals</a></li> -->
+
+                      <li v-if="isLoggedIn()">
+                        <strong>{{ user.first_name }} {{ user.last_name }}</strong>
+                        <ul class="submenu">
+                          <li><a href="/profile">Profile</a></li>
+                          <li><a href="/profile/edit">Edit</a></li>
+                          <li><a href="/celebrations/new">Start Planning</a></li>
+                          <li><a href="/moodboard">Moodboard</a></li>
+                          <li><a href="/gallery">Gallery</a></li>
+                        </ul>
+                      </li>
+                      <li v-else><strong>Greetings!</strong></li>
+                    </ul>
+                  </nav>
+                </div>
               </div>
             </div>
           </div>
