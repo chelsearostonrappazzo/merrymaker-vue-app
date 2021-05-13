@@ -112,12 +112,21 @@
                   <div class="col-md-4">
                     <div class="single-defination">
                       <h3 class="mb-20">Show off your event!</h3>
-                      <input
-                        type="file"
-                        @change="onFileChange"
-                        data-direct-upload-url="/rails/active_storage/direct_uploads"
-                        direct_upload="true"
-                      />
+                      <div v-if="image">
+                        <img class="profile-picture" :src="image" />
+                        <button v-on:click="updateUser()" class="genric-btn primary-border radius small">Save</button>
+                      </div>
+                      <div v-else>
+                        <input
+                          type="file"
+                          @change="onFileChange"
+                          data-direct-upload-url="/rails/active_storage/direct_uploads"
+                          direct_upload="true"
+                        />
+                      </div>
+                      <button class="genric-btn primary-border radius small" v-on:click="uploadToMoodboard(image)">
+                        Add to Moodboard
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -141,6 +150,7 @@ export default {
       name: "",
       invitation_token: "",
       image: "",
+      selectedCelebration: "",
     };
   },
   mounted: function () {
@@ -217,6 +227,18 @@ export default {
     removeImage: function (e) {
       this.user.image = "";
       console.log(e);
+    },
+    createCelebrationPhotos: function (image) {
+      let params = {
+        photo: this.image,
+        celebration_id: this.selectedCelebration,
+      };
+      axios.post("api/photos", params).then((response) => {
+        console.log(response.data);
+        console.log(image);
+        this.image = "";
+        this.$alert("Photo added to Board", "Huzzah!", "success", { confirmButtonText: "Yas!" });
+      });
     },
   },
 };

@@ -66,22 +66,22 @@
                   <input type="file" @change="onFileChange" />
                 </div>
                 <div v-else>
-                <figure>
-                  <img class="img-fluid profile-picture span-spacing" :src="image" />
-                  <figcaption class="span-spacing">
-                  <select v-model="selectedCelebration" class="modal-select">
-                          <option disabled value="">Select Celebration</option>
-                          <option
-                            v-show="celebration.user_id == userId"
-                            v-for="celebration in celebrations"
-                            :value="celebration.id"
-                            :key="celebration.id"
-                          >
-                            {{ celebration.name }}
-                          </option>
-                        </select>
-                  </figcaption>
-                </figure>
+                  <figure>
+                    <img class="img-fluid profile-picture span-spacing" :src="image" />
+                    <figcaption class="span-spacing">
+                      <select v-model="selectedCelebration" class="modal-select">
+                        <option disabled value="">Select Celebration</option>
+                        <option
+                          v-show="celebration.user_id == userId"
+                          v-for="celebration in celebrations"
+                          :value="celebration.id"
+                          :key="celebration.id"
+                        >
+                          {{ celebration.name }}
+                        </option>
+                      </select>
+                    </figcaption>
+                  </figure>
                   <button class="genric-btn primary-border radius small" @click="removeImage">Remove image</button>
                   <button class="genric-btn primary-border radius small" v-on:click="uploadToMoodboard(image)">
                     Add to Moodboard
