@@ -116,7 +116,7 @@
                         <figure>
                           <img class="img-fluid profile-picture span-spacing" :src="image" />
                           <figcaption class="span-spacing">
-                            <label class="span-spacing" v-for="celebration in user.celebrations" :key="celebration.id">
+                            <!-- <label class="span-spacing" v-for="celebration in user.celebrations" :key="celebration.id">
                               {{ celebration.name }}
                               <input
                                 :key="celebration.id"
@@ -124,8 +124,8 @@
                                 type="radio"
                                 v-model="selectedCelebration"
                               />
-                            </label>
-                            <!-- <select v-model="selectedCelebration" class="modal-select">
+                            </label> -->
+                            <select v-model="selectedCelebration" class="modal-select">
                               <option disabled value="">Select Celebration</option>
                               <option
                                 v-for="celebration in user.celebrations"
@@ -134,9 +134,16 @@
                               >
                                 {{ celebration.name }}
                               </option>
-                            </select> -->
+                            </select>
+                            -->
                           </figcaption>
                         </figure>
+                        <button
+                          class="genric-btn primary-border radius small"
+                          v-on:click="createCelebrationPhotos(image)"
+                        >
+                          Add to Event Photos
+                        </button>
                       </div>
                       <div v-else>
                         <input
@@ -146,12 +153,6 @@
                           direct_upload="true"
                         />
                       </div>
-                      <button
-                        class="genric-btn primary-border radius small"
-                        v-on:click="createCelebrationPhotos(image)"
-                      >
-                        Add to Event Photos
-                      </button>
                     </div>
                   </div>
                 </div>
