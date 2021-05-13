@@ -32,7 +32,7 @@
           <div class="col-md-12">
             <div class="color-palette-gallery">
               <div class="color-palette-panel" v-for="moodboard in moodboards" :key="moodboard.id">
-                <img v-if="moodboard.photo.color != null" :style="{ 'background-color': color }" />
+                <img v-if="moodboard.photo.color != null" :style="{ 'background-color': moodboard.photo.color }" />
               </div>
             </div>
             <div class="moodboard-gallery">
