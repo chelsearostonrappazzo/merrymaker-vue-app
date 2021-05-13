@@ -119,7 +119,6 @@
                             <select v-model="selectedCelebration" class="modal-select">
                               <option disabled value="">Select Celebration</option>
                               <option
-                                v-show="celebration.user_id == userId"
                                 v-for="celebration in user.celebrations"
                                 :value="celebration.id"
                                 :key="celebration.id"
@@ -142,7 +141,7 @@
                         class="genric-btn primary-border radius small"
                         v-on:click="createCelebrationPhotos(image)"
                       >
-                        Add to Moodboard
+                        Add to Event Photos
                       </button>
                     </div>
                   </div>
