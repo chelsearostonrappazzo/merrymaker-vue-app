@@ -31,13 +31,13 @@
           </div>
           <div class="col-md-12">
             <div class="color-palette-gallery">
-              <div class="color-palette-panel" v-for="photo in celebration.photos" :key="photo.id">
-                <img v-if="photo.color != null" :style="{ 'background-color': photo.color }" />
+              <div class="color-palette-panel" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
+                <img v-if="moodboard.photo.color != null" :style="{ 'background-color': moodboard.photo.color }" />
               </div>
             </div>
             <div class="moodboard-gallery">
-              <div class="moodboard-gallery-panel" v-for="photo in celebration.photos" :key="photo.id">
-                <img :src="photo.photo" class="img-fluid" />
+              <div class="moodboard-gallery-panel" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
+                <img :src="moodboard.photo.photo" class="img-fluid" />
                 <input
                   v-show="showEdit"
                   id="default-radio"
