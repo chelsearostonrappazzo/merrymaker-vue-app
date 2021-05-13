@@ -41,8 +41,8 @@
                 <input
                   v-show="showEdit"
                   id="default-radio"
-                  :key="photo.id"
-                  :value="photo.id"
+                  :key="moodboard.photo.id"
+                  :value="moodboard.photo.id"
                   type="radio"
                   v-model="selectedPhoto"
                 />
