@@ -29,20 +29,20 @@
               </div>
             </div>
           </div>
-          <div class="col-md-12" v-for="celebration in celebrations" :key="celebration.id">
+          <div class="col-md-12">
             <div class="color-palette-gallery">
-              <div class="color-palette-panel" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
-                <img v-if="moodboard.photo != null" :style="{ 'background-color': moodboard.photo }" />
+              <div class="color-palette-panel" v-for="photo in moodboards.photo" :key="photo.id">
+                <img v-if="photo.color != null" :style="{ 'background-color': color }" />
               </div>
             </div>
             <div class="moodboard-gallery">
-              <div class="moodboard-gallery-panel" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
-                <img :src="moodboard.photo" class="img-fluid" />
+              <div class="moodboard-gallery-panel" v-for="photo in moodboards.photo" :key="photo.id">
+                <img :src="photo.photo" class="img-fluid" />
                 <input
                   v-show="showEdit"
                   id="default-radio"
-                  :key="moodboard.photo"
-                  :value="moodboard.photo"
+                  :key="photo.photo"
+                  :value="photo.photo"
                   type="radio"
                   v-model="selectedPhoto"
                 />
@@ -63,20 +63,36 @@ export default {
   data: function () {
     return {
       celebrations: [],
+      moodboards: [],
+      celebrationPhotos: [],
       showEdit: false,
       selectedPhoto: "",
       userId: localStorage.getItem("user_id"),
     };
   },
   created: function () {
+    this.getCelebrations();
     this.getMoodboards();
+    this.getCelebrationPhotos();
   },
 
   methods: {
-    getMoodboards: function () {
+    getCelebrations: function () {
       axios.get("/api/celebrations").then((response) => {
         this.celebrations = response.data;
         console.log(this.celebrations);
+      });
+    },
+    getMoodboards: function () {
+      axios.get("/api/moodboards").then((response) => {
+        this.moodboards = response.data;
+        console.log(this.moodboards);
+      });
+    },
+    getCelebration_Photos: function () {
+      axios.get("/api/celebration_photos").then((response) => {
+        this.celebrationPhotos = response.data;
+        console.log(this.celebrationPhotos);
       });
     },
     deleteMoodboard: function () {
