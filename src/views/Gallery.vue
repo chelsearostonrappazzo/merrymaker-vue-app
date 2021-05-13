@@ -29,7 +29,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-12">
+          <div class="col-md-12" v-for="celebration in celebrations" :key="celebration.id">
             <div class="color-palette-gallery">
               <div class="color-palette-panel" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
                 <img v-if="moodboard.photo != null" :style="{ 'background-color': moodboard.photo }" />
