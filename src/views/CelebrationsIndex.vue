@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     indexCelebrations: function () {
-      axios.get("`/api/celebrations?${Date.now}`").then((response) => {
+      axios.get("/api/celebrations?").then((response) => {
         this.celebrations = response.data;
         console.log(this.celebrations);
       });
