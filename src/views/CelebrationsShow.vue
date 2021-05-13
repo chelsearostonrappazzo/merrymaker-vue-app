@@ -124,8 +124,8 @@
             <h2>The Aesthetic</h2>
             <router-link v-if="isCelebrant()" class="public-profile" to="/moodboard">add to moodboard</router-link>
             <div class="moodboard-gallery-1">
-              <div class="moodboard-gallery-panel-1" v-for="photo in celebration.moodboards" :key="photo.id">
-                <img :src="photo.photo" class="img-fluid" />
+              <div class="moodboard-gallery-panel-1" v-for="moodboard in celebration.moodboards" :key="moodboard.id">
+                <div v-for="photo in moodboard.photo" :key="photo.id"><img :src="photo.photo" class="img-fluid" /></div>
               </div>
             </div>
           </div>
