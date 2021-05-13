@@ -12,8 +12,8 @@
       </div>
     </section>
     <div class="whole-wrap">
-      <div class="container" v-for="celebration in celebrations" :key="celebration.id">
-        <div class="section-top-border">
+      <div class="section-top-border">
+        <div class="container" v-for="celebration in celebrations" :key="celebration.id">
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <div class="section-tittle mb-60 text-center">
