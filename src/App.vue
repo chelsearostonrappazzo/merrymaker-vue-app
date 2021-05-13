@@ -101,7 +101,7 @@
                 <div class="single-footer-caption mb-50 text-center">
                   <!-- logo -->
                   <div class="footer-logo mb-25">
-                    <a href="index.html"><img src="/assets/img/logo/merrymaker.png" alt="" /></a>
+                    <a href="index.html"><img src="/assets/img/logo/merrymake2r.png" alt="" /></a>
                   </div>
                   <!-- meNU -->
                   <div class="main-menu2">
