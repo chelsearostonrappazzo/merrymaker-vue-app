@@ -135,10 +135,10 @@
             <div class="moodboard-gallery-1">
               <div
                 class="moodboard-gallery-panel-1"
-                v-for="celebration_photos in celebration.celebration_photoss"
-                :key="celebration_photos.id"
+                v-for="celebration_photo in celebration.celebration_photos"
+                :key="celebration_photo.id"
               >
-                <img :src="celebration_photos.photo.photo" class="img-fluid" />
+                <img :src="celebration_photo.photo.photo" class="img-fluid" />
               </div>
             </div>
           </div>
